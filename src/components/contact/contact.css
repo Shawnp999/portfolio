@@ -1,0 +1,47 @@
+#contact-section {
+    padding: var(--section-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 50vh;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--accent);
+    transform: translateY(-5px);
+}
+
+/* Animate icons on hover */
+.social-link svg {
+    transition: transform 0.2s ease;
+}
+
+.social-link:hover svg {
+    transform: scale(1.2);
+}

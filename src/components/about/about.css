@@ -1,0 +1,187 @@
+#about-section {
+    padding: var(--section-padding);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.about-text {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+.about-text strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.skills-container {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.skills-container h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.skill-category h4 {
+    color: var(--accent);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.skill-category h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent);
+}
+
+.skill-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-item {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: baseline;
+}
+
+.skill-bullet {
+    color: var(--accent);
+    margin-right: 10px;
+}
+
+.edu-exp {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 25px;
+}
+
+.timeline-marker {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--accent);
+}
+
+.timeline-marker::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100px;
+    background-color: rgba(100, 255, 218, 0.2);
+}
+
+.timeline-item:last-child .timeline-marker::before {
+    display: none;
+}
+
+.timeline-item h4 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.timeline-year {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.timeline-item p:last-child {
+    color: var(--text-secondary);
+    margin: 5px 0 0;
+}
+
+/* Code block decoration */
+.about-bg-decoration {
+    position: absolute;
+    top: 100px;
+    right: -200px;
+    opacity: 0.1;
+    transform: rotate(15deg);
+    z-index: -1;
+}
+
+.code-block {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+}
+
+.code-line {
+    margin-bottom: 5px;
+}
+
+.code-keyword {
+    color: #c678dd;
+}
+
+.code-string {
+    color: #98c379;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-bg-decoration {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-grid, .edu-exp {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
