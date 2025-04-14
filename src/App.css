@@ -48,7 +48,7 @@ section {
 @media (max-width: 768px) {
   .content {
     margin-right: 0;
-    padding: 10;
+    padding: 10px;
 
   }
 }

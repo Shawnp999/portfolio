@@ -33,7 +33,7 @@ const Hero = () => {
         <section id="hero-section">
             <div className="hero-content">
 
-                <h1 ref={titleRef}> </h1>
+                <h1 style={{height : 200}} ref={titleRef}> </h1>
                 <h2 className="subtitle">Frontend Developer</h2>
                 <p className="description">
                     Nunc ac elit consectetur, fermentum eros ac, finibus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum,

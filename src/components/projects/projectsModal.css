@@ -1,0 +1,226 @@
+/* Modal styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    padding: 24px 24px 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.project-year {
+    font-size: 16px;
+    color: #cbcbcb;
+    margin-left: 12px;
+    font-weight: normal;
+}
+
+.modal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-image-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    background-color: #f5f5f5;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-description {
+    flex: 1;
+}
+
+.modal-description p {
+    margin-top: 0;
+    line-height: 1.6;
+    color: #555;
+    font-size: 16px;
+}
+
+.modal-description h3 {
+    margin: 24px 0 12px;
+    font-size: 18px;
+    color: #333;
+}
+
+.modal-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tech-badge {
+    padding: 6px 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+
+.tech-badge.purple {
+    background-color: #6b46c1;
+}
+
+.tech-badge.blue {
+    background-color: #3182ce;
+}
+
+.tech-badge.yellow {
+    background-color: #d69e2e;
+    color: #000;
+}
+
+.tech-badge.orange {
+    background-color: #dd6b20;
+}
+
+.tech-badge.teal {
+    background-color: #319795;
+}
+
+.tech-badge.red {
+    background-color: #e53e3e;
+}
+
+.tech-badge.green {
+    background-color: #38a169;
+}
+
+.tech-badge.cyan {
+    background-color: #0bc5ea;
+}
+
+.tech-badge.gray {
+    background-color: #718096;
+}
+
+.modal-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.modal-link {
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.github-link {
+    background-color: #24292e;
+    color: white;
+}
+
+.github-link:hover {
+    background-color: #1b1f23;
+}
+
+.live-link {
+    background-color: #3182ce;
+    color: white;
+}
+
+.live-link:hover {
+    background-color: #2b6cb0;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .modal-body {
+        flex-direction: row;
+        gap: 24px;
+    }
+
+    .modal-image-container {
+        width: 50%;
+        height: auto;
+        max-height: 400px;
+        margin-bottom: 0;
+    }
+
+    .modal-description {
+        width: 50%;
+    }
+}

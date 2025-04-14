@@ -1,7 +1,36 @@
+import { useState } from 'react';
 import './Projects.css';
+import ProjectModal from "./projectsModal.tsx";
+
+interface Project {
+    id: number;
+    title: string;
+    year: string;
+    description: string;
+    technologies: string[];
+    imageUrl: string;
+    githubUrl: string;
+    liveUrl: string;
+}
 
 const Projects = () => {
-    const projects = [
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = (project: Project) => {
+        setSelectedProject(project);
+        setModalOpen(true);
+        // Prevent background scrolling when modal is open
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        // Re-enable scrolling when modal is closed
+        document.body.style.overflow = 'auto';
+    };
+
+    const projects: Project[] = [
         {
             id: 1,
             title: 'Peerapat Residence',
@@ -64,8 +93,8 @@ const Projects = () => {
                 key={tech}
                 className={`tech-badge ${colors[tech] || 'gray'}`}
             >
-        {tech}
-      </span>
+                {tech}
+            </span>
         );
     };
 
@@ -79,14 +108,30 @@ const Projects = () => {
 
             <div className="projects-grid">
                 {projects.map(project => (
-                    <div className="project-card" key={project.id}>
+                    <div
+                        className="project-card"
+                        key={project.id}
+                        onClick={() => openModal(project)}
+                    >
                         <div className="project-header">
-                            <h3>{project.title} <span className="project-year">{project.year}</span></h3>
-                            <div className="project-links">
-                                <a href={project.githubUrl} className="project-link" aria-label="GitHub Repository">
+                            <h3 style={{color: '#fff'}}>{project.title} <span className="project-year">{project.year}</span></h3>
+                            <div className="project-links" onClick={(e) => e.stopPropagation()}>
+                                <a
+                                    href={project.githubUrl}
+                                    className="project-link"
+                                    aria-label="GitHub Repository"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <i className="icon-github">🔍</i>
                                 </a>
-                                <a href={project.liveUrl} className="project-link" aria-label="Live Demo">
+                                <a
+                                    href={project.liveUrl}
+                                    className="project-link"
+                                    aria-label="Live Demo"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <i className="icon-external">↗️</i>
                                 </a>
                             </div>
@@ -99,6 +144,12 @@ const Projects = () => {
                 ))}
             </div>
 
+            {/* Modal component */}
+            <ProjectModal
+                project={selectedProject}
+                isOpen={modalOpen}
+                onClose={closeModal}
+            />
         </section>
     );
 };
