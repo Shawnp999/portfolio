@@ -11,6 +11,7 @@ const Hero = () => {
         const titleElement = titleRef.current;
         if (!titleElement) return;
 
+        //can make fixed height, so doesnt look like its jumping
         const text = "Hi, I'm Shawn";
         titleElement.textContent = "";
 

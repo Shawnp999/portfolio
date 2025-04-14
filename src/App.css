@@ -1,13 +1,12 @@
+/* Main app container */
 .app {
   position: relative;
-  min-height: 100vh;
+  /*overflow-x: hidden; !* Prevent horizontal scrolling *!*/
 }
 
 .content {
-  /*max-width: 1200px;*/
   margin: 0 auto;
   padding: 0 2rem;
-  margin-right: 80px;
   position: relative;
   z-index: 1;
 }
@@ -35,44 +34,10 @@
   50% { opacity: 1; }
 }
 
-/* floating circles */
-.floating-shapes-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.floating-shape {
-  position: absolute;
-  background-color: var(--accent, #64ffda);
-  border-radius: 50%;
-  opacity: 0.03; /* Very subtle by default */
-  animation: float ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(-20px, 20px) rotate(5deg);
-  }
-  50% {
-    transform: translate(10px, 30px) rotate(-5deg);
-  }
-  75% {
-    transform: translate(20px, -10px) rotate(2deg);
-  }
-}
-
 section {
   padding: 100px 0;
-  min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 #hero, #about, #projects, #contact, #educationAndExperienceRef, #skillsref {
@@ -83,6 +48,7 @@ section {
 @media (max-width: 768px) {
   .content {
     margin-right: 0;
-    padding-bottom: 70px;
+    padding: 10;
+
   }
 }

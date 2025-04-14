@@ -1,0 +1,41 @@
+.section-background-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.section-circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--accent, #64ffda);
+    opacity: 0.03;
+    animation: subtle-pulse 15s infinite ease-in-out;
+}
+
+@keyframes subtle-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.03;
+    }
+    50% {
+        transform: scale(1.03);
+        opacity: 0.04;
+    }
+}
+
+.section-container {
+    position: relative;
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+    .section-circle {
+        transform: scale(0.7);
+        transform-origin: center;
+    }
+}

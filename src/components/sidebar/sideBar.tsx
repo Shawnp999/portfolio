@@ -4,12 +4,12 @@ import './sideBar.css';
 interface NavItem {
     id: string;
     label: string;
-    ref: React.RefObject<HTMLDivElement> | null;
+    ref: React.RefObject<HTMLDivElement | null>;
 }
 
 interface SidebarProps {
     navItems: NavItem[];
-    scrollToSection: (ref: React.RefObject<HTMLDivElement>) => void;
+    scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
 }
 
 const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
@@ -23,9 +23,9 @@ const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
 
             for (let i = navItems.length - 1; i >= 0; i--) {
                 const section = navItems[i];
-                const element = section.ref.current;
 
-                if (element) {
+                if (section.ref.current) {
+                    const element = section.ref.current;
                     const offsetTop = element.offsetTop - 100;
 
                     if (scrollPosition >= offsetTop) {
@@ -58,8 +58,12 @@ const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
 
                             {item.id === 'hero' && <span className="icon">#</span>}
                             {item.id === 'about' && <span className="icon">👤</span>}
+                            {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
                             {item.id === 'projects' && <span className="icon">💼</span>}
+
+                            {item.id === 'skillsref' && <span className="icon">🛠️</span>}
                             {item.id === 'contact' && <span className="icon">✉️</span>}
+
                             <span className="tooltip">{item.label}</span>
                         </li>
 

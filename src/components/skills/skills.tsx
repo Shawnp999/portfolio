@@ -35,7 +35,7 @@ const Skills = () => {
                 </div>
             </div>
 
-            {/* Background decoration */}
+            {/*little background idea*/}
             <div className="about-bg-decoration">
                 <div className="code-block">
                     <div className="code-line"><span className="code-keyword">const</span> developer = {'{'}</div>
