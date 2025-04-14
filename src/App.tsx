@@ -25,7 +25,7 @@ function App() {
         { id: 'about', label: 'About', ref: aboutRef },
         { id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef },
         { id: 'projects', label: 'Projects', ref: projectsRef },
-        { id: 'skillsRef', label: 'skills', ref: skillsRef },
+        { id: 'skillsRef', label: 'Skills', ref: skillsRef },
         { id: 'contact', label: 'Contact', ref: contactRef },
     ];
 
