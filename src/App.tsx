@@ -10,6 +10,8 @@ import Education from "./components/education/education.tsx";
 import Skills from "./components/skills/skills.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 import StarsBackground from "./components/stars/starsBackground.tsx";
+import './globalCSS.css'
+
 
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -41,12 +43,14 @@ function App() {
         <div className="app">
 
             <StarsBackground/>
+            <BackgroundCircles count={40} sectionId="hero" />
+
+
 
             <main className="content">
 
                 <div ref={heroRef} id="hero" className="section-container">
 
-                    <BackgroundCircles count={4} sectionId="hero" />
                     <Hero
                         scrollToSection={scrollToSection}
                         projectsRef={projectsRef}
@@ -55,27 +59,22 @@ function App() {
                 </div>
 
                 <div ref={aboutRef} id="about" className="section-container">
-                    <BackgroundCircles count={5} sectionId="about" />
                     <About/>
                 </div>
 
                 <div ref={educationAndExperienceRef} id="educationAndExperienceRef" className="section-container">
-                    <BackgroundCircles count={4} sectionId="education" />
                     <Education/>
                 </div>
 
                 <div ref={projectsRef} id="projects" className="section-container">
-                    <BackgroundCircles count={5} sectionId="projects" />
                     <Projects/>
                 </div>
 
                 <div ref={skillsRef} id="skillsRef" className="section-container">
-                    <BackgroundCircles count={4} sectionId="skillsRef" />
                     <Skills/>
                 </div>
 
                 <div ref={contactRef} id="contact" className="section-container">
-                    <BackgroundCircles count={3} sectionId="contact" />
                     <Contact/>
                 </div>
 
