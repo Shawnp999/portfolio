@@ -5,7 +5,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    overflow: visible;
+    overflow: hidden; /* Changed from visible to hidden */
     pointer-events: none;
 }
 
@@ -30,12 +30,15 @@
 
 .section-container {
     position: relative;
-    overflow: visible;
+    overflow-x: hidden; /* Added to prevent horizontal overflow */
+    width: 100%;
 }
 
 @media (max-width: 768px) {
     .section-circle {
-        transform: scale(0.7);
+        transform: scale(0.6); /* Reduced from 0.7 to 0.6 */
         transform-origin: center;
+        max-width: 80vw; /* Limit maximum width to prevent overflow */
+        max-height: 80vh; /* Limit maximum height to prevent overflow */
     }
 }

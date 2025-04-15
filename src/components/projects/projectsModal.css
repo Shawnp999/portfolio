@@ -26,7 +26,7 @@
 }
 
 .modal-content {
-    background-color: white;
+    background-color: #1a1a1a;
     border-radius: 8px;
     max-width: 800px;
     width: 90%;
@@ -55,13 +55,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #333;
+    color: #e0e0e0;
     border-radius: 50%;
     transition: background-color 0.2s ease;
 }
 
 .modal-close-btn:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .modal-header {
@@ -71,7 +71,7 @@
 .modal-header h2 {
     margin: 0;
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -96,7 +96,7 @@
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 24px;
-    background-color: #f5f5f5;
+    background-color: #2a2a2a;
 }
 
 .modal-image {
@@ -112,14 +112,14 @@
 .modal-description p {
     margin-top: 0;
     line-height: 1.6;
-    color: #555;
+    color: #d0d0d0;
     font-size: 16px;
 }
 
 .modal-description h3 {
     margin: 24px 0 12px;
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
 }
 
 .modal-tech {
@@ -138,32 +138,32 @@
 }
 
 .tech-badge.purple {
-    background-color: #6b46c1;
+    background-color: #9f7aea;
 }
 
 .tech-badge.blue {
-    background-color: #3182ce;
+    background-color: #4299e1;
 }
 
 .tech-badge.yellow {
-    background-color: #d69e2e;
+    background-color: #ecc94b;
     color: #000;
 }
 
 .tech-badge.orange {
-    background-color: #dd6b20;
+    background-color: #ed8936;
 }
 
 .tech-badge.teal {
-    background-color: #319795;
+    background-color: #38b2ac;
 }
 
 .tech-badge.red {
-    background-color: #e53e3e;
+    background-color: #f56565;
 }
 
 .tech-badge.green {
-    background-color: #38a169;
+    background-color: #48bb78;
 }
 
 .tech-badge.cyan {
@@ -171,7 +171,7 @@
 }
 
 .tech-badge.gray {
-    background-color: #718096;
+    background-color: #a0aec0;
 }
 
 .modal-links {
@@ -189,21 +189,21 @@
 }
 
 .github-link {
-    background-color: #24292e;
+    background-color: #333;
     color: white;
 }
 
 .github-link:hover {
-    background-color: #1b1f23;
+    background-color: #444;
 }
 
 .live-link {
-    background-color: #3182ce;
+    background-color: #4299e1;
     color: white;
 }
 
 .live-link:hover {
-    background-color: #2b6cb0;
+    background-color: #3182ce;
 }
 
 /* Media Queries */

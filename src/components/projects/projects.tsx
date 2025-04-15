@@ -144,7 +144,6 @@ const Projects = () => {
                 ))}
             </div>
 
-            {/* Modal component */}
             <ProjectModal
                 project={selectedProject}
                 isOpen={modalOpen}

@@ -1,14 +1,18 @@
-/* Main app container */
+
 .app {
   position: relative;
-  /*overflow-x: hidden; !* Prevent horizontal scrolling *!*/
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .content {
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 15%;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .star-field-container {
@@ -38,17 +42,19 @@ section {
   padding: 100px 0;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 }
 
-#hero, #about, #projects, #contact, #educationAndExperienceRef, #skillsref {
+#hero, #about, #projects, #contact, #educationAndExperienceRef, #skillsRef {
   padding-top: 80px;
   scroll-margin-top: 80px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
   .content {
     margin-right: 0;
     padding: 10px;
-
   }
 }

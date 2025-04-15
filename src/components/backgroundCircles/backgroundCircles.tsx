@@ -9,20 +9,19 @@ interface BackgroundCirclesProps {
 const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({ count, sectionId }) => {
 
     const circles = useMemo(() => {
+
         const circlesArray = [];
+        const maxSize = window.innerWidth < 768 ? 120 : 200;
 
         for (let i = 0; i < count; i++) {
-            const size = 80 + Math.random() * 120;
 
-            const radius = size / 2;
+            const size = 60 + Math.random() * (maxSize - 60);
 
-            const safeTopMin = radius / 5; // Convert radius to % of parent container height
-            const safeTopMax = 100 - (radius / 5);
+            const safeTopMin = 10;
+            const safeTopMax = 90;
+            const safeLeftMin = 10;
+            const safeLeftMax = 90;
 
-            const safeLeftMin = radius / 8; // Convert radius to % of parent container width
-            const safeLeftMax = 100 - (radius / 8);
-
-            //safety margins
             const top = safeTopMin + (Math.random() * (safeTopMax - safeTopMin));
             const left = safeLeftMin + (Math.random() * (safeLeftMax - safeLeftMin));
 
