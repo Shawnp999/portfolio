@@ -1,17 +1,21 @@
 import { useEffect, useRef } from 'react';
 import './Hero.css';
 
-const Hero = () => {
+interface HeroProps {
+    scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
+    projectsRef: React.RefObject<HTMLDivElement | null>;
+    contactRef: React.RefObject<HTMLDivElement | null>;
+}
 
+const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
     const titleRef = useRef<HTMLHeadingElement>(null);
 
-    //little animation
+    // little animation
     useEffect(() => {
-
         const titleElement = titleRef.current;
         if (!titleElement) return;
 
-        //can make fixed height, so doesnt look like its jumping
+        // can make fixed height, so doesnt look like its jumping
         const text = "Hi, I'm Shawn";
         titleElement.textContent = "";
 
@@ -32,8 +36,7 @@ const Hero = () => {
     return (
         <section id="hero-section">
             <div className="hero-content">
-
-                <h1 style={{height : 200}} ref={titleRef}> </h1>
+                <h1 style={{ height: 200 }} ref={titleRef}> </h1>
                 <h2 className="subtitle">Frontend Developer</h2>
                 <p className="description">
                     Nunc ac elit consectetur, fermentum eros ac, finibus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum,
@@ -44,11 +47,20 @@ const Hero = () => {
                 </p>
 
                 <div className="cta-buttons">
-                    <a href="#projects" className="btn primary">View My Work</a>
-                    <a href="#contact" className="btn secondary">Get In Touch</a>
+                    <button
+                        className="btn primary"
+                        onClick={() => scrollToSection(projectsRef)}
+                    >
+                        View My Work
+                    </button>
+                    <button
+                        className="btn secondary"
+                        onClick={() => scrollToSection(contactRef)}
+                    >
+                        Get In Touch
+                    </button>
                 </div>
             </div>
-
         </section>
     );
 };

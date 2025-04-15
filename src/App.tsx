@@ -10,6 +10,12 @@ import Education from "./components/education/education.tsx";
 import Skills from "./components/skills/skills.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+};
+
 function App() {
 
     const heroRef = useRef<HTMLDivElement>(null);
@@ -29,10 +35,6 @@ function App() {
         { id: 'contact', label: 'Contact', ref: contactRef },
     ];
 
-    const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
-    };
-
     const stars = Array.from({ length: 150 }, () => ({
         top: `${Math.random() * 100}%`,
         left: `${Math.random() * 100}%`,
@@ -45,6 +47,7 @@ function App() {
     return (
         <div className="app">
             <div className="star-field-container">
+
                 {stars.map((star, index) => (
                     <div
                         key={`star-${index}`}
@@ -60,12 +63,17 @@ function App() {
                         }}
                     />
                 ))}
+
             </div>
 
             <main className="content">
                 <div ref={heroRef} id="hero" className="section-container">
                     <BackgroundCircles count={4} sectionId="hero" />
-                    <Hero/>
+                    <Hero
+                        scrollToSection={scrollToSection}
+                        projectsRef={projectsRef}
+                        contactRef={contactRef}
+                    />
                 </div>
                 <div ref={aboutRef} id="about" className="section-container">
                     <BackgroundCircles count={5} sectionId="about" />

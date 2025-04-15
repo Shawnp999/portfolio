@@ -22,7 +22,6 @@ const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
             const scrollPosition = window.scrollY;
 
             for (let i = navItems.length - 1; i >= 0; i--) {
-
                 const section = navItems[i];
 
                 if (section.ref.current) {
