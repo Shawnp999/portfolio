@@ -1,0 +1,47 @@
+/* Marquee.css */
+.marquee-track {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 44px;
+}
+
+.marquee-content {
+    display: flex;
+    position: absolute;
+    will-change: transform;
+    width: max-content;
+}
+
+.marquee-items {
+    display: flex;
+    white-space: nowrap;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.tech-stack-item {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary, #333333);
+    margin: 0;
+    padding: 0.5rem 0.25rem;
+    white-space: nowrap;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.tech-stack-dot {
+    margin: 0 0.5rem;
+    color: var(--accent-color, #6c5ce7);
+    font-size: 1rem;
+}
+
+/* Hover effects */
+.marquee-item:hover .tech-stack-item {
+    color: var(--accent-color, #6c5ce7);
+    transform: scale(1.05);
+}

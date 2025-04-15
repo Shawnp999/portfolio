@@ -27,7 +27,7 @@
 .skills-container {
     background-color: var(--bg-secondary);
     border-radius: 8px;
-    padding: 30px;
+    /*padding: 30px;*/
 }
 
 .skills-container h3 {

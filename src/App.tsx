@@ -9,6 +9,7 @@ import Footer from "./components/footer/footer.tsx";
 import Education from "./components/education/education.tsx";
 import Skills from "./components/skills/skills.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
+import StarsBackground from "./components/stars/starsBackground.tsx";
 
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -35,39 +36,16 @@ function App() {
         { id: 'contact', label: 'Contact', ref: contactRef },
     ];
 
-    const stars = Array.from({ length: 150 }, () => ({
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        size: Math.random() * 2,
-        opacity: Math.random() * 0.7 + 0.3,
-        animationDelay: `${Math.random() * 5}s`,
-        animationDuration: `${Math.random() * 5 + 5}s`
-    }));
 
     return (
         <div className="app">
-            <div className="star-field-container">
 
-                {stars.map((star, index) => (
-                    <div
-                        key={`star-${index}`}
-                        className="bg-star"
-                        style={{
-                            top: star.top,
-                            left: star.left,
-                            width: `${star.size}px`,
-                            height: `${star.size}px`,
-                            opacity: star.opacity,
-                            animationDelay: star.animationDelay,
-                            animationDuration: star.animationDuration
-                        }}
-                    />
-                ))}
-
-            </div>
+            <StarsBackground/>
 
             <main className="content">
+
                 <div ref={heroRef} id="hero" className="section-container">
+
                     <BackgroundCircles count={4} sectionId="hero" />
                     <Hero
                         scrollToSection={scrollToSection}
@@ -75,27 +53,34 @@ function App() {
                         contactRef={contactRef}
                     />
                 </div>
+
                 <div ref={aboutRef} id="about" className="section-container">
                     <BackgroundCircles count={5} sectionId="about" />
                     <About/>
                 </div>
+
                 <div ref={educationAndExperienceRef} id="educationAndExperienceRef" className="section-container">
                     <BackgroundCircles count={4} sectionId="education" />
                     <Education/>
                 </div>
+
                 <div ref={projectsRef} id="projects" className="section-container">
                     <BackgroundCircles count={5} sectionId="projects" />
                     <Projects/>
                 </div>
+
                 <div ref={skillsRef} id="skillsRef" className="section-container">
                     <BackgroundCircles count={4} sectionId="skillsRef" />
                     <Skills/>
                 </div>
+
                 <div ref={contactRef} id="contact" className="section-container">
                     <BackgroundCircles count={3} sectionId="contact" />
                     <Contact/>
                 </div>
+
                 <Footer/>
+
             </main>
 
             <SideBar navItems={navItems} scrollToSection={scrollToSection}/>

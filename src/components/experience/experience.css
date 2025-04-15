@@ -24,62 +24,6 @@
     font-weight: 600;
 }
 
-.skills-container {
-    background-color: var(--bg-secondary);
-    border-radius: 8px;
-    padding: 30px;
-}
-
-.skills-container h3 {
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    font-size: 1.4rem;
-    color: var(--text-primary);
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.skill-category h4 {
-    color: var(--accent);
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    position: relative;
-    padding-bottom: 8px;
-}
-
-.skill-category h4::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: var(--accent);
-}
-
-.skill-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.skill-item {
-    margin-bottom: 8px;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: baseline;
-}
-
-.skill-bullet {
-    color: var(--accent);
-    margin-right: 10px;
-}
 
 .edu-exp {
     display: grid;
