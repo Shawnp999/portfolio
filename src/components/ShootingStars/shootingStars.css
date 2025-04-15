@@ -1,0 +1,67 @@
+.shooting-stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 100px; /* Length of star trail */
+    height: 2px; /* Thickness of trail */
+    border-radius: 1000px;
+}
+
+/* Default: left-to-right (head on right, tail trails to left) */
+.shooting-star.left-to-right {
+    background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 20%,
+            rgba(255, 255, 255, 0.2) 40%,
+            rgba(255, 255, 255, 0.4) 60%,
+            rgba(255, 255, 255, 0.8) 100%
+    );
+}
+
+/* Right-to-left (head on left, tail trails to right) */
+.shooting-star.right-to-left {
+    background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.4) 20%,
+            rgba(255, 255, 255, 0.2) 40%,
+            rgba(255, 255, 255, 0) 80%
+    );
+}
+
+/* Star head/glow effect */
+.shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: var(--star-size);
+    height: var(--star-size);
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(0, -50%);
+    box-shadow:
+            0 0 4px 2px rgba(255, 255, 255, 0.4),
+            0 0 10px 5px rgba(255, 255, 255, 0.2);
+    filter: blur(0.5px);
+}
+
+/* Position the head on the right for left-to-right */
+.shooting-star.left-to-right::before {
+    right: 0;
+    left: auto;
+}
+
+/* Position the head on the left for right-to-left */
+.shooting-star.right-to-left::before {
+    left: 0;
+    right: auto;
+}

@@ -11,6 +11,7 @@ import Skills from "./components/skills/skills.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 import StarsBackground from "./components/stars/starsBackground.tsx";
 import './globalCSS.css'
+import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
 
 
 
@@ -43,7 +44,8 @@ function App() {
         <div className="app">
 
             <StarsBackground/>
-            <BackgroundCircles count={40} sectionId="hero" />
+            <BackgroundCircles count={10} sectionId="hero" />
+            <ShootingStars/>
 
 
 
