@@ -2,7 +2,8 @@ export interface Project {
     id: number;
     title: string;
     year: string;
-    description: string;
+    shortDescription: string;
+    detailedDescription: string;
     technologies: string[];
     imageUrl: string;
     githubUrl: string;

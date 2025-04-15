@@ -5,9 +5,9 @@ import ProjectModal from "./projectsModal.tsx";
 import {Project} from "./projectTypes.ts";
 import {myProjects} from "./myProjects.ts";
 import TooltipLink from "../toolTip/toolTip.tsx";
+import {getTechBadgeVariant} from "../utils/techBadges.tsx";
 
 const Projects = () => {
-
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -20,27 +20,8 @@ const Projects = () => {
         setModalOpen(false);
     };
 
-    const getTechBadgeVariant = (tech: string): string => {
-        const variants: Record<string, string> = {
-            'Gatsby': 'purple',
-            'React': 'primary',
-            'JavaScript': 'warning',
-            'MobX': 'warning',
-            'Webpack': 'info',
-            'Babel': 'danger',
-            'Python': 'success',
-            'PyQt': 'info',
-            'MongoDB': 'success',
-            'Flutter': 'primary',
-            'Dart': 'info'
-        };
-
-        return variants[tech] || 'secondary';
-    };
-
     return (
         <section id="projects-section">
-
             <h2>Projects</h2>
             <p className="section-desc">
                 Outside of the full-time job, these are some of the projects that I've built as a
@@ -49,17 +30,13 @@ const Projects = () => {
 
             <Row className="g-4 projects-grid">
                 {myProjects.map(project => (
-
                     <Col key={project.id} md={6} lg={4}>
-
                         <Card
                             className="project-card h-100"
                             onClick={() => openModal(project)}
                         >
                             <Card.Body className="d-flex flex-column">
-
                                 <div className="project-header d-flex justify-content-between align-items-start mb-3">
-
                                     <Card.Title className="mb-0 text-white">
                                         {project.title} <span className="project-year">{project.year}</span>
                                     </Card.Title>
@@ -84,10 +61,9 @@ const Projects = () => {
                                             <i className="bi bi-box-arrow-up-right"></i>
                                         </TooltipLink>
                                     </div>
-
                                 </div>
 
-                                <Card.Text className="project-description mb-4">{project.description}</Card.Text>
+                                <Card.Text className="project-description mb-4">{project.shortDescription}</Card.Text>
 
                                 <div className="project-tech mt-auto">
                                     {project.technologies.map(tech => (
@@ -100,7 +76,6 @@ const Projects = () => {
                                         </Badge>
                                     ))}
                                 </div>
-
                             </Card.Body>
                         </Card>
                     </Col>
@@ -115,6 +90,5 @@ const Projects = () => {
         </section>
     );
 };
-
 
 export default Projects;

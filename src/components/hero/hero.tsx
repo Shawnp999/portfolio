@@ -10,33 +10,46 @@ interface HeroProps {
 const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
     const titleRef = useRef<HTMLHeadingElement>(null);
 
-    // little animation
+    // Fixed typewriter animation
     useEffect(() => {
         const titleElement = titleRef.current;
         if (!titleElement) return;
 
-        // can make fixed height, so doesnt look like its jumping
-        const text = "Hi, I'm Shawn";
+        // Clear initial content and set a consistent height
         titleElement.textContent = "";
 
+        const text = "Hi, I'm Shawn";
         let i = 0;
+        let typingInterval: number | undefined;
+
         const typeWriter = () => {
             if (i < text.length) {
-                titleElement.textContent += text.charAt(i);
+                // Set the text content to the substring from start to current position
+                // This replaces the entire content each time instead of appending
+                titleElement.textContent = text.substring(0, i + 1);
                 i++;
-                setTimeout(typeWriter, 200);
+            } else {
+                // Stop the interval when typing is complete
+                clearInterval(typingInterval);
             }
         };
 
+        // Start typing after a short delay
         setTimeout(() => {
-            typeWriter();
+            // Using setInterval with clearInterval for better control
+            typingInterval = window.setInterval(typeWriter, 200);
         }, 500);
+
+        // Cleanup interval on component unmount
+        return () => {
+            if (typingInterval) clearInterval(typingInterval);
+        };
     }, []);
 
     return (
         <section id="hero-section">
             <div className="hero-content">
-                <h1 style={{ height: 200 }} ref={titleRef}> </h1>
+                <h1 style={{ height: '200px', minHeight: '1.2em' }} ref={titleRef}></h1>
                 <h2 className="subtitle">Frontend Developer</h2>
                 <p className="description">
                     Nunc ac elit consectetur, fermentum eros ac, finibus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum,

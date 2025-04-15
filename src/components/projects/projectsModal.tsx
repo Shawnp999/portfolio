@@ -1,18 +1,8 @@
 import React from 'react';
 import { Modal, Card, Button, Badge, Row, Col, Container } from 'react-bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import './projectsModal.css';
-
-interface Project {
-    id: number;
-    title: string;
-    year: string;
-    description: string;
-    technologies: string[];
-    imageUrl: string;
-    githubUrl: string;
-    liveUrl: string;
-}
+import { Project } from './projectTypes.ts';
+import {getTechBadgeVariant} from "../utils/techBadges.tsx";
 
 interface ProjectModalProps {
     project: Project | null;
@@ -22,33 +12,6 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
     if (!project) return null;
-
-    const getTechBadgeVariant = (tech: string): string => {
-        const variants: Record<string, string> = {
-            Gatsby: 'purple',
-            React: 'primary',
-            JavaScript: 'warning',
-            TypeScript: 'info',
-            MobX: 'warning',
-            Webpack: 'info',
-            Babel: 'danger',
-            Python: 'success',
-            PyQt: 'info',
-            MongoDB: 'success',
-            Flutter: 'primary',
-            Dart: 'info',
-            'Next.js': 'dark',
-            CSS: 'info',
-            HTML: 'danger',
-            Node: 'success',
-            Express: 'secondary',
-            Firebase: 'danger',
-            'Material UI': 'primary',
-            'Tailwind CSS': 'info',
-        };
-
-        return variants[tech] || 'secondary';
-    };
 
     return (
         <Modal
@@ -99,12 +62,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                         <Col lg={6}>
                             <Card.Body className="p-0 h-100 d-flex flex-column">
-                                <Card.Text>{project.description}</Card.Text>
+                                <Card.Text>{project.detailedDescription}</Card.Text>
 
                                 <div className="d-none d-lg-block">
-
                                     <h5 className="mt-4 mb-3">Technologies</h5>
-
                                     <div className="d-flex flex-wrap gap-2 mb-4">
                                         {project.technologies.map((tech) => (
                                             <Badge
@@ -126,7 +87,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="medium-btn fs-14"
-
                                         >
                                             <i className="bi bi-github me-2"></i>
                                             View Repository
