@@ -33,20 +33,23 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                 <Container fluid className="p-0">
                     <Row className="g-4">
                         <Col lg={6}>
-                            <Card className="border-0 h-100">
+                            <Card className="border-0 h-100 justify-content-center mb-3">
                                 <div className="image-wrapper">
                                     <Card.Img
                                         variant="top"
                                         src={project.imageUrl}
-                                        alt={project.title}
+                                        alt={project.imageAlt || `${project.title} screenshot`}
+
                                         className="project-image"
                                     />
+
+
                                 </div>
 
                                 <div className="d-block d-lg-none">
-                                    <h5 className="mt-4 mb-3">Technologies</h5>
-                                    <div className="d-flex flex-wrap gap-2 mb-4">
-                                        {project.technologies.map((tech) => (
+                                    <h5 className="mt-2 mb-2">Technologies</h5>
+                                    <div className="d-flex flex-wrap gap-2 mb-2">
+                                    {project.technologies.map((tech) => (
                                             <Badge
                                                 key={tech}
                                                 bg={getTechBadgeVariant(tech)}
@@ -62,11 +65,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                         <Col lg={6}>
                             <Card.Body className="p-0 h-100 d-flex flex-column">
-                                <Card.Text>{project.detailedDescription}</Card.Text>
+                                <Card.Text style={{whiteSpace : 'pre-line', }}>{project.detailedDescription}</Card.Text>
 
                                 <div className="d-none d-lg-block">
-                                    <h5 className="mt-4 mb-3">Technologies</h5>
-                                    <div className="d-flex flex-wrap gap-2 mb-4">
+                                    <h5 className="mt-2 mb-3">Technologies</h5>
+                                    <div className="d-flex flex-wrap gap-2 mb-2">
                                         {project.technologies.map((tech) => (
                                             <Badge
                                                 key={tech}
@@ -91,16 +94,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                             <i className="bi bi-github me-2"></i>
                                             View Repository
                                         </Button>
-                                        <Button
-                                            variant="primary"
-                                            href={project.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="medium-btn fs-14"
-                                        >
-                                            <i className="bi bi-box-arrow-up-right me-2"></i>
-                                            View Live Demo
-                                        </Button>
+
+                                        {project.liveUrl && (
+                                            <Button
+                                                variant="primary"
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="medium-btn fs-14"
+                                            >
+                                                <i className="bi bi-box-arrow-up-right me-2"></i>
+                                                View Live Demo
+                                            </Button>
+                                        )}
+
+
                                     </div>
                                 </div>
                             </Card.Body>

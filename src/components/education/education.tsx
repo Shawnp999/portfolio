@@ -29,7 +29,7 @@ const EducationAndExperience = () => {
                     className="vertical-timeline-element--education"
                     contentStyle={educationContentStyle}
                     contentArrowStyle={{ borderRight: '7px solid #1e1e1e' }}
-                    date="04/2022 - Present"
+                    date="04/2023 - Present"
                     iconStyle={educationIconStyle}
                     icon={<i className="bi bi-mortarboard-fill"></i>}
                 >

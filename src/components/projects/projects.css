@@ -109,8 +109,8 @@
     border-radius: 20px;
     letter-spacing: 0.2px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-right: 2px;
+    margin-bottom: 2px;
 }
 
 .tech-badge:hover {
