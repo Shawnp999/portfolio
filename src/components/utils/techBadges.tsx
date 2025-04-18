@@ -29,14 +29,16 @@ export const getTechBadgeVariant = (tech: string): string => {
         'Babel': 'warning',
         'Vite': 'warning',
         'Expo': 'warning',
+        'Gulp' : 'warning',
 
         // Backend & Databases
         'Node': 'success',
         'Express': 'secondary',
-        'Django': 'success',
-        'MongoDB': 'success',
-        'SQL': 'info',
-        'Firebase': 'danger',
+        'Django': 'secondary',
+        'MongoDB': 'secondary',
+        'SQL': 'secondary',
+        'Firebase': 'secondary',
+        'Microsoft GraphQL': 'secondary',
 
         // UI Libraries
         'Bootstrap 5': 'info',

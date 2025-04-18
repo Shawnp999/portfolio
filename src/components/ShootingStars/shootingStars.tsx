@@ -18,15 +18,14 @@ interface ShootingStar {
 const ShootingStars: React.FC = () => {
     const [stars, setStars] = useState<ShootingStar[]>([]);
 
-    // Detect if the device is mobile (width <= 768px)
     const isMobile = window.innerWidth <= 768;
 
-    // Function to generate a single random shooting star
     const generateStar = (id: number): ShootingStar => {
-        const fromLeft = Math.random() > 0.5; // Randomly start from left or right
+
+        const fromLeft = Math.random() > 0.5;
 
         // Adjust starting and ending positions for mobile (further off-screen)
-        const startX = fromLeft ? (isMobile ? -40 : -10) : (isMobile ? 120 : 110); // Start further off-screen on mobile
+        const startX = fromLeft ? (isMobile ? -40 : -10) : (isMobile ? 120 : 210); // Start further off-screen on mobile
         const endX = fromLeft ? (isMobile ? 120 : 110) : (isMobile ? -20 : -10); // End further off-screen on mobile
         const direction = fromLeft ? 'left-to-right' : 'right-to-left'; // Determine direction
         const startY = 5 + Math.random() * 80;

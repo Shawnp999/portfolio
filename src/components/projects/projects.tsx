@@ -4,10 +4,11 @@ import './Projects.css';
 import ProjectModal from "./projectsModal.tsx";
 import {Project} from "./projectTypes.ts";
 import {myProjects} from "./myProjects.ts";
-import TooltipLink from "../toolTip/toolTip.tsx";
+// import TooltipLink from "../toolTip/toolTip.tsx";
 import {getTechBadgeVariant} from "../utils/techBadges.tsx";
 
 const Projects = () => {
+
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -42,24 +43,24 @@ const Projects = () => {
                                     </Card.Title>
 
                                     <div className="project-links">
-                                        <TooltipLink
-                                            href={project.githubUrl}
-                                            tooltipText="View GitHub Repository"
-                                            ariaLabel="GitHub Repository"
-                                            className="project-link"
-                                        >
-                                            <i className="bi bi-github"></i>
-                                        </TooltipLink>
+                                        {/*<TooltipLink*/}
+                                        {/*    href={project.githubUrl}*/}
+                                        {/*    tooltipText="View GitHub Repository"*/}
+                                        {/*    ariaLabel="GitHub Repository"*/}
+                                        {/*    className="project-link"*/}
+                                        {/*>*/}
+                                        {/*    <i className="bi bi-github"></i>*/}
+                                        {/*</TooltipLink>*/}
 
-                                        <TooltipLink
-                                            href={project.liveUrl}
-                                            tooltipText="View Live Demo"
-                                            ariaLabel="Live Demo"
-                                            className="project-link"
-                                            placement="bottom"
-                                        >
-                                            <i className="bi bi-box-arrow-up-right"></i>
-                                        </TooltipLink>
+                                        {/*<TooltipLink*/}
+                                        {/*    href={project.liveUrl}*/}
+                                        {/*    tooltipText="View Live Demo"*/}
+                                        {/*    ariaLabel="Live Demo"*/}
+                                        {/*    className="project-link"*/}
+                                        {/*    placement="bottom"*/}
+                                        {/*>*/}
+                                        {/*    <i className="bi bi-box-arrow-up-right"></i>*/}
+                                        {/*</TooltipLink>*/}
                                     </div>
                                 </div>
 

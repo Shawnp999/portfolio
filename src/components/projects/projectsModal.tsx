@@ -18,7 +18,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             show={isOpen}
             onHide={onClose}
             centered
-            size="lg"
+            size="xl"
             backdrop="static"
             animation={true}
             className="project-modal"

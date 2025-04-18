@@ -4,15 +4,13 @@ import 'react-vertical-timeline-component/style.min.css';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
 const EducationAndExperience = () => {
-    // Work color
+
     const workIconStyle = { background: '#4fd1c5', color: '#fff' };
     const workContentStyle = { background: '#1e1e1e', color: '#d0d0d0', boxShadow: '0 3px 0 #4fd1c5' };
 
-    // Project color
     const projectIconStyle = { background: '#9f7aea', color: '#fff' };
     const projectContentStyle = { background: '#1e1e1e', color: '#d0d0d0', boxShadow: '0 3px 0 #9f7aea' };
 
-    // Education color
     const educationIconStyle = { background: '#f56565', color: '#fff' };
     const educationContentStyle = { background: '#1e1e1e', color: '#d0d0d0', boxShadow: '0 3px 0 #f56565' };
 

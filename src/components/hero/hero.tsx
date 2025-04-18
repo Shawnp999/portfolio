@@ -10,37 +10,32 @@ interface HeroProps {
 const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
     const titleRef = useRef<HTMLHeadingElement>(null);
 
-    // Fixed typewriter animation
     useEffect(() => {
+
         const titleElement = titleRef.current;
         if (!titleElement) return;
 
-        // Clear initial content and set a consistent height
         titleElement.textContent = "";
 
         const text = "Hi, I'm Shawn";
         let i = 0;
+
         let typingInterval: number | undefined;
 
         const typeWriter = () => {
             if (i < text.length) {
-                // Set the text content to the substring from start to current position
-                // This replaces the entire content each time instead of appending
+
                 titleElement.textContent = text.substring(0, i + 1);
                 i++;
             } else {
-                // Stop the interval when typing is complete
                 clearInterval(typingInterval);
             }
         };
 
-        // Start typing after a short delay
         setTimeout(() => {
-            // Using setInterval with clearInterval for better control
             typingInterval = window.setInterval(typeWriter, 200);
         }, 500);
 
-        // Cleanup interval on component unmount
         return () => {
             if (typingInterval) clearInterval(typingInterval);
         };

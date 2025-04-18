@@ -1,4 +1,3 @@
-/* Modal styles */
 .modal-backdrop {
     position: fixed;
     top: 0;
@@ -28,8 +27,8 @@
 .modal-content {
     background-color: #1a1a1a;
     border-radius: 8px;
-    max-width: 800px;
-    width: 100%;
+    /*max-width: 800px;*/
+    width: 100% !important;
     max-height: 100vh;
     overflow-y: auto;
     position: relative;
@@ -225,3 +224,9 @@
         width: 50%;
     }
 }
+
+
+/*.project-modal {*/
+/*    min-width: 100%  !important;*/
+
+/*}*/
