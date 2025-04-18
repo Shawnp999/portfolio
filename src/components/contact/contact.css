@@ -36,7 +36,6 @@
     transform: translateY(-5px);
 }
 
-/* Animate icons on hover */
 .social-link svg {
     transition: transform 0.2s ease;
 }

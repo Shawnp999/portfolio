@@ -112,7 +112,6 @@
     color: #98c379;
 }
 
-/* Responsive styles */
 @media (max-width: 1024px) {
     .about-container {
         grid-template-columns: 1fr;

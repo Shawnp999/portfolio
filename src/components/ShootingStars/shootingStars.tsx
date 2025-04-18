@@ -4,72 +4,64 @@ import './ShootingStars.css';
 
 interface ShootingStar {
     id: number;
-    startX: number; // Starting x position (vw)
-    endX: number; // Ending x position (vw)
-    startY: number; // Starting y position (vh)
-    endY: number; // Ending y position (vh)
-    duration: number; // Animation duration (ms)
-    delay: number; // Delay before animation starts (ms)
-    brightness: number; // Opacity (0.7-1.0)
-    size: number; // Star head size (px)
-    direction: 'left-to-right' | 'right-to-left'; // Add direction
+    startX: number;
+    endX: number;
+    startY: number;
+    endY: number;
+    duration: number;
+    delay: number;
+    brightness: number;
+    size: number;
+    direction: 'left-to-right' | 'right-to-left';
 }
 
 const ShootingStars: React.FC = () => {
-    const [stars, setStars] = useState<ShootingStar[]>([]);
 
+    const [stars, setStars] = useState<ShootingStar[]>([]);
     const isMobile = window.innerWidth <= 768;
 
     const generateStar = (id: number): ShootingStar => {
-
         const fromLeft = Math.random() > 0.5;
 
-        // Adjust starting and ending positions for mobile (further off-screen)
-        const startX = fromLeft ? (isMobile ? -40 : -10) : (isMobile ? 120 : 210); // Start further off-screen on mobile
-        const endX = fromLeft ? (isMobile ? 120 : 110) : (isMobile ? -20 : -10); // End further off-screen on mobile
-        const direction = fromLeft ? 'left-to-right' : 'right-to-left'; // Determine direction
-        const startY = 5 + Math.random() * 80;
+        const startX = fromLeft ? -20 : 120;
+        const endX = fromLeft ? 120 : -20;
+        const direction = fromLeft ? 'left-to-right' : 'right-to-left';
 
-        // Adjust vertical shift for mobile (half the range: 0-75px instead of 0-150px)
-        const maxVerticalShift = isMobile ? 75 : 150; // 75px on mobile, 150px on desktop
-        const vhPerPixel = 100 / window.innerHeight; // 1px in vh units
-        const randomVerticalShift = (Math.random() * maxVerticalShift) * (Math.random() > 0.5 ? 1 : -1); // Random -max to +max px
-        const verticalShiftVh = randomVerticalShift * vhPerPixel; // Convert to vh
-        const endY = startY + verticalShiftVh; // Apply the shift to the starting position
+        const startY = 10 + Math.random() * 50;
 
-        // Adjust duration for mobile (1.5x faster, i.e., duration / 1.5)
-        const baseDuration = 800 + Math.random() * 2500; // 0.8-3.3s
-        const duration = isMobile ? baseDuration / 1.5 : baseDuration; // 1.5x faster on mobile
+        const verticalShift = (Math.random() * 30) * (Math.random() > 0.5 ? 1 : -1); // -30 to +30 vh
+        const endY = startY + verticalShift;
 
-        // Adjust delay for mobile (shorter delay to start animation sooner)
-        const maxDelay = isMobile ? 3000 : 7000; // 0-3s on mobile, 0-7s on desktop
+        const baseDuration = 1200 + Math.random() * 2000; // 1-3s
+        const duration = isMobile ? baseDuration / 1.5 : baseDuration;
+
+        const maxDelay = isMobile ? 3000 : 7000;
         const delay = Math.random() * maxDelay;
 
-        const brightness = 0.7 + Math.random() * 0.6; // 0.7-1.2
-        const size = 3 + Math.random() * 2; // 1-4px star head
+        const brightness = 0.7 + Math.random() * 0.6;
+        const size = 3 + Math.random() * 2;
 
         return { id, startX, endX, startY, endY, duration, delay, brightness, size, direction };
     };
 
-    // Initialize stars and set up interval for new stars
     useEffect(() => {
-        // Create initial stars
+
         const initialStars: ShootingStar[] = Array.from({ length: 5 }, (_, i) =>
             generateStar(Date.now() + i)
         );
         setStars(initialStars);
 
-        // Add new stars periodically
         const interval = setInterval(() => {
+
             setStars((prevStars) => {
-                // Filter out stars that have completed (based on duration + delay)
+
                 const activeStars = prevStars.filter(
                     (star) => Date.now() - star.id < star.duration + star.delay + 1000
                 );
-                // Add a new star
+
                 return [...activeStars, generateStar(Date.now())];
             });
-        }, 3000); // New star every 2 seconds
+        }, 3000); //new star every 3 seconds
 
         return () => clearInterval(interval);
     }, []);
@@ -83,17 +75,15 @@ const ShootingStars: React.FC = () => {
     );
 };
 
-// Individual shooting star component with animation
 const ShootingStar: React.FC<{ star: ShootingStar }> = ({ star }) => {
+
     const props = useSpring({
         from: {
-            x: star.startX,
-            y: star.startY,
+            transform: `translate(${star.startX}vw, ${star.startY}vh)`,
             opacity: star.brightness,
         },
         to: {
-            x: star.endX,
-            y: star.endY,
+            transform: `translate(${star.endX}vw, ${star.endY}vh)`,
             opacity: 0,
         },
         config: {
@@ -104,16 +94,11 @@ const ShootingStar: React.FC<{ star: ShootingStar }> = ({ star }) => {
 
     return (
         <animated.div
-            className={`shooting-star ${star.direction}`} // Add direction class
+            className={`shooting-star ${star.direction}`}
             style={{
-                top: 0, // Reset top to 0 since we're animating y position
-                transform: props.x.to((x) => `translateX(${x}vw)`), // Horizontal movement
-                transformOrigin: 'center', // Ensure smooth transformation
-                y: props.y.to((y) => `${y}vh`), // Vertical movement
-                opacity: props.opacity,
-                // @ts-ignore
+                ...props,
                 '--star-size': `${star.size}px`,
-            }}
+            } as any}
         />
     );
 };

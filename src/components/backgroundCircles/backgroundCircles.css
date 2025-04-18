@@ -30,15 +30,15 @@
 
 .section-container {
     position: relative;
-    overflow-x: hidden; /* Added to prevent horizontal overflow */
+    overflow-x: hidden;
     width: 100%;
 }
 
 @media (max-width: 768px) {
     .section-circle {
-        transform: scale(0.6); /* Reduced from 0.7 to 0.6 */
+        transform: scale(0.6);
         transform-origin: center;
-        max-width: 80vw; /* Limit maximum width to prevent overflow */
-        max-height: 80vh; /* Limit maximum height to prevent overflow */
+        max-width: 80vw;
+        max-height: 80vh;
     }
 }

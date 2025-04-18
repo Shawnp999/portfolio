@@ -1,4 +1,3 @@
-/* Projects Section Styles */
 #projects-section {
     /*padding: 4rem 2rem;*/
     /*max-width: 1200px;*/
@@ -119,7 +118,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Custom badge colors to match your original design */
 .badge.bg-purple {
     background-color: #9f7aea !important;
 }
@@ -149,7 +147,6 @@
     background-color: #a0aec0 !important;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     /*#projects-section {*/
     /*    padding: 3rem 1rem;*/
@@ -164,7 +161,6 @@
     }
 }
 
-/* Override some bootstrap default styles that might affect your dark theme */
 .card {
     color: #d0d0d0;
 }
