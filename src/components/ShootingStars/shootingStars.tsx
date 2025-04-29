@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import './ShootingStars.css';
+import './shootingStars.css';
 
 interface ShootingStar {
     id: number;

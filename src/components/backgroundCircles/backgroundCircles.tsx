@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './BackgroundCircles.css';
+import './backgroundCircles.css';
 
 interface BackgroundCirclesProps {
     count: number;

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './Hero.css';
+import './hero.css';
 
 interface HeroProps {
     scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
