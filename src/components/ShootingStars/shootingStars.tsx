@@ -66,7 +66,6 @@ const ShootingStars: React.FC = () => {
     };
 
     useEffect(() => {
-
         const initialStars: ShootingStar[] = Array.from({ length: 5 }, (_, i) =>
             generateStar(Date.now() + i)
         );
@@ -74,7 +73,6 @@ const ShootingStars: React.FC = () => {
 
         const interval = setInterval(() => {
             setStars((prevStars) => {
-
                 const bufferTime = maxPossibleDuration.current + 2000;
 
                 const activeStars = prevStars.filter(
@@ -83,7 +81,6 @@ const ShootingStars: React.FC = () => {
 
                 return [...activeStars, generateStar(Date.now())];
             });
-
         }, 3000);
 
         return () => clearInterval(interval);
@@ -99,8 +96,8 @@ const ShootingStars: React.FC = () => {
 };
 
 const ShootingStar: React.FC<{ star: ShootingStar }> = ({ star }) => {
-
-    const props = useSpring({
+    // Define the animated values
+    const styles = useSpring({
         from: {
             transform: `translate(${star.startX}vw, ${star.startY}vh)`,
             opacity: star.brightness,
@@ -115,19 +112,23 @@ const ShootingStar: React.FC<{ star: ShootingStar }> = ({ star }) => {
         delay: star.delay,
     });
 
-    // const style = {
-    //     ...props,
-    //     ['--star-size' as string]: `${star.size}px`,
-    // };
-
     return (
-        <animated.div
-            className={`shooting-star ${star.direction}`}
-            style={{
-                ...props,
-                '--star-size': `${star.size}px`,
-            } as any}
-        />
+        <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+            <animated.div
+                style={{
+                    ...styles,
+                    position: 'absolute',
+                    width: `calc(${star.size}px * 30)`,
+                    height: `${star.size}px`,
+                    background: star.direction === 'left-to-right'
+                        ? 'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 1) 100%)'
+                        : 'linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 1) 100%)',
+                    borderRadius: `${star.size}px`,
+                    zIndex: 10,
+                    willChange: 'transform, opacity',
+                }}
+            />
+        </div>
     );
 };
 
