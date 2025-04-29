@@ -1,13 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './marqueeComp.css'
-
-interface MarqueeProps {
-    items: string[];
-    speed?: number;
-    direction?: 'left' | 'right';
-    pauseOnHover?: boolean;
-    className?: string;
-}
+import '../../css/skills/marqueeComp.css'
+import {MarqueeProps} from "../../types/types.ts";
 
 const Marquee: React.FC<MarqueeProps> = ({
                                              items,

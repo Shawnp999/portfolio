@@ -1,11 +1,10 @@
 import {useState} from 'react';
 import {Card, Badge, Row, Col} from 'react-bootstrap';
-import './projects.css';
+import '../../css/projects/projects.css';
 import ProjectModal from "./projectsModal.tsx";
-import {Project} from "./projectTypes.ts";
 import {myProjects} from "./myProjects.ts";
-// import TooltipLink from "../toolTip/toolTip.tsx";
-import {getTechBadgeVariant} from "../utils/techBadges.tsx";
+import {getTechBadgeVariant} from "../utils/techBadges.ts";
+import {Project} from "../../types/types.ts";
 
 const Projects = () => {
 
@@ -67,7 +66,7 @@ const Projects = () => {
                                 <Card.Text className="project-description mb-4">{project.shortDescription}</Card.Text>
 
                                 <div className="project-tech mt-auto">
-                                    {project.technologies.map(tech => (
+                                    {project.technologies.map(tech   => (
                                         <Badge
                                             key={tech}
                                             bg={getTechBadgeVariant(tech)}

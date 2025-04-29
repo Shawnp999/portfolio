@@ -1,4 +1,4 @@
-import './skills.css';
+import '../../css/skills/skills.css';
 import Marquee from "./marqeeComp.tsx";
 
 const Skills = () => {

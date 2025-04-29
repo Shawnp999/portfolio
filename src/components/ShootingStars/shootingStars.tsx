@@ -1,20 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import './shootingStars.css';
+import '../../css/shootingStars/shootingStars.css';
+import type {ShootingStar} from '../../types/types.ts'
 
-interface ShootingStar {
-    id: number;
-    startX: number;
-    endX: number;
-    startY: number;
-    endY: number;
-    duration: number;
-    delay: number;
-    brightness: number;
-    size: number;
-    direction: 'left-to-right' | 'right-to-left';
-    active: boolean;
-}
 
 const ShootingStars: React.FC = () => {
     const [stars, setStars] = useState<ShootingStar[]>([]);

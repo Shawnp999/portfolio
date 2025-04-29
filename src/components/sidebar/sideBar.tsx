@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react';
-import './sideBar.css';
+import '../../css/sideBar/sideBar.css';
+import {SidebarProps} from "../../types/types.ts";
 
-interface NavItem {
-    id: string;
-    label: string;
-    ref: React.RefObject<HTMLDivElement | null>;
-}
 
-interface SidebarProps {
-    navItems: NavItem[];
-    scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
-}
+
+
 
 const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
 

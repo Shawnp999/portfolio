@@ -1,4 +1,4 @@
-import './starBackground.css'
+import '../../css/stars/starBackground.css'
 
 function starBackground() {
 

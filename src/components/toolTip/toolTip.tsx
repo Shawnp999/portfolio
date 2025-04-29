@@ -1,14 +1,8 @@
 import React from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {TooltipLinkProps} from "../../types/types.ts";
 
-interface TooltipLinkProps {
-    href: string;
-    tooltipText: string;
-    ariaLabel: string;
-    className?: string;
-    placement?: 'top' | 'right' | 'bottom' | 'left';
-    children: React.ReactNode;
-}
+
 
 const TooltipLink: React.FC<TooltipLinkProps> = ({
                                                      href,

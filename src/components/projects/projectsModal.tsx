@@ -1,14 +1,10 @@
 import React from 'react';
 import { Modal, Card, Button, Badge, Row, Col, Container } from 'react-bootstrap';
-import './projectsModal.css';
-import { Project } from './projectTypes.ts';
-import {getTechBadgeVariant} from "../utils/techBadges.tsx";
+import '../../css/projects/projectsModal.css';
+import {getTechBadgeVariant} from "../utils/techBadges.ts";
+import {ProjectModalProps} from "../../types/types.ts";
 
-interface ProjectModalProps {
-    project: Project | null;
-    isOpen: boolean;
-    onClose: () => void;
-}
+
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
     if (!project) return null;

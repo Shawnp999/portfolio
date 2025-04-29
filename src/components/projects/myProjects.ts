@@ -1,6 +1,5 @@
-import { Project } from "./projectTypes";
-// Import your image references
 import projectImages from "../../assets/images/projectImages/projectImages.ts";
+import {Project} from "../../types/types.ts";
 
 export const myProjects: Project[] = [
     {

@@ -10,7 +10,7 @@ import Education from "./components/education/education.tsx";
 import Skills from "./components/skills/skills.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 import StarsBackground from "./components/stars/starsBackground.tsx";
-import './globalCSS.css'
+import './css/globalCSS.css'
 import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
 
 
@@ -46,7 +46,6 @@ function App() {
             <StarsBackground/>
             <BackgroundCircles count={10} sectionId="hero" />
             <ShootingStars/>
-
 
 
             <main className="content">

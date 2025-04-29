@@ -1,4 +1,4 @@
-import './education.css';
+import '../../css/education/education.css';
 import 'react-vertical-timeline-component/style.min.css';
 // @ts-ignore
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';

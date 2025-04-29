@@ -1,6 +1,7 @@
-// techBadgeUtils.ts
 export const getTechBadgeVariant = (tech: string): string => {
+
     const variants: Record<string, string> = {
+
         // Frontend Frameworks & Libraries
         'Gatsby': 'primary',
         'React': 'primary',

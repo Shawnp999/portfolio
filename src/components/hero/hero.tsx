@@ -1,13 +1,10 @@
 import { useEffect, useRef } from 'react';
-import './hero.css';
+import '../../css/hero/hero.css';
+import {HeroProps} from "../../types/types.ts";
 
-interface HeroProps {
-    scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
-    projectsRef: React.RefObject<HTMLDivElement | null>;
-    contactRef: React.RefObject<HTMLDivElement | null>;
-}
 
 const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
+
     const titleRef = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
