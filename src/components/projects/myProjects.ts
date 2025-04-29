@@ -64,7 +64,7 @@ export const myProjects: Project[] = [
         year: '02/2024 - 10/2024',
         shortDescription: 'Django-based consulting website with integrated scheduling and content management',
         detailedDescription: 'Sole Front-End developer for a full-scale consulting website using Django, featuring a modular architecture and several custom-built components.\n\nIntegrated a dynamic article editor, scheduling calendars, and user-friendly dashboards.\n\nLeveraged Bootstrap 5 to ensure responsive layouts and cohesive UI across devices.\n\nEstablished a universal design system and reusable utility classes to streamline development and maintain visual consistency throughout the platform.',
-        technologies: ['Bootstrap 5', 'JavaScript', 'Django', 'Git', 'HTML/CSS', 'Python', 'Git', 'Figma'],
+        technologies: ['Bootstrap 5', 'JavaScript', 'Django', 'HTML/CSS', 'Python', 'Git', 'Figma'],
         imageUrl: projectImages.consultingSite.src,
         imageAlt: projectImages.consultingSite.alt,
         imageWidth: projectImages.consultingSite.width,
@@ -78,7 +78,7 @@ export const myProjects: Project[] = [
         year: '09/2024 - Present',
         shortDescription: 'Performance-optimized React Native app for easily splitting expenses',
         detailedDescription: 'Built React Native application in a 3-person team with Git version control and CI/CD practices, implementing React-i18next for multilingual support.\n\nIdentified and resolved performance bottlenecks using React DevTools, optimizing render cycles with strategic hook implementation.\n\nImplemented Zustand state management with optimized hooks, reducing component render times by ~50%.\n\nAdded lazy loading and code splitting for improved load performance, resulting in a highly responsive user experience.',
-        technologies: ['React Native', 'Git', 'CI/CD', 'i18n', 'Expo', 'Zustand', 'Context API', 'Firebase', 'Git', 'Figma', 'TypeScript'],
+        technologies: ['React Native', 'Git', 'CI/CD', 'i18n', 'Expo', 'Zustand', 'Context API', 'Firebase', 'Figma', 'TypeScript'],
         imageUrl: '/project6.jpg',
         githubUrl: '#',
         liveUrl: ''
@@ -89,7 +89,7 @@ export const myProjects: Project[] = [
         year: '04/2025',
         shortDescription: 'React personal portfolio with responsive design and modern animation effects',
         detailedDescription: 'Designed and built a personal portfolio website using React and Vite to showcase my professional projects and skills.\n\nImplemented responsive layouts with Bootstrap 5 for optimal viewing across all device sizes.\n\nCreated custom animations and transitions for a polished user experience.\n\nIntegrated TypeScript for improved code quality and developer experience.',
-        technologies: ['React', 'Git', 'i18n', 'Git', 'Vite', 'TypeScript', 'Bootstrap 5'],
+        technologies: ['React', 'Git', 'i18n', 'Vite', 'TypeScript', 'Bootstrap 5'],
         imageUrl: '/project6.jpg',
         githubUrl: 'https://github.com/Shawnp999/portfolio',
         liveUrl: ''

@@ -33,7 +33,7 @@ export const getTechBadgeVariant = (tech: string): string => {
         'Gulp' : 'warning',
 
         // Backend & Databases
-        'Node': 'success',
+        'Node': 'secondary',
         'Express': 'secondary',
         'Django': 'secondary',
         'MongoDB': 'secondary',
@@ -54,7 +54,7 @@ export const getTechBadgeVariant = (tech: string): string => {
         'Figma' : 'dark',
 
         // Internationalization
-        'i18n': 'light ',
+        'i18n': 'warning-subtle',
     };
 
     return variants[tech] || 'secondary';
