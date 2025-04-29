@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Card, Badge, Row, Col} from 'react-bootstrap';
-import './Projects.css';
+import './projects.css';
 import ProjectModal from "./projectsModal.tsx";
 import {Project} from "./projectTypes.ts";
 import {myProjects} from "./myProjects.ts";
