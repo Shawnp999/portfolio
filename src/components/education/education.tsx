@@ -63,7 +63,7 @@ const EducationAndExperience = () => {
                     icon={<i className="bi bi-code-slash"></i>}
                 >
                     <h3 className="vertical-timeline-element-title">Consulting Platform</h3>
-                    <h4 className="vertical-timeline-element-subtitle">websmartcons.com</h4>
+                    <h4 className="vertical-timeline-element-subtitle">Independent Project (websmartcons.com)</h4>
                     <p>
                         Frontend Development with Bootstrap 5, Django, JavaScript
                     </p>
@@ -78,7 +78,11 @@ const EducationAndExperience = () => {
                     icon={<i className="bi bi-phone"></i>}
                 >
                     <h3 className="vertical-timeline-element-title">Bill Splitting Mobile App</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Independent Project</h4>
+                    <h4 className="vertical-timeline-element-subtitle">Independent Project (
+                        <a href="https://play.google.com/store/apps/details?id=com.scannsplit.mobapp&hl=en" target="_blank" rel="noopener noreferrer">
+                            Android Beta Testing Link
+                        </a>
+                        )</h4>
                     <p>
                         React Native, Zustand, Git, CI/CD
                     </p>
