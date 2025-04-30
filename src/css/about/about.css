@@ -81,3 +81,9 @@
     }
 
 }
+
+@media (min-width: 576px) {
+    .w-sm-99 {
+        width: 99% !important;
+    }
+}

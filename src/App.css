@@ -23,6 +23,8 @@ section {
   position: relative;
   z-index: 1;
   overflow-x: hidden;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 section:not(:first-child) {
@@ -77,7 +79,7 @@ section:not(:first-child) {
   }
 
   #hero, #about, #projects, #contact, #educationAndExperienceRef, #skillsRef {
-    padding-top: var(--spacing-md);
-    scroll-margin-top: var(--spacing-md);
+    padding-top: var(--spacing-lg);
+    scroll-margin-top: var(--spacing-lg);
   }
 }

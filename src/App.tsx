@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import {useRef} from 'react';
 import './App.css';
 import SideBar from "./components/sidebar/sideBar.tsx";
 import Hero from "./components/hero/hero.tsx";
@@ -12,12 +12,12 @@ import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.
 import StarsBackground from "./components/stars/starsBackground.tsx";
 import './css/globalCSS.css'
 import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
-
+import {DevelopmentProvider} from "./components/utils/inDev/developmentContext.tsx";
 
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    ref.current?.scrollIntoView({behavior: 'smooth'});
 };
 
 function App() {
@@ -31,60 +31,62 @@ function App() {
 
     // sidebar nav
     const navItems = [
-        { id: 'hero', label: 'Home', ref: heroRef },
-        { id: 'about', label: 'About', ref: aboutRef },
-        { id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef },
-        { id: 'projects', label: 'Projects', ref: projectsRef },
-        { id: 'skillsRef', label: 'Skills', ref: skillsRef },
-        { id: 'contact', label: 'Contact', ref: contactRef },
+        {id: 'hero', label: 'Home', ref: heroRef},
+        {id: 'about', label: 'About', ref: aboutRef},
+        {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
+        {id: 'projects', label: 'Projects', ref: projectsRef},
+        {id: 'skillsRef', label: 'Skills', ref: skillsRef},
+        {id: 'contact', label: 'Contact', ref: contactRef},
     ];
 
 
     return (
-        <div className="app">
+        <DevelopmentProvider>
+            <div className="app">
 
-            <StarsBackground/>
-            <BackgroundCircles count={10} sectionId="hero" />
-            <ShootingStars/>
+                <StarsBackground/>
+                <BackgroundCircles count={10} sectionId="hero"/>
+                <ShootingStars/>
 
 
-            <main className="content">
+                <main className="content">
 
-                <div ref={heroRef} id="hero" className="section-container">
+                    <div ref={heroRef} id="hero" className="section-container">
 
-                    <Hero
-                        scrollToSection={scrollToSection}
-                        projectsRef={projectsRef}
-                        contactRef={contactRef}
-                    />
-                </div>
+                        <Hero
+                            scrollToSection={scrollToSection}
+                            projectsRef={projectsRef}
+                            contactRef={contactRef}
+                        />
+                    </div>
 
-                <div ref={aboutRef} id="about" className="section-container">
-                    <About/>
-                </div>
+                    <div ref={aboutRef} id="about" className="section-container">
+                        <About/>
+                    </div>
 
-                <div ref={educationAndExperienceRef} id="educationAndExperienceRef" className="section-container">
-                    <Education/>
-                </div>
+                    <div ref={educationAndExperienceRef} id="educationAndExperienceRef" className="section-container">
+                        <Education/>
+                    </div>
 
-                <div ref={projectsRef} id="projects" className="section-container">
-                    <Projects/>
-                </div>
+                    <div ref={projectsRef} id="projects" className="section-container">
+                        <Projects/>
+                    </div>
 
-                <div ref={skillsRef} id="skillsRef" className="section-container">
-                    <Skills/>
-                </div>
+                    <div ref={skillsRef} id="skillsRef" className="section-container">
+                        <Skills/>
+                    </div>
 
-                <div ref={contactRef} id="contact" className="section-container">
-                    <Contact/>
-                </div>
+                    <div ref={contactRef} id="contact" className="section-container">
+                        <Contact/>
+                    </div>
 
-                <Footer/>
+                    <Footer/>
 
-            </main>
+                </main>
 
-            <SideBar navItems={navItems} scrollToSection={scrollToSection}/>
-        </div>
+                <SideBar navItems={navItems} scrollToSection={scrollToSection}/>
+            </div>
+        </DevelopmentProvider>
     );
 }
 

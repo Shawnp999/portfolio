@@ -1,14 +1,17 @@
 import '../../css/contact/contact.css';
 // import React from 'react';
 import { github, linkedin, envelope, paperPlane } from '../../assets/images/icons/icons';
+import {useInDevelopmentLink} from "../utils/inDev/developmentContext.tsx";
 
 
 const Contact = () => {
 
-    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        alert('Bear with me, currently in development :)');
-    };
+    // const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    //     e.preventDefault();
+    //     alert('Bear with me, currently in development :)');
+    // };
+
+    const handleInDevelopmentClick = useInDevelopmentLink();
 
     return (
         <section id="contact-section">
@@ -40,7 +43,7 @@ const Contact = () => {
                         href="mailto:2001shawnp@gmail.com"
                         className="social-link"
                         aria-label="Email"
-                        onClick={handleLinkClick}
+                        onClick={handleInDevelopmentClick}
                     >
                         <img src={envelope} height="30px" width='30px' alt="Email logo"/>
                     </a>
