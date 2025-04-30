@@ -2,6 +2,7 @@ import '../../css/education/education.css';
 import 'react-vertical-timeline-component/style.min.css';
 // @ts-ignore
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import '../../css/globalCSS.css'
 
 const EducationAndExperience = () => {
 
@@ -16,11 +17,10 @@ const EducationAndExperience = () => {
 
     return (
         <section id="education-section">
-            <h2>Experience & Education</h2>
-            <p className="section-desc">
+            <div className="common-header ">Experience & Education</div>
+            <p className="common-description ">
                 My professional journey and educational background
             </p>
-
 
 
             <VerticalTimeline lineColor="#333" animate={true}>

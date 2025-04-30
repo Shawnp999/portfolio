@@ -10,77 +10,28 @@
     gap: 60px;
 }
 
+.about-header {
+    font-size: var(--font-2xl);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+}
+
 .about-text {
     color: var(--text-secondary);
     line-height: 1.7;
 }
 
 .about-text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    font-size: var(--font-base);
 }
 
 .about-text strong {
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--primary);
+    font-weight: var(--font-weight-semibold);
 }
 
-
-
-.edu-exp {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-.timeline-item {
-    position: relative;
-    padding-left: 25px;
-    margin-bottom: 25px;
-}
-
-.timeline-marker {
-    position: absolute;
-    top: 5px;
-    left: 0;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--accent);
-}
-
-.timeline-marker::before {
-    content: '';
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100px;
-    background-color: rgba(100, 255, 218, 0.2);
-}
-
-.timeline-item:last-child .timeline-marker::before {
-    display: none;
-}
-
-.timeline-item h4 {
-    margin: 0;
-    color: var(--text-primary);
-    font-size: 1rem;
-}
-
-.timeline-year {
-    color: var(--accent);
-    font-size: 0.9rem;
-    margin: 5px 0;
-}
-
-.timeline-item p:last-child {
-    color: var(--text-secondary);
-    margin: 5px 0 0;
-}
-
-/* Code block decoration */
 .about-bg-decoration {
     position: absolute;
     top: 100px;
@@ -91,12 +42,12 @@
 }
 
 .code-block {
-    font-family: 'Fira Code', monospace;
-    font-size: 1.2rem;
+    font-family: var(--font-code);
+    font-size: var(--font-md);
     color: var(--text-primary);
     background-color: var(--bg-secondary);
-    padding: 20px;
-    border-radius: 8px;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
     width: 400px;
 }
 
@@ -105,11 +56,11 @@
 }
 
 .code-keyword {
-    color: #c678dd;
+    color: var(--code-keyword);
 }
 
 .code-string {
-    color: #98c379;
+    color: var(--code-string);
 }
 
 @media (max-width: 1024px) {
@@ -124,8 +75,9 @@
 }
 
 @media (max-width: 768px) {
-    .skills-grid, .edu-exp {
-        grid-template-columns: 1fr;
-        gap: 20px;
+
+    .about-text {
+        text-align: center;
     }
+
 }

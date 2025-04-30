@@ -22,8 +22,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: var(--bg-secondary);
     color: var(--text-secondary);
@@ -31,15 +31,17 @@
 }
 
 .social-link:hover {
-    background-color: rgba(100, 255, 218, 0.1);
-    color: var(--accent);
+
     transform: translateY(-5px);
 }
 
-.social-link svg {
-    transition: transform 0.2s ease;
+.social-link img {
+    /* First make it white (or a specific color) */
+    filter: brightness(0) saturate(100%) invert(100%);
 }
 
-.social-link:hover svg {
-    transform: scale(1.2);
+.social-link:hover img {
+    /* Change to your theme color on hover */
+    filter: brightness(0) saturate(100%) invert(80%) sepia(54%)
+    saturate(400%) hue-rotate(127deg) brightness(105%) contrast(101%);
 }

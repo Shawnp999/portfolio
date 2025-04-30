@@ -60,16 +60,12 @@
 .vertical-timeline-element-date {
     font-size: 0.9rem !important;
     font-weight: 500 !important;
-    color: #a0aec0 !important;
+    color: #ffffff !important;
     margin: 0 !important;
     padding: 0.5rem 0 !important;
 }
 
-@media only screen and (min-width: 1170px) {
-    .vertical-timeline-element-date {
-        color: #d0d0d0 !important;
-    }
-}
+
 
 .vertical-timeline-element-icon i {
     display: flex;

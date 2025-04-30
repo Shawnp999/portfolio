@@ -67,7 +67,7 @@ const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
 
                     isDeleting = true;
 
-                    const pauseTime = currentPhraseIndex === 2 ? 100 : 1000;
+                    const pauseTime = currentPhraseIndex === 2 ? 100 : 500;
 
                     setTimeout(() => {
                         typingInterval = window.setInterval(typeWriter, 50);

@@ -5,6 +5,7 @@ import ProjectModal from "./projectsModal.tsx";
 import {myProjects} from "./myProjects.ts";
 import {getTechBadgeVariant} from "../utils/techBadges.ts";
 import {Project} from "../../types/types.ts";
+import '../../css/globalCSS.css'
 
 const Projects = () => {
 
@@ -22,11 +23,11 @@ const Projects = () => {
 
     return (
         <section id="projects-section">
-            <h2>Projects</h2>
-            <p className="section-desc">
+            <div className="common-header">Projects</div>
+            <div className="common-description">
                 Outside of the full-time job, these are some of the projects that I've built as a
                 hobby, school, or freelance works.
-            </p>
+            </div>
 
             <Row className="g-4 projects-grid">
                 {myProjects.map(project => (

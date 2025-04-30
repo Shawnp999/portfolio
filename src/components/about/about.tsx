@@ -1,4 +1,5 @@
 import '../../css/about/about.css';
+import '../../css/globalCSS.css'
 
 const About = () => {
 
@@ -9,9 +10,9 @@ const About = () => {
             <div className="about-container">
 
                 <div className="about-content">
-                    <h2>About Me</h2>
+                    <div className="common-header mb-4">About Me</div>
 
-                    <div className="about-text">
+                    <div className="common-description">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non nisi eget augue hendrerit hendrerit.
                         </p>

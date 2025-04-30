@@ -1,27 +1,23 @@
-.fs-12 {
-    font-size: 12px !important;
-}
-
-.fs-13 {
-    font-size: 13px !important;
-}
-
-.fs-14 {
-    font-size: 14px !important;
-}
-
-.fs-15 {
-    font-size: 15px !important;
-}
-
-.fs-16 {
-    font-size: 16px !important;
-}
-
 .small-btn{
     padding : 10px !important;
 }
 
 .medium-btn{
     padding : 10px 20px !important;
+}
+
+.common-header {
+    color: var(--text-primary);
+    font-size: var(--font-2xl);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+}
+
+.common-description {
+    color: var(--text-primary);
+    font-size: var(--font-base);
+    font-weight: var(--font-weight-normal);
+    margin: var(--spacing-md) 0 var(--spacing-xl);
+    line-height: 1.6;
+    text-align: center;
 }
