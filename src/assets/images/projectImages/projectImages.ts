@@ -1,8 +1,9 @@
-import blurredBirthdayComponentImage from './BlurredBirthdayComponentSPFX.png';
-import blurredSeatingChartImage from './BlurredSeatingChart.png';
-import profileComponentImage from './ProfileComponent.jpg';
-import userDirectoryScreenBlurImage from './UserDirectoryScreenBlur.png';
-import wbInsightsImage from './wbInsightsScreen.png'
+import blurredBirthdayComponentImage from './CorrectResBirthdaysSPFCrossed.jpg'
+import blurredSeatingChartImage from './SeatingChatSPF.jpeg'
+import profileComponentImage from './ProfilePageSPF.jpeg'
+import userDirectoryScreenBlurImage from './UserDirectorySPFCrossed.jpg'
+import wbInsightsImage from './websmartconsdjang.jpeg'
+import Scannsplit from './ScannsplitReactNativ.jpeg'
 import {ProjectImageCollection} from "../../../types/types.ts";
 
 
@@ -33,6 +34,11 @@ const projectImages: ProjectImageCollection = {
         alt: 'Consulting Site Image',
 
     },
+    scannsplit: {
+        src: Scannsplit,
+        alt: 'Blurred Birthday Component',
+
+    }
 };
 
 export const {

@@ -13,7 +13,7 @@ export const myProjects: Project[] = [
         imageAlt: projectImages.profileComponent.alt,
         imageWidth: projectImages.profileComponent.width,
         imageHeight: projectImages.profileComponent.height,
-        githubUrl: '',
+        githubUrl: 'https://github.com/Shawnp999/SPFX-React-Profile-Page',
         liveUrl: ''
     },
     {
@@ -27,7 +27,7 @@ export const myProjects: Project[] = [
         imageAlt: projectImages.userDirectoryScreenBlur.alt,
         imageWidth: projectImages.userDirectoryScreenBlur.width,
         imageHeight: projectImages.userDirectoryScreenBlur.height,
-        githubUrl: '#',
+        githubUrl: 'https://github.com/Shawnp999/user-directory-react',
         liveUrl: ''
     },
     {
@@ -41,7 +41,7 @@ export const myProjects: Project[] = [
         imageAlt: projectImages.blurredSeatingChart.alt,
         imageWidth: projectImages.blurredSeatingChart.width,
         imageHeight: projectImages.blurredSeatingChart.height,
-        githubUrl: '#',
+        githubUrl: 'https://github.com/Shawnp999/SPFX-Seating-Chart',
         liveUrl: ''
     },
     {
@@ -55,7 +55,7 @@ export const myProjects: Project[] = [
         imageAlt: projectImages.blurredBirthdayComponent.alt,
         imageWidth: projectImages.blurredBirthdayComponent.width,
         imageHeight: projectImages.blurredBirthdayComponent.height,
-        githubUrl: '#',
+        githubUrl: 'https://github.com/Shawnp999/uzmto_BirthdayCalendar',
         liveUrl: ''
     },
     {
@@ -69,7 +69,7 @@ export const myProjects: Project[] = [
         imageAlt: projectImages.consultingSite.alt,
         imageWidth: projectImages.consultingSite.width,
         imageHeight: projectImages.consultingSite.height,
-        githubUrl: '#',
+        githubUrl: 'N/A',
         liveUrl: 'https://websmartcons.com/'
     },
     {
@@ -79,9 +79,12 @@ export const myProjects: Project[] = [
         shortDescription: 'Performance-optimized React Native app for easily splitting expenses',
         detailedDescription: 'Built React Native application in a 3-person team with Git version control and CI/CD practices, implementing React-i18next for multilingual support.\n\nIdentified and resolved performance bottlenecks using React DevTools, optimizing render cycles with strategic hook implementation.\n\nImplemented Zustand state management with optimized hooks, reducing component render times by ~50%.\n\nAdded lazy loading and code splitting for improved load performance, resulting in a highly responsive user experience.',
         technologies: ['React Native', 'Git', 'CI/CD', 'i18n', 'Expo', 'Zustand', 'Context API', 'Firebase', 'Figma', 'TypeScript'],
-        imageUrl: '/project6.jpg',
-        githubUrl: '#',
-        liveUrl: ''
+        imageUrl: projectImages.scannsplit.src,
+        imageAlt: projectImages.scannsplit.alt,
+        imageWidth: projectImages.scannsplit.width,
+        imageHeight: projectImages.scannsplit.height,
+        githubUrl: 'N/A',
+        liveUrl: 'https://play.google.com/store/apps/details?id=com.scannsplit.mobapp&hl=en'
     },
     {
         id: 7,
@@ -89,7 +92,7 @@ export const myProjects: Project[] = [
         year: '04/2025',
         shortDescription: 'React personal portfolio with responsive design and modern animation effects',
         detailedDescription: 'Designed and built a personal portfolio website using React and Vite to showcase my professional projects and skills.\n\nImplemented responsive layouts with Bootstrap 5 for optimal viewing across all device sizes.\n\nCreated custom animations and transitions for a polished user experience.\n\nIntegrated TypeScript for improved code quality and developer experience.',
-        technologies: ['React', 'Git', 'i18n', 'Vite', 'TypeScript', 'Bootstrap 5'],
+        technologies: ['React', 'Git', 'i18n', 'Vite', 'TypeScript', 'Bootstrap 5', 'HTML/CSS'],
         imageUrl: '/project6.jpg',
         githubUrl: 'https://github.com/Shawnp999/portfolio',
         liveUrl: ''

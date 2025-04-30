@@ -5,10 +5,10 @@ import { github, linkedin, envelope, paperPlane } from '../../assets/images/icon
 
 const Contact = () => {
 
-    // const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    //     e.preventDefault();
-    //     alert('Under development');
-    // };
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        alert('Bear with me, currently in development :)');
+    };
 
     return (
         <section id="contact-section">
@@ -40,6 +40,7 @@ const Contact = () => {
                         href="mailto:2001shawnp@gmail.com"
                         className="social-link"
                         aria-label="Email"
+                        onClick={handleLinkClick}
                     >
                         <img src={envelope} height="30px" width='30px' alt="Email logo"/>
                     </a>
@@ -47,7 +48,9 @@ const Contact = () => {
                     <a
                         href="https://t.me/shawn_pantzlaff"
                         className="social-link"
-                        aria-label="Resume"
+                        aria-label="Telegram"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <img src={paperPlane} height="30px" width='30px' alt="Telegram logo"/>
                     </a>

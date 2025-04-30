@@ -61,6 +61,7 @@ section:not(:first-child) {
 @media (max-width: 768px) {
   .content {
     padding: 0 var(--spacing-md);
+
   }
 
   section:not(:first-child) {
@@ -71,6 +72,8 @@ section:not(:first-child) {
 @media (max-width: 576px) {
   .content {
     padding: 0 var(--spacing-sm);
+    margin-bottom: 20% !important;
+
   }
 
   #hero, #about, #projects, #contact, #educationAndExperienceRef, #skillsRef {

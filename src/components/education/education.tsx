@@ -63,7 +63,13 @@ const EducationAndExperience = () => {
                     icon={<i className="bi bi-code-slash"></i>}
                 >
                     <h3 className="vertical-timeline-element-title">Consulting Platform</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Independent Project (websmartcons.com)</h4>
+                    <h4 className="vertical-timeline-element-subtitle">Independent Project (
+                        <a href="https://websmartcons.com/"
+                           target="_blank" rel="noopener noreferrer">
+                            websmartcons.com
+                        </a>
+                        )
+                    </h4>
                     <p>
                         Frontend Development with Bootstrap 5, Django, JavaScript
                     </p>

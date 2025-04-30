@@ -61,7 +61,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                         <Col lg={6}>
                             <Card.Body className="p-0 h-100 d-flex flex-column">
-                                <Card.Text style={{whiteSpace : 'pre-line', }}>{project.detailedDescription}</Card.Text>
+                                <Card.Text style={{whiteSpace: 'pre-line',}}>{project.detailedDescription}</Card.Text>
 
                                 <div className="d-none d-lg-block">
                                     <h5 className="mt-2 mb-3">Technologies</h5>
@@ -80,16 +80,27 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                                 <div className="mt-auto pt-3">
                                     <div className="d-flex flex-wrap gap-3 justify-content-around">
-                                        <Button
-                                            variant="dark"
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="medium-btn fs-14"
-                                        >
-                                            <i className="bi bi-github me-2"></i>
-                                            View Repository
-                                        </Button>
+                                        {project.githubUrl === 'N/A' ? (
+                                            <Button
+                                                variant="secondary"
+                                                disabled
+                                                className="medium-btn fs-14"
+                                            >
+                                                <i className="bi bi-x-circle me-2"></i>
+                                                Private Repository
+                                            </Button>
+                                        ) : (
+                                            <Button
+                                                variant="dark"
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="medium-btn fs-14"
+                                            >
+                                                <i className="bi bi-github me-2"></i>
+                                                View Repository
+                                            </Button>
+                                        )}
 
                                         {project.liveUrl && (
                                             <Button
@@ -103,8 +114,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                                 View Live Demo
                                             </Button>
                                         )}
-
-
                                     </div>
                                 </div>
                             </Card.Body>
