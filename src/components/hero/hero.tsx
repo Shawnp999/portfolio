@@ -88,12 +88,21 @@ const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
         return () => {
             if (typingInterval) clearInterval(typingInterval);
         };
-    }, []);
+    }, [t]); // Added t to the dependency array
 
     return (
         <section id="hero-section">
             <div className="hero-content">
-                <h1 style={{ height: '150px', minHeight: '150px' }} ref={titleRef}></h1>
+                <div style={{height: '150px', minHeight: '150px'}}>
+                    <h1
+                        ref={titleRef}
+                        style={{
+                            fontSize: '60px',
+                            fontWeight: 'bold',
+                            color: 'white'
+                        }}
+                    ></h1>
+                </div>
                 <div>{t('hero.test')}</div>
                 <p className="description">
                     {t('hero.description1')}

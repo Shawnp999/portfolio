@@ -11,5 +11,67 @@
     "description4": "Off-screen, I'm on the ice, boxing, traveling, or unwinding with friends. This balance refreshes my creativity and brings new perspectives to my development work.",
     "viewWork": "View My Work",
     "getInTouch": "Get In Touch"
+  },
+  "projects": {
+    "buttons": {
+      "privateRepository": "Private Repository",
+      "viewRepository": "View Repository",
+      "viewLiveDemo": "View Live Demo"
+    },
+    "technologies" : "Technologies",
+    "project1": {
+      "title": "SPFX Employee Profile Portal",
+      "year": "2023",
+      "shortDescription": "SharePoint web part enabling personalized employee profiles",
+      "detailedDescription": "Developed and architected a responsive, dynamic SPFx component for employee profile pages.\n\nLeveraging the Microsoft Graph API, the component retrieves and updates user information, allowing employees to personalize and manage their profiles.\n\nIt integrates seamlessly with the seating chart and user directory, enhancing the user experience by making it easy to locate coworkers and view their details in a visually friendly interface.\n\nIntegrated multilingual support using i18n, automatically adapting the interface to the user's selected language—English, Russian, or Uzbek—with English set as the default fallback.",
+      "projectStatus": ["Production"]
+    },
+    "project2": {
+      "title": "SPFX Employee Directory",
+      "year": "2024",
+      "shortDescription": "Multilingual company directory with advanced filtering and profile integration",
+      "detailedDescription": "Designed and implemented a user-friendly employee directory for the company.\n\nUsing Microsoft Graph API, I enabled efficient querying and filtering of users by department or custom search.\n\nThe directory features dynamic navigation—clicking on a user seamlessly routes to their individual profile page, creating a smooth and intuitive user experience.\n\nIntegrated multilingual support using i18n, automatically adapting the interface to the user's selected language—English, Russian, or Uzbek—with English set as the default fallback.",
+      "projectStatus": ["Production"]
+    },
+    "project3": {
+      "title": "SPFX Interactive Seating Chart",
+      "year": "2024",
+      "shortDescription": "Dynamic company seating map with smart navigation and multilingual support",
+      "detailedDescription": "Built a dynamic, two-floor seating chart for the company, featuring department-based filtering and user highlighting for easy employee location.\n\nIntegrated with the employee profile page—when users clicked \"Where I sit,\" the app would automatically navigate to the Seating Chart component, scroll to their exact desk, and visually highlight their seat for quick identification.\n\nIntegrated multilingual support using i18n, automatically adapting the interface to the user's selected language—English, Russian, or Uzbek—with English set as the default fallback.",
+      "projectStatus": ["Production"]
+    },
+    "project4": {
+      "title": "SPFX Upcoming Birthdays & Holidays",
+      "year": "2024",
+      "shortDescription": "Seasonal calendar showing upcoming employee birthdays and company holidays",
+      "detailedDescription": "Developed a SharePoint SPFx component that dynamically displays upcoming employee birthdays and holidays a week in advance.\n\nThe interface was seasonally color-coded for visual appeal and included clear distinctions between holidays and birthdays.\n\nThis user-friendly component helped promote team spirit and awareness by keeping employees informed of upcoming birthday celebrations and time off.\n\nIntegrated multilingual support using i18n, automatically adapting the interface to the user's selected language—English, Russian, or Uzbek—with English set as the default fallback.",
+      "projectStatus": ["Production"]
+    },
+    "project5": {
+      "title": "Professional Consulting Platform",
+      "year": "02/2024 - 10/2024",
+      "shortDescription": "Django-based consulting website with integrated scheduling and content management",
+      "detailedDescription": "Sole Front-End developer for a full-scale consulting website using Django, featuring a modular architecture and several custom-built components.\n\nIntegrated a dynamic article editor, scheduling calendars, and user-friendly dashboards.\n\nLeveraged Bootstrap 5 to ensure responsive layouts and cohesive UI across devices.\n\nEstablished a universal design system and reusable utility classes to streamline development and maintain visual consistency throughout the platform.",
+      "projectStatus": ["In Development", "Beta Testing"]
+    },
+    "project6": {
+      "title": "Bill Splitting Mobile App",
+      "year": "09/2024 - Present",
+      "shortDescription": "Performance-optimized React Native app for easily splitting expenses",
+      "detailedDescription": "Built React Native application in a 3-person team with Git version control and CI/CD practices, implementing React-i18next for multilingual support.\n\nIdentified and resolved performance bottlenecks using React DevTools, optimizing render cycles with strategic hook implementation.\n\nImplemented Zustand state management with optimized hooks, reducing component render times by ~50%.\n\nAdded lazy loading and code splitting for improved load performance, resulting in a highly responsive user experience.",
+      "projectStatus": ["Beta Testing", "In Development"]
+    },
+    "project7": {
+      "title": "My Portfolio",
+      "year": "04/2025",
+      "shortDescription": "React personal portfolio with responsive design and modern animation effects",
+      "detailedDescription": "Designed and built a personal portfolio website using React and Vite to showcase my professional projects and skills.\n\nImplemented responsive layouts with Bootstrap 5 for optimal viewing across all device sizes.\n\nCreated custom animations and transitions for a polished user experience.\n\nIntegrated TypeScript for improved code quality and developer experience.",
+      "projectStatus": ["In Development"]
+    },
+    "statusLabels": {
+      "production": "Production",
+      "inDevelopment": "In Development",
+      "betaTesting": "Beta Testing"
+    }
   }
 }

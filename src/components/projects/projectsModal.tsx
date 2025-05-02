@@ -3,10 +3,13 @@ import { Modal, Card, Button, Badge, Row, Col, Container } from 'react-bootstrap
 import '../../css/projects/projectsModal.css';
 import {getTechBadgeVariant, projectStatus} from "../utils/techBadges.ts";
 import {ProjectModalProps} from "../../types/types.ts";
+import {useTranslation} from "react-i18next";
 
 
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
+
+    const { t } = useTranslation();
 
     if (!project) return null;
 
@@ -64,7 +67,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                                 <div className="d-block d-lg-none">
 
-                                    <h5 className="mt-2 mb-2">Technologies</h5>
+                                    <h5 className="mt-2 mb-2">{t('projects.technologies')}</h5>
 
                                     <div className="d-flex flex-wrap gap-2 p-2">
 
@@ -88,7 +91,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                                 <div className="d-none d-lg-block">
 
-                                    <h5 className="mt-2 mb-3">Technologies</h5>
+                                    <h5 className="mt-2 mb-3">{t('projects.technologies')}</h5>
 
                                     <div className="d-flex flex-wrap gap-2 mb-2">
 
@@ -114,7 +117,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                                 className="medium-btn fs-14"
                                             >
                                                 <i className="bi bi-x-circle me-2"></i>
-                                                Private Repository
+                                                {t('projects.buttons.privateRepository')}
                                             </Button>
                                         ) : (
                                             <Button
@@ -125,7 +128,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                                 className="medium-btn fs-14"
                                             >
                                                 <i className="bi bi-github me-2"></i>
-                                                View Repository
+                                                {t('projects.buttons.viewRepository')}
                                             </Button>
                                         )}
 
@@ -138,7 +141,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                                 className="medium-btn fs-14"
                                             >
                                                 <i className="bi bi-box-arrow-up-right me-2"></i>
-                                                View Live Demo
+                                                {t('projects.buttons.viewLiveDemo')}
                                             </Button>
                                         )}
                                     </div>

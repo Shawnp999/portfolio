@@ -2,12 +2,15 @@ import {useState} from 'react';
 import {Card, Badge, Row, Col} from 'react-bootstrap';
 import '../../css/projects/projects.css';
 import ProjectModal from "./projectsModal.tsx";
-import {myProjects} from "./myProjects.ts";
+import {MyProjects} from "./myProjects.ts";
 import {getTechBadgeVariant, projectStatus} from "../utils/techBadges.ts";
 import {Project} from "../../types/types.ts";
-import '../../css/globalCSS.css'
+import '../../css/globalCSS.css';
+import {useTranslation} from "react-i18next";
 
 const Projects = () => {
+    const {t} = useTranslation();
+    const myProjects = MyProjects();
 
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
@@ -23,10 +26,9 @@ const Projects = () => {
 
     return (
         <section id="projects-section">
-            <div className="common-header">Projects</div>
+            <div className="common-header">{t('projects.sectionTitle', 'Projects')}</div>
             <div className="common-description">
-                Outside of the full-time job, these are some of the projects that I've built as a
-                hobby, school, or freelance works.
+                {t('projects.sectionDescription', 'Outside of the full-time job, these are some of the projects that I\'ve built as a hobby, school, or freelance works.')}
             </div>
 
             <Row className="g-4 projects-grid">
@@ -67,7 +69,7 @@ const Projects = () => {
 
                                 <div className="project-tech mt-auto">
 
-                                    {project.technologies.map(tech   => (
+                                    {project.technologies.map(tech => (
                                         <Badge
                                             key={tech}
                                             bg={getTechBadgeVariant(tech)}
