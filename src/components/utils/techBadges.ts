@@ -59,3 +59,4 @@ export const getTechBadgeVariant = (tech: string): string => {
 
     return variants[tech] || 'secondary';
 };
+
