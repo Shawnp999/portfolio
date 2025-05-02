@@ -1,49 +1,132 @@
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import '../../css/sideBar/languageSwitcher.css'
-
+import Dropdown from 'react-bootstrap/Dropdown';
+import '../../css/sideBar/languageSwitcher.css';
 
 interface Language {
     code: string;
     name: string;
+    displayName: string;
     flag: string;
 }
 
 const LanguageSwitcher: React.FC = () => {
+
     const { i18n } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false);
+    //wouldnt close dropdown //TODO : check later
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const languages: Language[] = [
-        { code: 'en', name: 'EN', flag: '/flags/en.png' },
-        { code: 'ru', name: 'RU', flag: '/flags/ru.png' }
+        { code: 'en', name: 'EN', displayName: 'English', flag: '/flags/en.png' },
+        { code: 'ru', name: 'RU', displayName: 'Русский', flag: '/flags/ru.png' }
     ];
 
     const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        console.log('Current language:', i18n.language);
+        console.log('Dropdown open state:', isOpen);
+        console.log('Is mobile view:', isMobile);
+
+    }, [i18n.language, isOpen, isMobile]);
+
     const changeLanguage = (langCode: string): void => {
+
+        console.log('Language selected:', langCode);
         i18n.changeLanguage(langCode);
+        console.log('Closing dropdown');
+
+        if (isMobile) {
+            setIsOpen(false);
+
+            setTimeout(() => {
+                setIsOpen(false);
+                console.log('Forced dropdown close with timeout');
+            }, 50);
+        } else {
+            setIsOpen(false);
+        }
     };
+
+    const toggleDropdown = () => {
+        console.log('Toggle called, current state:', isOpen);
+
+        if (isOpen && isMobile) {
+
+            setIsOpen(false);
+            document.querySelector('.language-dropdown')?.classList.add('force-hide');
+            setTimeout(() => {
+                document.querySelector('.language-dropdown')?.classList.remove('force-hide');
+            }, 300);
+        } else {
+            setIsOpen(!isOpen);
+        }
+    };
+
+    const handleToggle = (nextIsOpen: boolean) => {
+        console.log('Bootstrap onToggle called:', nextIsOpen);
+        setIsOpen(nextIsOpen);
+    };
+
+    const CustomToggle = React.forwardRef<HTMLDivElement, any>(({ onClick }, ref) => (
+
+        <div
+            className="selected-language"
+            onClick={(e) => {
+                e.preventDefault();
+                console.log('Flag clicked');
+                toggleDropdown();
+                onClick(e);
+            }}
+            ref={ref}
+        >
+            <img
+                src={currentLanguage.flag}
+                alt={`${currentLanguage.name} flag`}
+                className="flag-icon"
+                style={{ width: 32, height: 32 }}
+            />
+        </div>
+    ));
 
     return (
         <div className="language-switcher">
-            <div className="selected-language">
-                <img
-                    src={currentLanguage.flag}
-                    alt={`${currentLanguage.name} flag`}
-                    style={{ width: 36, height: 36 }}
-                />
-            </div>
+            <Dropdown
+                align="end"
+                show={isOpen}
+                onToggle={handleToggle}
+            >
+                <Dropdown.Toggle as={CustomToggle} id="language-dropdown" />
 
-            <div className="language-dropdown tooltip">
-                {languages.map((lang) => (
-                    <div
-                        key={lang.code}
-                        className={`language-option ${lang.code === i18n.language ? 'active' : ''}`}
-                        onClick={() => changeLanguage(lang.code)}
-                    >
-
-                        <span>{lang.name}</span>
-                    </div>
-                ))}
-            </div>
+                <Dropdown.Menu className="language-dropdown">
+                    {languages.map((lang) => (
+                        <Dropdown.Item
+                            key={lang.code}
+                            className={`language-option ${lang.code === i18n.language ? 'active' : ''}`}
+                            onClick={() => {
+                                console.log('Option clicked:', lang.code);
+                                changeLanguage(lang.code);
+                            }}
+                        >
+                            <span>{isMobile ? lang.displayName : lang.name}</span>
+                        </Dropdown.Item>
+                    ))}
+                </Dropdown.Menu>
+            </Dropdown>
         </div>
     );
 };
