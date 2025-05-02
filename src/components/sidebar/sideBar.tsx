@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react';
 import '../../css/sideBar/sideBar.css';
-import {SidebarProps} from "../../types/types.ts";
-
-
-
-
+import { SidebarProps } from "../../types/types.ts";
+import LanguageSwitcher from "./languageSwitcher.tsx";
 
 const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
-
-    const [activeSection, setActiveSection] = useState('hero');
+    const [activeSection, setActiveSection] = useState<string>('hero');
 
     useEffect(() => {
         const handleScroll = () => {
-
             const scrollPosition = window.scrollY;
 
             for (let i = navItems.length - 1; i >= 0; i--) {
@@ -40,30 +35,27 @@ const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
     return (
         <aside className="sidebar">
             <nav className="sidebar-nav">
-
                 <ul>
-
                     {navItems.map((item) => (
                         <li
                             key={item.id}
                             className={activeSection === item.id ? 'active' : ''}
                             onClick={() => scrollToSection(item.ref)}
                         >
-
                             {item.id === 'hero' && <span className="icon">#</span>}
                             {item.id === 'about' && <span className="icon">👤</span>}
                             {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
-                            {item.id === 'projects' && <span className="icon">💼</span>}
-
-                            {/*{item.id === 'skillsRef' && <span className="icon">🛠️</span>}*/}
+                            {/*{item.id === 'projects' && <span className="icon">💼</span>}*/}
                             {item.id === 'contact' && <span className="icon">✉️</span>}
 
                             <span className="tooltip">{item.label}</span>
                         </li>
-
                     ))}
-                </ul>
 
+                    <li className="language-item">
+                        <LanguageSwitcher />
+                    </li>
+                </ul>
             </nav>
         </aside>
     );

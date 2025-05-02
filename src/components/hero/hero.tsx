@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
 import '../../css/hero/hero.css';
 import {HeroProps} from "../../types/types.ts";
+import {useTranslation} from "react-i18next";
 
 
 const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
 
     const titleRef = useRef<HTMLHeadingElement>(null);
+    const {t} = useTranslation();
 
     useEffect(() => {
         const titleElement = titleRef.current;
@@ -93,6 +95,9 @@ const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
             <div className="hero-content">
 
                 <h1 style={{ height: '150px', minHeight: '150px' }} ref={titleRef}></h1>
+
+
+                <div> {t('hero.test')}</div>
 
                 <p className="description">
                     I'm a Frontend Developer passionate about building user-focused React/React Native applications.

@@ -34,7 +34,7 @@ function App() {
         {id: 'hero', label: 'Home', ref: heroRef},
         {id: 'about', label: 'About', ref: aboutRef},
         {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
-        {id: 'projects', label: 'Projects', ref: projectsRef},
+        // {id: 'projects', label: 'Projects', ref: projectsRef},
         {id: 'contact', label: 'Contact', ref: contactRef},
         // {id: 'skillsRef', label: 'Skills', ref: skillsRef},
 
