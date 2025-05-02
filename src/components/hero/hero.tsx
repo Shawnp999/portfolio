@@ -16,10 +16,10 @@ const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
         titleElement.textContent = "";
 
         const phrases = [
-            "Hi, I'm Shawn Pantzlaff",
-            "I'm a front-end developer",
-            "Son of a b",
-            "I like making cool things"
+            t('hero.title1'),
+            t('hero.title2'),
+            t('hero.title3'),
+            t('hero.title4')
         ];
 
         let currentPhraseIndex = 0;
@@ -93,44 +93,29 @@ const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
     return (
         <section id="hero-section">
             <div className="hero-content">
-
                 <h1 style={{ height: '150px', minHeight: '150px' }} ref={titleRef}></h1>
-
-
-                <div> {t('hero.test')}</div>
-
+                <div>{t('hero.test')}</div>
                 <p className="description">
-                    I'm a Frontend Developer passionate about building user-focused React/React Native applications.
-                    Thrown into a fast-paced environment early on, I quickly adapted alongside mentors and joined
-                    startup projects that taught me to embrace challenges and deliver solutions despite evolving
-                    requirements.
+                    {t('hero.description1')}
                     <br/><br/>
-                    Growing up between Minnesota and Latvia before attending Ontario Hockey Academy gave me diverse
-                    perspectives and fluency in English, German, and Russian—skills that enhance my collaborative
-                    approach to problem-solving.
+                    {t('hero.description2')}
                     <br/><br/>
-                    I'm driven by technology's constant evolution, progressing from HTML/CSS through JavaScript to
-                    React, SharePoint, SPFx, Django, and React Native. I believe in code's limitless potential—if you
-                    can imagine it, it can be built, refined, and perfected.
+                    {t('hero.description3')}
                     <br/><br/>
-                    Off-screen, I'm on the ice, boxing, traveling, or unwinding with friends. This balance refreshes my
-                    creativity and brings new perspectives to my development work.
+                    {t('hero.description4')}
                 </p>
-
                 <div className="cta-buttons">
-
                     <button
                         className="btn primary"
                         onClick={() => scrollToSection(projectsRef)}
                     >
-                        View My Work
+                        {t('hero.viewWork')}
                     </button>
-
                     <button
                         className="btn secondary"
                         onClick={() => scrollToSection(contactRef)}
                     >
-                        Get In Touch
+                        {t('hero.getInTouch')}
                     </button>
                 </div>
             </div>
