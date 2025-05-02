@@ -80,7 +80,7 @@
 .project-year {
     font-size: 16px;
     color: #cbcbcb;
-    margin-left: 12px;
+    /*margin-left: 12px;*/
     font-weight: normal;
 }
 
@@ -135,6 +135,15 @@
     font-size: 14px;
     font-weight: 500;
     color: white;
+}
+
+.status-badge {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    height: fit-content;
 }
 
 .tech-badge.purple {

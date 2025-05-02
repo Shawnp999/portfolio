@@ -3,7 +3,7 @@ import {Card, Badge, Row, Col} from 'react-bootstrap';
 import '../../css/projects/projects.css';
 import ProjectModal from "./projectsModal.tsx";
 import {myProjects} from "./myProjects.ts";
-import {getTechBadgeVariant} from "../utils/techBadges.ts";
+import {getTechBadgeVariant, projectStatus} from "../utils/techBadges.ts";
 import {Project} from "../../types/types.ts";
 import '../../css/globalCSS.css'
 
@@ -31,42 +31,42 @@ const Projects = () => {
 
             <Row className="g-4 projects-grid">
                 {myProjects.map(project => (
-                    <Col key={project.id} md={6} lg={4}>
+                    <Col key={project.id} md={6} lg={6}>
                         <Card
                             className="project-card h-100"
                             onClick={() => openModal(project)}
                         >
                             <Card.Body className="d-flex flex-column">
-                                <div className="project-header d-flex justify-content-between align-items-start mb-3">
-                                    <Card.Title className="mb-0 text-white">
-                                        {project.title} <span className="project-year">{project.year}</span>
+                                <div className="project-header d-flex w-100 align-items-start mb-3">
+
+                                    <Card.Title className="mb-0 text-white w-100">
+
+                                        <div className="w-100 d-flex justify-content-between">
+
+                                            <span>
+                                                {project.title}
+                                            </span>
+
+                                            {project.projectStatus.length > 0 && (
+                                                <Badge
+                                                    bg={projectStatus(project.projectStatus[0])}
+                                                    className="status-badge "
+                                                >
+                                                    {project.projectStatus[0]}
+                                                </Badge>
+                                            )}
+                                        </div>
+                                        <span className="project-year">{project.year}</span>
+
                                     </Card.Title>
 
-                                    <div className="project-links">
-                                        {/*<TooltipLink*/}
-                                        {/*    href={project.githubUrl}*/}
-                                        {/*    tooltipText="View GitHub Repository"*/}
-                                        {/*    ariaLabel="GitHub Repository"*/}
-                                        {/*    className="project-link"*/}
-                                        {/*>*/}
-                                        {/*    <i className="bi bi-github"></i>*/}
-                                        {/*</TooltipLink>*/}
 
-                                        {/*<TooltipLink*/}
-                                        {/*    href={project.liveUrl}*/}
-                                        {/*    tooltipText="View Live Demo"*/}
-                                        {/*    ariaLabel="Live Demo"*/}
-                                        {/*    className="project-link"*/}
-                                        {/*    placement="bottom"*/}
-                                        {/*>*/}
-                                        {/*    <i className="bi bi-box-arrow-up-right"></i>*/}
-                                        {/*</TooltipLink>*/}
-                                    </div>
                                 </div>
 
                                 <Card.Text className="project-description mb-4">{project.shortDescription}</Card.Text>
 
                                 <div className="project-tech mt-auto">
+
                                     {project.technologies.map(tech   => (
                                         <Badge
                                             key={tech}

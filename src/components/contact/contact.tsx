@@ -14,7 +14,7 @@ const Contact = () => {
     const handleInDevelopmentClick = useInDevelopmentLink();
 
     return (
-        <section id="contact-section">
+        <section id="contact-section" /*style={{ marginTop: 300}}*/>
             <div className="contact-container">
                 <h2>Get In Touch</h2>
 

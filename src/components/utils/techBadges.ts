@@ -60,3 +60,25 @@ export const getTechBadgeVariant = (tech: string): string => {
     return variants[tech] || 'secondary';
 };
 
+
+export const projectStatus = (status: string): string => {
+
+    const variants: Record<string, string> = {
+
+        'Planning': 'secondary',
+        'In Development': 'warning',
+        'Alpha': 'warning',
+        'Beta Testing': 'info',
+        'Release Candidate': 'purple',
+        'Production': 'success',
+        'Maintained': 'info',
+        'Legacy': 'secondary',
+        'Deprecated': 'danger',
+        'Archived': 'dark'
+    };
+
+    return variants[status] || 'secondary';
+};
+
+
+

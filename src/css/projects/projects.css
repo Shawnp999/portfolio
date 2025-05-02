@@ -59,7 +59,7 @@
 .project-year {
     font-size: 0.9rem;
     color: #a0aec0;
-    margin-left: 0.5rem;
+    /*margin-left: 0.5rem;*/
     font-weight: normal;
 }
 
@@ -103,50 +103,16 @@
     margin-top: auto;
 }
 
-/* Badge styling */
-.tech-badge {
+.status-badge {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
     font-weight: 500;
-    font-size: 0.85rem;
-    border-radius: 20px;
-    letter-spacing: 0.2px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-right: 2px;
-    margin-bottom: 2px;
+    color: white;
+    height: fit-content;
 }
 
-.tech-badge:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
 
-.badge.bg-purple {
-    background-color: #9f7aea !important;
-}
-
-.badge.bg-primary {
-    background-color: #4299e1 !important;
-}
-
-.badge.bg-warning {
-    background-color: #ecc94b !important;
-    color: #000000 !important;
-}
-
-.badge.bg-danger {
-    background-color: #f56565 !important;
-}
-
-.badge.bg-info {
-    background-color: #38b2ac !important;
-}
-
-.badge.bg-success {
-    background-color: #48bb78 !important;
-}
-
-.badge.bg-secondary {
-    background-color: #a0aec0 !important;
-}
 
 @media (max-width: 768px) {
     /*#projects-section {*/

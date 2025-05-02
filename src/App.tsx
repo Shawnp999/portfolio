@@ -7,7 +7,7 @@ import Projects from "./components/projects/projects.tsx";
 import Contact from './components/contact/contact.tsx';
 import Footer from "./components/footer/footer.tsx";
 import Education from "./components/education/education.tsx";
-import Skills from "./components/skills/skills.tsx";
+// import Skills from "./components/skills/skills.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 import StarsBackground from "./components/stars/starsBackground.tsx";
 import './css/globalCSS.css'
@@ -25,9 +25,9 @@ function App() {
     const heroRef = useRef<HTMLDivElement>(null);
     const aboutRef = useRef<HTMLDivElement>(null);
     const projectsRef = useRef<HTMLDivElement>(null);
-    const contactRef = useRef<HTMLDivElement>(null);
     const educationAndExperienceRef = useRef<HTMLDivElement>(null);
-    const skillsRef = useRef<HTMLDivElement>(null);
+    const contactRef = useRef<HTMLDivElement>(null);
+    // const skillsRef = useRef<HTMLDivElement>(null);
 
     // sidebar nav
     const navItems = [
@@ -35,8 +35,9 @@ function App() {
         {id: 'about', label: 'About', ref: aboutRef},
         {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
         {id: 'projects', label: 'Projects', ref: projectsRef},
-        {id: 'skillsRef', label: 'Skills', ref: skillsRef},
         {id: 'contact', label: 'Contact', ref: contactRef},
+        // {id: 'skillsRef', label: 'Skills', ref: skillsRef},
+
     ];
 
 
@@ -72,9 +73,9 @@ function App() {
                         <Projects/>
                     </div>
 
-                    <div ref={skillsRef} id="skillsRef" className="section-container">
-                        <Skills/>
-                    </div>
+                    {/*<div ref={skillsRef} id="skillsRef" className="section-container">*/}
+                    {/*    <Skills/>*/}
+                    {/*</div>*/}
 
                     <div ref={contactRef} id="contact" className="section-container">
                         <Contact/>

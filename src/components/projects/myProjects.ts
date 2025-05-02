@@ -14,7 +14,8 @@ export const myProjects: Project[] = [
         imageWidth: projectImages.profileComponent.width,
         imageHeight: projectImages.profileComponent.height,
         githubUrl: 'https://github.com/Shawnp999/SPFX-React-Profile-Page',
-        liveUrl: ''
+        liveUrl: '',
+        projectStatus : ['Production']
     },
     {
         id: 2,
@@ -28,7 +29,8 @@ export const myProjects: Project[] = [
         imageWidth: projectImages.userDirectoryScreenBlur.width,
         imageHeight: projectImages.userDirectoryScreenBlur.height,
         githubUrl: 'https://github.com/Shawnp999/user-directory-react',
-        liveUrl: ''
+        liveUrl: '',
+        projectStatus : ['Production']
     },
     {
         id: 3,
@@ -42,7 +44,8 @@ export const myProjects: Project[] = [
         imageWidth: projectImages.blurredSeatingChart.width,
         imageHeight: projectImages.blurredSeatingChart.height,
         githubUrl: 'https://github.com/Shawnp999/SPFX-Seating-Chart',
-        liveUrl: ''
+        liveUrl: '',
+        projectStatus : ['Production']
     },
     {
         id: 4,
@@ -56,7 +59,8 @@ export const myProjects: Project[] = [
         imageWidth: projectImages.blurredBirthdayComponent.width,
         imageHeight: projectImages.blurredBirthdayComponent.height,
         githubUrl: 'https://github.com/Shawnp999/uzmto_BirthdayCalendar',
-        liveUrl: ''
+        liveUrl: '',
+        projectStatus : ['Production']
     },
     {
         id: 5,
@@ -70,7 +74,8 @@ export const myProjects: Project[] = [
         imageWidth: projectImages.consultingSite.width,
         imageHeight: projectImages.consultingSite.height,
         githubUrl: 'N/A',
-        liveUrl: 'https://websmartcons.com/'
+        liveUrl: 'https://websmartcons.com/',
+        projectStatus : ['In Development', 'Beta Testing',]
     },
     {
         id: 6,
@@ -84,7 +89,8 @@ export const myProjects: Project[] = [
         imageWidth: projectImages.scannsplit.width,
         imageHeight: projectImages.scannsplit.height,
         githubUrl: 'N/A',
-        liveUrl: 'https://play.google.com/store/apps/details?id=com.scannsplit.mobapp&hl=en'
+        liveUrl: 'https://play.google.com/store/apps/details?id=com.scannsplit.mobapp&hl=en',
+        projectStatus : ['Beta Testing', 'In Development' ]
     },
     {
         id: 7,
@@ -95,6 +101,7 @@ export const myProjects: Project[] = [
         technologies: ['React', 'Git', 'i18n', 'Vite', 'TypeScript', 'Bootstrap 5', 'HTML/CSS'],
         imageUrl: '/project6.jpg',
         githubUrl: 'https://github.com/Shawnp999/portfolio',
-        liveUrl: ''
+        liveUrl: '',
+        projectStatus : ['In Development']
     }
 ];

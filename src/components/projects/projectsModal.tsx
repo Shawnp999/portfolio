@@ -1,12 +1,13 @@
 import React from 'react';
 import { Modal, Card, Button, Badge, Row, Col, Container } from 'react-bootstrap';
 import '../../css/projects/projectsModal.css';
-import {getTechBadgeVariant} from "../utils/techBadges.ts";
+import {getTechBadgeVariant, projectStatus} from "../utils/techBadges.ts";
 import {ProjectModalProps} from "../../types/types.ts";
 
 
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
+
     if (!project) return null;
 
     return (
@@ -20,16 +21,35 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             className="project-modal"
         >
             <Modal.Header closeButton>
-                <Modal.Title>
-                    {project.title} <small className="text-muted ms-2">{project.year}</small>
+
+                <Modal.Title className="gap-2" >
+
+                    <span className="lh-1">
+                        {project.title} <small className="text-muted ">{project.year}</small>
+                    </span>
+
+                    <div className="d-flex gap-2 mt-2">
+                        {project.projectStatus.map((status) => (
+                            <Badge
+                                key={status}
+                                bg={projectStatus(status)}
+                                className="status-badge"
+                            >
+                                {status}
+                            </Badge>
+                        ))}
+                    </div>
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <Container fluid className="p-0">
+
                     <Row className="g-4">
+
                         <Col lg={6}>
                             <Card className="border-0 h-100 justify-content-center mb-3">
+
                                 <div className="image-wrapper">
                                     <Card.Img
                                         variant="top"
@@ -43,8 +63,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                 </div>
 
                                 <div className="d-block d-lg-none">
+
                                     <h5 className="mt-2 mb-2">Technologies</h5>
-                                    <div className="d-flex flex-wrap gap-2 mb-2">
+
+                                    <div className="d-flex flex-wrap gap-2 p-2">
+
                                     {project.technologies.map((tech) => (
                                             <Badge
                                                 key={tech}
@@ -64,8 +87,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                 <Card.Text style={{whiteSpace: 'pre-line',}}>{project.detailedDescription}</Card.Text>
 
                                 <div className="d-none d-lg-block">
+
                                     <h5 className="mt-2 mb-3">Technologies</h5>
+
                                     <div className="d-flex flex-wrap gap-2 mb-2">
+
                                         {project.technologies.map((tech) => (
                                             <Badge
                                                 key={tech}
@@ -76,6 +102,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                                             </Badge>
                                         ))}
                                     </div>
+
                                 </div>
 
                                 <div className="mt-auto pt-3">

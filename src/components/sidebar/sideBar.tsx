@@ -55,7 +55,7 @@ const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
                             {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
                             {item.id === 'projects' && <span className="icon">💼</span>}
 
-                            {item.id === 'skillsRef' && <span className="icon">🛠️</span>}
+                            {/*{item.id === 'skillsRef' && <span className="icon">🛠️</span>}*/}
                             {item.id === 'contact' && <span className="icon">✉️</span>}
 
                             <span className="tooltip">{item.label}</span>

@@ -47,6 +47,7 @@ export interface Project {
     imageHeight?: number | string;
     githubUrl: string;
     liveUrl: string;
+    projectStatus : string[]
 }
 
 export interface ProjectModalProps {
