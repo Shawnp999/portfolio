@@ -9,21 +9,32 @@
     z-index: 10;
 }
 
-
 .shooting-star.left-to-right {
-    background: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.8) 80%,
-            rgba(255, 255, 255, 1) 100%
+    background: radial-gradient(
+            ellipse at 100% 50%,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(240, 245, 255, 0.9) 10%,
+            rgba(220, 230, 255, 0.6) 25%,
+            rgba(200, 220, 255, 0.3) 50%,
+            rgba(180, 200, 255, 0.1) 75%,
+            rgba(160, 180, 255, 0) 100%
     );
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 6px rgba(220, 240, 255, 0.6);
+    border-radius: 50% 20% 20% 50%;
+    transform-origin: 100% 50%;
 }
 
 .shooting-star.right-to-left {
-    background: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.8) 80%,
-            rgba(255, 255, 255, 1) 100%
+    background: radial-gradient(
+            ellipse at 0% 50%,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(240, 245, 255, 0.9) 10%,
+            rgba(220, 230, 255, 0.6) 25%,
+            rgba(200, 220, 255, 0.3) 50%,
+            rgba(180, 200, 255, 0.1) 75%,
+            rgba(160, 180, 255, 0) 100%
     );
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 6px rgba(220, 240, 255, 0.6);
+    border-radius: 20% 50% 50% 20%;
+    transform-origin: 0% 50%;
 }
