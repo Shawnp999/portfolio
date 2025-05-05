@@ -26,9 +26,9 @@ const Projects = () => {
 
     return (
         <section id="projects-section">
-            <div className="common-header">{t('projects.sectionTitle', 'Projects')}</div>
+            <div className="common-header">{t('projects.sectionTitle')}</div>
             <div className="common-description">
-                {t('projects.sectionDescription', 'Outside of the full-time job, these are some of the projects that I\'ve built as a hobby, school, or freelance works.')}
+                {t('projects.sectionDescription')}
             </div>
 
             <Row className="g-4 projects-grid">

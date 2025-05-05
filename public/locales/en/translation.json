@@ -13,12 +13,14 @@
     "getInTouch": "Get In Touch"
   },
   "projects": {
+    "sectionTitle": "Projects",
+    "sectionDescription": "Outside of the full-time job, these are some of the projects that I've built as a hobby, school, or freelance works.",
     "buttons": {
       "privateRepository": "Private Repository",
       "viewRepository": "View Repository",
       "viewLiveDemo": "View Live Demo"
     },
-    "technologies" : "Technologies",
+    "technologies": "Technologies",
     "project1": {
       "title": "SPFX Employee Profile Portal",
       "year": "2023",
@@ -72,6 +74,35 @@
       "production": "Production",
       "inDevelopment": "In Development",
       "betaTesting": "Beta Testing"
+    }
+  },
+  "education": {
+    "sectionTitle": "Experience & Education",
+    "sectionDescription": "My professional journey and educational background",
+    "education1": {
+      "degree": "Bachelor of Computer Science",
+      "institution": "University of London | London, UK",
+      "period": "04/2023 - Present"
+    },
+    "work1": {
+      "title": "Software Developer",
+      "company": "MTO GCC | Tashkent, Uzbekistan",
+      "skills": "SharePoint SPFx, React, Microsoft Graph API, Frontend Development",
+      "period": "07/2023 - Present"
+    },
+    "project1": {
+      "title": "Consulting Platform",
+      "subtitle": "Independent Project",
+      "website": "websmartcons.com",
+      "skills": "Frontend Development with Bootstrap 5, Django, JavaScript",
+      "period": "02/2024 - 10/2024"
+    },
+    "project2": {
+      "title": "Bill Splitting Mobile App",
+      "subtitle": "Independent Project",
+      "linkText": "Android Beta Testing Link",
+      "skills": "React Native, Zustand, Git, CI/CD",
+      "period": "09/2024 - Present"
     }
   }
 }

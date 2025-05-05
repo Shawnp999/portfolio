@@ -2,9 +2,11 @@ import '../../css/education/education.css';
 import 'react-vertical-timeline-component/style.min.css';
 // @ts-ignore
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import '../../css/globalCSS.css'
+import '../../css/globalCSS.css';
+import { useTranslation } from 'react-i18next';
 
 const EducationAndExperience = () => {
+    const { t } = useTranslation();
 
     const workIconStyle = { background: '#4fd1c5', color: '#fff' };
     const workContentStyle = { background: '#1e1e1e', color: '#d0d0d0', boxShadow: '0 3px 0 #4fd1c5' };
@@ -17,11 +19,12 @@ const EducationAndExperience = () => {
 
     return (
         <section id="education-section">
-            <div className="common-header ">Experience & Education</div>
+            <div className="common-header ">
+                {t('education.sectionTitle')}
+            </div>
             <p className="common-description ">
-                My professional journey and educational background
+                {t('education.sectionDescription')}
             </p>
-
 
             <VerticalTimeline lineColor="#333" animate={true}>
 
@@ -29,12 +32,12 @@ const EducationAndExperience = () => {
                     className="vertical-timeline-element--education"
                     contentStyle={educationContentStyle}
                     contentArrowStyle={{ borderRight: '7px solid #1e1e1e' }}
-                    date="04/2023 - Present"
+                    date={t('education.education1.period')}
                     iconStyle={educationIconStyle}
                     icon={<i className="bi bi-mortarboard-fill"></i>}
                 >
-                    <h3 className="vertical-timeline-element-title">Bachelor of Computer Science</h3>
-                    <h4 className="vertical-timeline-element-subtitle">University of London | London, UK</h4>
+                    <h3 className="vertical-timeline-element-title">{t('education.education1.degree')}</h3>
+                    <h4 className="vertical-timeline-element-subtitle">{t('education.education1.institution')}</h4>
                 </VerticalTimelineElement>
 
                 {/* Work Experience */}
@@ -42,14 +45,14 @@ const EducationAndExperience = () => {
                     className="vertical-timeline-element--work"
                     contentStyle={workContentStyle}
                     contentArrowStyle={{ borderRight: '7px solid #1e1e1e' }}
-                    date="07/2023 - Present"
+                    date={t('education.work1.period')}
                     iconStyle={workIconStyle}
                     icon={<i className="bi bi-briefcase-fill"></i>}
                 >
-                    <h3 className="vertical-timeline-element-title">Software Developer</h3>
-                    <h4 className="vertical-timeline-element-subtitle">MTO GCC | Tashkent, Uzbekistan</h4>
+                    <h3 className="vertical-timeline-element-title">{t('education.work1.title')}</h3>
+                    <h4 className="vertical-timeline-element-subtitle">{t('education.work1.company')}</h4>
                     <p>
-                        SharePoint SPFx, React, Microsoft Graph API, Frontend Development
+                        {t('education.work1.skills')}
                     </p>
                 </VerticalTimelineElement>
 
@@ -58,20 +61,21 @@ const EducationAndExperience = () => {
                     className="vertical-timeline-element--project"
                     contentStyle={projectContentStyle}
                     contentArrowStyle={{ borderRight: '7px solid #1e1e1e' }}
-                    date="02/2024 - 10/2024"
+                    date={t('education.project1.period')}
                     iconStyle={projectIconStyle}
                     icon={<i className="bi bi-code-slash"></i>}
                 >
-                    <h3 className="vertical-timeline-element-title">Consulting Platform</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Independent Project (
+                    <h3 className="vertical-timeline-element-title">{t('education.project1.title')}</h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                        {t('education.project1.subtitle')} (
                         <a href="https://websmartcons.com/"
                            target="_blank" rel="noopener noreferrer">
-                            websmartcons.com
+                            {t('education.project1.website')}
                         </a>
                         )
                     </h4>
                     <p>
-                        Frontend Development with Bootstrap 5, Django, JavaScript
+                        {t('education.project1.skills')}
                     </p>
                 </VerticalTimelineElement>
 
@@ -79,28 +83,23 @@ const EducationAndExperience = () => {
                     className="vertical-timeline-element--project"
                     contentStyle={projectContentStyle}
                     contentArrowStyle={{ borderRight: '7px solid #1e1e1e' }}
-                    date="09/2024 - Present"
+                    date={t('education.project2.period')}
                     iconStyle={projectIconStyle}
                     icon={<i className="bi bi-phone"></i>}
                 >
-                    <h3 className="vertical-timeline-element-title">Bill Splitting Mobile App</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Independent Project (
-                        <a href="https://play.google.com/store/apps/details?id=com.scannsplit.mobapp&hl=en" target="_blank" rel="noopener noreferrer">
-                            Android Beta Testing Link
+                    <h3 className="vertical-timeline-element-title">{t('education.project2.title')}</h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                        {t('education.project2.subtitle')} (
+                        <a href="https://play.google.com/store/apps/details?id=com.scannsplit.mobapp&hl=en"
+                           target="_blank" rel="noopener noreferrer">
+                            {t('education.project2.linkText')}
                         </a>
-                        )</h4>
+                        )
+                    </h4>
                     <p>
-                        React Native, Zustand, Git, CI/CD
+                        {t('education.project2.skills')}
                     </p>
                 </VerticalTimelineElement>
-
-                {/* Education */}
-
-
-                {/*<VerticalTimelineElement*/}
-                {/*    iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}*/}
-                {/*    icon={<i className="bi bi-check-lg"></i>}*/}
-                {/*/>*/}
             </VerticalTimeline>
         </section>
     );

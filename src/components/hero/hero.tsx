@@ -88,7 +88,7 @@ const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
         return () => {
             if (typingInterval) clearInterval(typingInterval);
         };
-    }, [t]); // Added t to the dependency array
+    }, [t]);
 
     return (
         <section id="hero-section">
