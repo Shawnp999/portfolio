@@ -11,10 +11,8 @@ interface Language {
 }
 
 const LanguageSwitcher: React.FC = () => {
-
     const { i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
-    //wouldnt close dropdown //TODO : check later
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const languages: Language[] = [
@@ -25,7 +23,6 @@ const LanguageSwitcher: React.FC = () => {
     const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
     useEffect(() => {
-
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
         };
@@ -37,36 +34,30 @@ const LanguageSwitcher: React.FC = () => {
         };
     }, []);
 
-    useEffect(() => {
-        console.log('Current language:', i18n.language);
-        console.log('Dropdown open state:', isOpen);
-        console.log('Is mobile view:', isMobile);
-
-    }, [i18n.language, isOpen, isMobile]);
-
     const changeLanguage = (langCode: string): void => {
-
-        console.log('Language selected:', langCode);
-        i18n.changeLanguage(langCode);
-        console.log('Closing dropdown');
-
-        if (isMobile) {
+        if (langCode === i18n.language) {
             setIsOpen(false);
-
-            setTimeout(() => {
-                setIsOpen(false);
-                console.log('Forced dropdown close with timeout');
-            }, 50);
-        } else {
-            setIsOpen(false);
+            return;
         }
+
+        // Smooth language transition
+        document.body.classList.add('language-transition');
+
+        // Change the language after a short delay
+        setTimeout(() => {
+            i18n.changeLanguage(langCode);
+
+            // Remove transition class after language has changed
+            setTimeout(() => {
+                document.body.classList.remove('language-transition');
+            }, 300);
+        }, 50);
+
+        setIsOpen(false);
     };
 
     const toggleDropdown = () => {
-        console.log('Toggle called, current state:', isOpen);
-
         if (isOpen && isMobile) {
-
             setIsOpen(false);
             document.querySelector('.language-dropdown')?.classList.add('force-hide');
             setTimeout(() => {
@@ -78,17 +69,14 @@ const LanguageSwitcher: React.FC = () => {
     };
 
     const handleToggle = (nextIsOpen: boolean) => {
-        console.log('Bootstrap onToggle called:', nextIsOpen);
         setIsOpen(nextIsOpen);
     };
 
     const CustomToggle = React.forwardRef<HTMLDivElement, any>(({ onClick }, ref) => (
-
         <div
             className="selected-language"
             onClick={(e) => {
                 e.preventDefault();
-                console.log('Flag clicked');
                 toggleDropdown();
                 onClick(e);
             }}
@@ -117,10 +105,7 @@ const LanguageSwitcher: React.FC = () => {
                         <Dropdown.Item
                             key={lang.code}
                             className={`language-option ${lang.code === i18n.language ? 'active' : ''}`}
-                            onClick={() => {
-                                console.log('Option clicked:', lang.code);
-                                changeLanguage(lang.code);
-                            }}
+                            onClick={() => changeLanguage(lang.code)}
                         >
                             <span>{isMobile ? lang.displayName : lang.name}</span>
                         </Dropdown.Item>

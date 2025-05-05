@@ -1,0 +1,46 @@
+/* TypeWriter styles */
+.typewriter {
+    position: relative;
+    transition: opacity 0.2s ease-out;
+}
+
+/* Fade out when restarting */
+.typewriter.restarting {
+    opacity: 0;
+}
+
+.typewriter::after {
+    content: '|';
+    position: relative;
+    display: inline-block;
+    color: var(--accent-color, #4fd1c5);
+    opacity: 1;
+    animation: cursor-blink 1s infinite;
+    margin-left: 3px;
+}
+
+/* Animation for cursor blinking */
+@keyframes cursor-blink {
+    0%, 70% {
+        opacity: 1;
+    }
+    71%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Clean transition when language changes */
+.language-transition .typewriter {
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+}
+
+.typewriter {
+    font-size: 28px; /* Default for mobile */
+}
+
+@media (min-width: 768px) {
+    .typewriter {
+        font-size: 52px; /* Larger screens */
+    }
+}
