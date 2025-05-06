@@ -11,6 +11,8 @@ import './css/globalCSS.css';
 import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
 import { DevelopmentProvider } from "./components/utils/inDev/developmentContext.tsx";
 import Contact from "./components/contact/contact.tsx";
+import MemoryMonitor from "./components/utils/MemoryMonitor.tsx";
+
 
 const Projects = lazy(() => import("./components/projects/projects.tsx"));
 // const Skills = lazy(() => import("./components/skills/skills.tsx"));
@@ -55,6 +57,7 @@ function App() {
                 <ShootingStars/>
 
                 <main className="content">
+                    {process.env.NODE_ENV === 'development' && <MemoryMonitor />}
                     <div ref={heroRef} id="hero" className="section-container">
                         <Hero
                             scrollToSection={scrollToSection}

@@ -1,17 +1,16 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import '../../css/backgroundCircles/backgroundCircles.css';
-import {BackgroundCirclesProps} from "../../types/types.ts";
+import { BackgroundCirclesProps } from "../../types/types.ts";
 
-
-const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({count, sectionId}) => {
-
+const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({ count, sectionId }) => {
     const circles = useMemo(() => {
+        const isMobile = window.innerWidth < 768;
+        const actualCount = isMobile ? Math.min(count, 5) : count;
+        const maxSize = isMobile ? 120 : 200;
 
         const circlesArray = [];
-        const maxSize = window.innerWidth < 768 ? 120 : 200;
 
-        for (let i = 0; i < count; i++) {
-
+        for (let i = 0; i < actualCount; i++) {
             const size = 60 + Math.random() * (maxSize - 60);
 
             const safeTopMin = 10;
@@ -46,6 +45,7 @@ const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({count, sectionId})
                         top: circle.top,
                         left: circle.left,
                         opacity: circle.opacity,
+                        willChange: 'transform, opacity',
                     }}
                 />
             ))}
@@ -53,4 +53,4 @@ const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({count, sectionId})
     );
 };
 
-export default BackgroundCircles;
+export default React.memo(BackgroundCircles);

@@ -1,11 +1,16 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import '../../css/stars/starBackground.css';
 
 function StarBackground() {
 
     const allStars = useMemo(() => {
 
-        const smallStars = Array.from({length: 100}, () => ({
+        const isMobile = window.innerWidth <= 768;
+        const smallStarsCount = isMobile ? 50 : 100;
+        const mediumStarsCount = isMobile ? 25 : 50;
+        const largeStarsCount = isMobile ? 8 : 15;
+
+        const smallStars = Array.from({length: smallStarsCount}, () => ({
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             size: 1 + Math.random(),
@@ -15,7 +20,7 @@ function StarBackground() {
             color: 'rgba(255, 255, 255, 1)'
         }));
 
-        const mediumStars = Array.from({length: 50}, () => ({
+        const mediumStars = Array.from({length: mediumStarsCount}, () => ({
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             size: 2 + Math.random() * 1.5,
@@ -25,7 +30,7 @@ function StarBackground() {
             color: 'rgba(210, 230, 255, 1)'
         }));
 
-        const largeStars = Array.from({length: 15}, () => ({
+        const largeStars = Array.from({length: largeStarsCount}, () => ({
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             size: 3.5 + Math.random() * 1.5,
@@ -39,9 +44,7 @@ function StarBackground() {
     }, []);
 
     const starElements = useMemo(() => {
-
         return allStars.map((star, index) => (
-
             <div
                 key={`star-${index}`}
                 className="bg-star twinkle"
@@ -56,7 +59,8 @@ function StarBackground() {
                     borderRadius: '50%',
                     opacity: star.opacity,
                     animationDelay: star.animationDelay,
-                    animationDuration: star.animationDuration
+                    animationDuration: star.animationDuration,
+                    willChange: 'transform, opacity'
                 }}
             />
         ));
@@ -78,5 +82,4 @@ function StarBackground() {
     );
 }
 
-// Export a memoized version of the component
 export default React.memo(StarBackground);

@@ -1,15 +1,15 @@
+// src/components/ShootingStars/shootingStars.tsx
 import React, {useEffect, useState, useRef} from 'react';
 import {useSpring, animated} from '@react-spring/web';
 import '../../css/shootingStars/shootingStars.css';
 import type {ShootingStar} from '../../types/types.ts'
 
-
 const ShootingStars: React.FC = () => {
-
     const [stars, setStars] = useState<ShootingStar[]>([]);
     const isMobile = window.innerWidth <= 768;
-
     const maxPossibleDuration = useRef(4000);
+
+    const intervalRef = useRef<number | null>(null);
 
     const generateStar = (id: number): ShootingStar => {
         const fromLeft = Math.random() > 0.5;
@@ -55,25 +55,40 @@ const ShootingStars: React.FC = () => {
     };
 
     useEffect(() => {
-        const initialStars: ShootingStar[] = Array.from({length: 5}, (_, i) =>
-            generateStar(Date.now() + i)
+        const initialStarsCount = isMobile ? 3 : 5;
+
+        const initialStars: ShootingStar[] = Array.from(
+            {length: initialStarsCount},
+            (_, i) => generateStar(Date.now() + i)
         );
         setStars(initialStars);
 
-        const interval = setInterval(() => {
+        intervalRef.current = window.setInterval(() => {
             setStars((prevStars) => {
                 const bufferTime = maxPossibleDuration.current + 2000;
+                const now = Date.now();
 
                 const activeStars = prevStars.filter(
-                    (star) => Date.now() - star.id < star.duration + star.delay + bufferTime
+                    (star) => now - star.id < star.duration + star.delay + bufferTime
                 );
 
-                return [...activeStars, generateStar(Date.now())];
-            });
-        }, 3000);
+                const maxStars = isMobile ? 4 : 6;
 
-        return () => clearInterval(interval);
-    }, []);
+                if (activeStars.length < maxStars) {
+                    return [...activeStars, generateStar(now)];
+                }
+
+                return activeStars;
+            });
+        }, isMobile ? 4000 : 3000);
+
+        return () => {
+            if (intervalRef.current !== null) {
+                window.clearInterval(intervalRef.current);
+                intervalRef.current = null;
+            }
+        };
+    }, [isMobile]);
 
     return (
         <div className="shooting-stars-container">
@@ -85,7 +100,7 @@ const ShootingStars: React.FC = () => {
 };
 
 const ShootingStar: React.FC<{ star: ShootingStar }> = ({star}) => {
-    // Define the animated values
+
     const styles = useSpring({
         from: {
             transform: `translate(${star.startX}vw, ${star.startY}vh)`,
