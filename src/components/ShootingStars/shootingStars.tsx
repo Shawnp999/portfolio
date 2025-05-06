@@ -72,7 +72,7 @@ const ShootingStars: React.FC = () => {
                     (star) => now - star.id < star.duration + star.delay + bufferTime
                 );
 
-                const maxStars = isMobile ? 4 : 6;
+                const maxStars = isMobile ? 3 : 4;
 
                 if (activeStars.length < maxStars) {
                     return [...activeStars, generateStar(now)];

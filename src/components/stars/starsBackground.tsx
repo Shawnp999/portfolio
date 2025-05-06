@@ -6,9 +6,9 @@ function StarBackground() {
     const allStars = useMemo(() => {
 
         const isMobile = window.innerWidth <= 768;
-        const smallStarsCount = isMobile ? 50 : 100;
-        const mediumStarsCount = isMobile ? 25 : 50;
-        const largeStarsCount = isMobile ? 8 : 15;
+        const smallStarsCount = isMobile ? 30 : 60;
+        const mediumStarsCount = isMobile ? 15 : 30;
+        const largeStarsCount = isMobile ? 5 : 10;
 
         const smallStars = Array.from({length: smallStarsCount}, () => ({
             top: `${Math.random() * 100}%`,

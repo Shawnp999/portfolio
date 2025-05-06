@@ -86,7 +86,9 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
                                         src={project.imageUrl}
                                         alt={project.imageAlt || `${project.title} screenshot`}
                                         className="project-image"
-                                        loading="lazy" // Add lazy loading for images
+                                        loading="lazy"
+                                        width={project.imageWidth || "100%"}
+                                        height={project.imageHeight || "auto"}
                                     />
                                 </div>
 
