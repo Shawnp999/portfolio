@@ -45,7 +45,7 @@ const Projects = () => {
 
                                     <Card.Title className="mb-0 text-white w-100">
 
-                                        <div className="w-100 d-flex justify-content-between">
+                                        <div className="w-100 d-flex justify-content-between g-1">
 
                                             <span>
                                                 {project.title}
