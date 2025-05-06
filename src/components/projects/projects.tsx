@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Card, Badge, Row, Col} from 'react-bootstrap';
 import '../../css/projects/projects.css';
+import '../../css/projects/borderAnimation.css'; // Import the new border animation CSS
 import ProjectModal from "./projectsModal.tsx";
 import {MyProjects} from "./myProjects.ts";
 import {getTechBadgeVariant, projectStatus} from "../utils/badges/techBadges.ts";
@@ -31,12 +32,13 @@ const Projects = () => {
                 {t('projects.sectionDescription')}
             </div>
 
-            <Row className="g-4 my-2" style={{marginRight : 0, marginLeft : 0}}>
+            <Row className="g-4 projects-grid">
                 {myProjects.map(project => (
                     <Col key={project.id} md={6} lg={6}>
                         <Card
                             className="project-card h-100"
                             onClick={() => openModal(project)}
+                            style={{ borderRadius: 'var(--border-radius)' }}
                         >
                             <Card.Body className="d-flex flex-column">
                                 <div className="project-header d-flex w-100 align-items-start mb-3">
@@ -52,7 +54,7 @@ const Projects = () => {
                                             {project.projectStatus.length > 0 && (
                                                 <Badge
                                                     bg={projectStatus(project.projectStatus[0])}
-                                                    className="status-badge "
+                                                    className="status-badge"
                                                 >
                                                     {project.projectStatus[0]}
                                                 </Badge>

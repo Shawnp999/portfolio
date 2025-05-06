@@ -1,0 +1,144 @@
+/* Animated gradient border for project cards */
+
+/* Define CSS custom property for animating gradient border */
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+ /*High-contrast color scheme */
+:root {
+    --border-width: 2px;
+    --border-radius: 8px;
+    --glow-blur: 5px;
+    --glow-spread: 3px;
+
+    /* More distinct color palette */
+    --color1: #7effd9; /* Bright teal */
+    --color2: #00a8e8; /* Vibrant blue */
+    --color3: #0059ff; /* Deep purple */
+    --color4: #00c170; /* Emerald green */
+    --color5: #00ffbf; /* Bright mint */
+}
+
+
+/* Project card base styles */
+.project-card {
+    /* Basic card styling */
+    background-color: #1e1e1e !important;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* Before element for the gradient border */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius);
+    padding: var(--border-width);
+    background: conic-gradient(
+            from var(--angle),
+            var(--color1),
+            var(--color2),
+            var(--color3),
+            var(--color4),
+            var(--color5)
+    );
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+
+    /* Add glow effect */
+    filter: drop-shadow(0 0 var(--glow-blur) var(--color1));
+}
+
+/* Apply animation to all cards */
+.project-card::before {
+    animation: rotate-border 6s linear infinite;
+}
+
+/* Speed up animation on hover */
+.project-card:hover::before {
+    animation: rotate-border 3s linear infinite;
+    filter: drop-shadow(0 0 calc(var(--glow-blur) + 2px) var(--glow-spread) var(--color1));
+}
+
+/* Additional hover effects */
+.project-card:hover {
+    transform: translateY(-5px);
+    background-color: #121212 !important;
+}
+
+/* Add a visual indicator that card is clickable */
+.project-card::after {
+    content: "Click to view details";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--color1);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+/* Make the border wider for more visibility */
+@media (min-width: 768px) {
+    :root {
+        --border-width: 3px;
+    }
+}
+
+/* Keyframes for the rotating border animation */
+@keyframes rotate-border {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Fallback for browsers that don't support @property */
+@supports not (background: paint(something)) {
+    .project-card::before {
+        background: conic-gradient(
+                var(--color1),
+                var(--color2),
+                var(--color3),
+                var(--color4),
+                var(--color1)
+        );
+        animation: none;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --border-width: 2px;
+        --glow-blur: 6px;
+        --glow-spread: 3px;
+    }
+
+    .project-card::after {
+        opacity: 0.7;
+        bottom: 5px;
+        right: 5px;
+    }
+}
