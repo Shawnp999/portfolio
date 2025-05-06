@@ -3,10 +3,13 @@ import {useTranslation} from 'react-i18next';
 import './typeWriter.css';
 
 const TypeWriter = () => {
+
     const {t, i18n} = useTranslation();
     const titleRef = useRef<HTMLHeadingElement>(null);
-    const animationIntervalRef = useRef<number | null>(null);
-    const animationTimeoutRef = useRef<number | null>(null);
+
+    const animationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const animationIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
     const languageRef = useRef<string>(i18n.language);
 
     const clearAnimations = () => {
@@ -55,8 +58,8 @@ const TypeWriter = () => {
 
                         clearAnimations();
 
-                        animationTimeoutRef.current = window.setTimeout(() => {
-                            animationIntervalRef.current = window.setInterval(typeWriter, 100);
+                        animationTimeoutRef.current = setTimeout(() => {
+                            animationIntervalRef.current = setInterval(typeWriter, 100);
                         }, 100);
 
                         return;
@@ -77,8 +80,8 @@ const TypeWriter = () => {
                         // pause before deleting
                         clearAnimations();
 
-                        animationTimeoutRef.current = window.setTimeout(() => {
-                            animationIntervalRef.current = window.setInterval(typeWriter, 50);
+                        animationTimeoutRef.current = setTimeout(() => {
+                            animationIntervalRef.current = setInterval(typeWriter, 50);
                         }, 200);
 
                         return;
@@ -86,7 +89,7 @@ const TypeWriter = () => {
                 }
             };
 
-            animationIntervalRef.current = window.setInterval(typeWriter, 100);
+            animationIntervalRef.current = setInterval(typeWriter, 100);
         }
 
         // check if language changed
@@ -111,6 +114,7 @@ const TypeWriter = () => {
             startTypingAnimation();
         }
 
+        // clean up to prevent memory leaks
         return () => {
             clearAnimations();
         };
