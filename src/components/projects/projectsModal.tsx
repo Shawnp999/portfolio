@@ -1,15 +1,38 @@
-import React, {useEffect} from 'react';
+import {useEffect, memo} from 'react';
 import {Modal, Card, Button, Badge, Row, Col, Container} from 'react-bootstrap';
 import '../../css/projects/projectsModal.css';
 import {getTechBadgeVariant, projectStatus} from "../utils/badges/techBadges.ts";
 import {ProjectModalProps} from "../../types/types.ts";
 import {useTranslation} from "react-i18next";
 
-const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) => {
+// Memoized Badge component for technologies
+const TechBadge = memo(({tech}: { tech: string }) => (
+    <Badge
+        bg={getTechBadgeVariant(tech)}
+        className="tech-badge px-3 py-2"
+    >
+        {tech}
+    </Badge>
+));
 
+TechBadge.displayName = 'TechBadge';
+
+// Memoized component for status badges
+const StatusBadge = memo(({status}: { status: string }) => (
+    <Badge
+        bg={projectStatus(status)}
+        className="status-badge"
+    >
+        {status}
+    </Badge>
+));
+
+StatusBadge.displayName = 'StatusBadge';
+
+const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
     const {t} = useTranslation();
 
-    // escape with esc aswell
+    // Handle esc keypress
     useEffect(() => {
         const handleEscKey = (event: KeyboardEvent) => {
             if (event.key === 'Escape' && isOpen) {
@@ -40,19 +63,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) =
         >
             <Modal.Header closeButton>
                 <Modal.Title className="gap-2">
-                    <span className="lh-1">
-                        {project.title} <small className="text-muted">{project.year}</small>
-                    </span>
+          <span className="lh-1">
+            {project.title} <small className="text-muted">{project.year}</small>
+          </span>
 
                     <div className="d-flex gap-2 mt-2">
                         {project.projectStatus.map((status) => (
-                            <Badge
-                                key={status}
-                                bg={projectStatus(status)}
-                                className="status-badge"
-                            >
-                                {status}
-                            </Badge>
+                            <StatusBadge key={status} status={status}/>
                         ))}
                     </div>
                 </Modal.Title>
@@ -60,18 +77,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) =
 
             <Modal.Body>
                 <Container fluid className="p-0">
-
                     <Row className="g-4">
                         <Col lg={6}>
-
                             <Card className="border-0 h-100 justify-content-center mb-3">
-
                                 <div className="image-wrapper">
                                     <Card.Img
                                         variant="top"
                                         src={project.imageUrl}
                                         alt={project.imageAlt || `${project.title} screenshot`}
                                         className="project-image"
+                                        loading="lazy" // Add lazy loading for images
                                     />
                                 </div>
 
@@ -80,15 +95,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) =
                                     <h5 className="mt-2 mb-2">{t('projects.technologies')}</h5>
 
                                     <div className="d-flex flex-wrap gap-1 p-2">
-
                                         {project.technologies.map((tech) => (
-                                            <Badge
-                                                key={tech}
-                                                bg={getTechBadgeVariant(tech)}
-                                                className="tech-badge px-3 py-2"
-                                            >
-                                                {tech}
-                                            </Badge>
+                                            <TechBadge key={tech} tech={tech}/>
                                         ))}
                                     </div>
                                 </div>
@@ -97,7 +105,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) =
 
                         <Col lg={6}>
                             <Card.Body className="p-0 h-100 d-flex flex-column">
-
                                 <Card.Text style={{whiteSpace: 'pre-line'}}>{project.detailedDescription}</Card.Text>
 
                                 <div className="d-none d-lg-block">
@@ -106,21 +113,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) =
 
                                     <div className="d-flex flex-wrap gap-1 mb-2">
                                         {project.technologies.map((tech) => (
-                                            <Badge
-                                                key={tech}
-                                                bg={getTechBadgeVariant(tech)}
-                                                className="tech-badge px-3 py-2"
-                                            >
-                                                {tech}
-                                            </Badge>
+                                            <TechBadge key={tech} tech={tech}/>
                                         ))}
-
                                     </div>
                                 </div>
 
                                 <div className="mt-auto pt-3">
                                     <div className="d-flex flex-wrap gap-3 justify-content-around">
-
                                         {project.githubUrl === 'N/A' ? (
                                             <Button
                                                 variant="secondary"
@@ -130,7 +129,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) =
                                                 <i className="bi bi-x-circle me-2"></i>
                                                 {t('projects.buttons.privateRepository')}
                                             </Button>
-
                                         ) : (
                                             <Button
                                                 variant="dark"
@@ -160,14 +158,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({project, isOpen, onClose}) =
                                 </div>
                             </Card.Body>
                         </Col>
-
                     </Row>
-
                 </Container>
-
             </Modal.Body>
         </Modal>
     );
-};
+});
+
+ProjectModal.displayName = 'ProjectModal';
 
 export default ProjectModal;

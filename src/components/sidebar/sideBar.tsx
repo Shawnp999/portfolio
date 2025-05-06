@@ -1,92 +1,112 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect, useRef, useCallback, memo} from 'react';
 import '../../css/sideBar/sideBar.css';
-import { SidebarProps } from "../../types/types.ts";
+import {SidebarProps, NavItem} from "../../types/types.ts";
 import LanguageSwitcher from "./languageSwitcher.tsx";
 
-const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
+const NavItemComponent = memo(({
+                                   item,
+                                   isActive,
+                                   onClick
+                               }: {
+    item: NavItem;
+    isActive: boolean;
+    onClick: (ref: React.RefObject<HTMLDivElement | null>, id: string) => void;
+}) => {
+    const handleClick = useCallback(() => {
+        onClick(item.ref, item.id);
+    }, [onClick, item.ref, item.id]);
 
+    return (
+        <li
+            className={isActive ? 'active' : ''}
+            onClick={handleClick}
+        >
+            {item.id === 'hero' && <span className="icon">#</span>}
+            {item.id === 'about' && <span className="icon">👤</span>}
+            {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
+            {item.id === 'projects' && <span className="icon">💼</span>}
+            {item.id === 'contact' && <span className="icon">✉️</span>}
+
+            <span className="tooltip">{item.label}</span>
+        </li>
+    );
+});
+
+NavItemComponent.displayName = 'NavItemComponent';
+
+const SideBar = ({navItems, scrollToSection}: SidebarProps) => {
     const [activeSection, setActiveSection] = useState<string>('hero');
+    const observersRef = useRef<IntersectionObserver[]>([]);
 
-    const handleSidebarItemClick = (sectionId: string, ref: React.RefObject<HTMLDivElement | null>) => {
-        // set active section immediately
-        setActiveSection(sectionId);
-        // then scrollToSection
-        scrollToSection(ref);
-    };
+    // Cleanup observers on unmount
+    useEffect(() => {
+        return () => {
+            observersRef.current.forEach(observer => {
+                observer.disconnect();
+            });
+            observersRef.current = [];
+        };
+    }, []);
 
     useEffect(() => {
-        const handleScroll = () => {
 
-            const scrollPosition = window.scrollY + window.innerHeight / 3;
+        const setupObservers = () => {
 
-            let foundActive = false;
+            observersRef.current.forEach(observer => {
+                observer.disconnect();
+            });
+            observersRef.current = [];
 
-            // chekc in document order, top to bottom
-            for (const section of navItems) {
-
-                if (section.ref.current) {
-                    const element = section.ref.current;
-                    const sectionTop = element.offsetTop;
-                    const sectionBottom = sectionTop + element.offsetHeight;
-
-                    // if current scroll pos is within this section
-                    if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-                        if (activeSection !== section.id) {
-                            setActiveSection(section.id);
+            navItems.forEach(item => {
+                if (item.ref.current) {
+                    const observer = new IntersectionObserver(
+                        entries => {
+                            entries.forEach(entry => {
+                                // If section is intersecting with at least 20% visibility
+                                if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+                                    setActiveSection(item.id);
+                                }
+                            });
+                        },
+                        {
+                            rootMargin: '-10% 0px -80% 0px',
+                            threshold: [0.2, 0.5, 0.8]
                         }
-                        foundActive = true;
-                        break;
-                    }
+                    );
+
+                    observer.observe(item.ref.current);
+                    observersRef.current.push(observer);
                 }
-            }
-
-            if (!foundActive && navItems.length > 0 && scrollPosition < (navItems[0].ref.current?.offsetTop || 0)) {
-                setActiveSection(navItems[0].id);
-            }
-
-            if (!foundActive && navItems.length > 0) {
-
-                const lastSection = navItems[navItems.length - 1];
-
-                const lastSectionBottom = (lastSection.ref.current?.offsetTop || 0) +
-                    (lastSection.ref.current?.offsetHeight || 0);
-
-                if (scrollPosition > lastSectionBottom) {
-                    setActiveSection(lastSection.id);
-                }
-            }
+            });
         };
 
-        handleScroll();
+        const timer = setTimeout(() => {
+            setupObservers();
+        }, 100);
 
-        window.addEventListener('scroll', handleScroll);
+        return () => clearTimeout(timer);
+    }, [navItems]);
 
-        return () => window.removeEventListener('scroll', handleScroll);
-
-    }, [navItems, activeSection]);
+    const handleSidebarItemClick = useCallback((ref: React.RefObject<HTMLDivElement | null>, id: string) => {
+        setActiveSection(id);
+        scrollToSection(ref);
+    }, [scrollToSection]);
 
     return (
         <aside className="sidebar">
             <nav className="sidebar-nav">
                 <ul>
                     {navItems.map((item) => (
-                        <li
+                        <NavItemComponent
                             key={item.id}
-                            className={activeSection === item.id ? 'active' : ''}
-                            onClick={() => handleSidebarItemClick(item.id, item.ref)}
-                        >
-                            {item.id === 'hero' && <span className="icon">#</span>}
-                            {item.id === 'about' && <span className="icon">👤</span>}
-                            {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
-                            {item.id === 'projects' && <span className="icon">💼</span>}
-                            {item.id === 'contact' && <span className="icon">✉️</span>}
-
-                            <span className="tooltip">{item.label}</span>
-                        </li>
+                            item={item}
+                            isActive={activeSection === item.id}
+                            onClick={handleSidebarItemClick}
+                        />
                     ))}
 
                     <li className="language-item">
-                        <LanguageSwitcher />
+                        <LanguageSwitcher/>
                     </li>
                 </ul>
             </nav>
@@ -94,4 +114,4 @@ const SideBar = ({ navItems, scrollToSection }: SidebarProps) => {
     );
 };
 
-export default SideBar;
+export default memo(SideBar);

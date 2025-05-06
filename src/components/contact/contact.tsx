@@ -2,6 +2,7 @@ import '../../css/contact/contact.css';
 // import React from 'react';
 import {github, linkedin, envelope, paperPlane} from '../../assets/images/icons/icons';
 import {useInDevelopmentLink} from "../utils/inDev/developmentContext.tsx";
+import {useTranslation} from "react-i18next";
 
 
 const Contact = () => {
@@ -11,12 +12,15 @@ const Contact = () => {
     //     alert('Bear with me, currently in development :)');
     // };
 
+    const {t} = useTranslation();
+
     const handleInDevelopmentClick = useInDevelopmentLink();
 
     return (
         <section id="contact-section" /*style={{ marginTop: 300}}*/>
             <div className="contact-container">
-                <h2>Get In Touch</h2>
+
+                <h2>{t('hero.getInTouch')}</h2>
 
                 <div className="social-links">
                     <a

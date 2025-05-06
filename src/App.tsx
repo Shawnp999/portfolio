@@ -1,19 +1,27 @@
-import {useRef} from 'react';
+import { useRef, lazy, Suspense } from 'react';
 import './App.css';
 import SideBar from "./components/sidebar/sideBar.tsx";
 import Hero from "./components/hero/hero.tsx";
 import About from './components/about/about';
-import Projects from "./components/projects/projects.tsx";
-import Contact from './components/contact/contact.tsx';
 import Footer from "./components/footer/footer.tsx";
 import Education from "./components/education/education.tsx";
-// import Skills from "./components/skills/skills.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 import StarsBackground from "./components/stars/starsBackground.tsx";
-import './css/globalCSS.css'
+import './css/globalCSS.css';
 import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
-import {DevelopmentProvider} from "./components/utils/inDev/developmentContext.tsx";
+import { DevelopmentProvider } from "./components/utils/inDev/developmentContext.tsx";
+import Contact from "./components/contact/contact.tsx";
 
+const Projects = lazy(() => import("./components/projects/projects.tsx"));
+// const Skills = lazy(() => import("./components/skills/skills.tsx"));
+
+const LoadingPlaceholder = () => (
+    <div className="lazy-loading-placeholder">
+        <div className="spinner-border text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div>
+    </div>
+);
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
@@ -32,28 +40,22 @@ function App() {
     // sidebar nav
     const navItems = [
         {id: 'hero', label: 'Home', ref: heroRef},
-        // {id: 'about', label: 'About', ref: aboutRef},
+        {id: 'about', label: 'About', ref: aboutRef},
         {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
         {id: 'projects', label: 'Projects', ref: projectsRef},
         {id: 'contact', label: 'Contact', ref: contactRef},
         // {id: 'skillsRef', label: 'Skills', ref: skillsRef},
-
     ];
-
 
     return (
         <DevelopmentProvider>
             <div className="app">
-
                 <StarsBackground/>
                 <BackgroundCircles count={10} sectionId="hero"/>
                 <ShootingStars/>
 
-
                 <main className="content">
-
                     <div ref={heroRef} id="hero" className="section-container">
-
                         <Hero
                             scrollToSection={scrollToSection}
                             projectsRef={projectsRef}
@@ -70,15 +72,22 @@ function App() {
                     </div>
 
                     <div ref={projectsRef} id="projects" className="section-container">
-                        <Projects/>
+                        <Suspense fallback={<LoadingPlaceholder />}>
+                            <Projects />
+                        </Suspense>
                     </div>
+
+                    {/*<div ref={skillsRef} id="skillsRef" className="section-container">*/}
+                    {/*    <Suspense fallback={<LoadingPlaceholder />}>*/}
+                    {/*        <Skills />*/}
+                    {/*    </Suspense>*/}
+                    {/*</div>*/}
 
                     <div ref={contactRef} id="contact" className="section-container">
                         <Contact/>
                     </div>
 
                     <Footer/>
-
                 </main>
 
                 <SideBar navItems={navItems} scrollToSection={scrollToSection}/>
@@ -86,5 +95,6 @@ function App() {
         </DevelopmentProvider>
     );
 }
+
 
 export default App;
