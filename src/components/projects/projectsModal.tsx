@@ -63,15 +63,15 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title className="gap-2">
-          <span className="lh-1">
-            {project.title} <small className="text-muted">{project.year}</small>
-          </span>
+                    <span className="lh-1">
+                      {project.title} <small className="text-muted">{project.year}</small>
+                    </span>
 
-                    <div className="d-flex gap-2 mt-2">
-                        {project.projectStatus.map((status) => (
-                            <StatusBadge key={status} status={status}/>
-                        ))}
-                    </div>
+                        <div className="d-flex gap-2 mt-2">
+                            {project.projectStatus.map((status) => (
+                                <StatusBadge key={status} status={status}/>
+                            ))}
+                        </div>
                 </Modal.Title>
             </Modal.Header>
 
