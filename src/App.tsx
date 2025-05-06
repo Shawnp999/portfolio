@@ -12,6 +12,7 @@ import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
 import { DevelopmentProvider } from "./components/utils/inDev/developmentContext.tsx";
 import Contact from "./components/contact/contact.tsx";
 import MemoryMonitor from "./components/utils/MemoryMonitor.tsx";
+import { Analytics } from "@vercel/analytics/react"
 
 
 const Projects = lazy(() => import("./components/projects/projects.tsx"));
@@ -52,12 +53,15 @@ function App() {
     return (
         <DevelopmentProvider>
             <div className="app">
+                <Analytics/>
                 <StarsBackground/>
                 <BackgroundCircles count={10} sectionId="hero"/>
                 <ShootingStars/>
 
                 <main className="content">
+
                     {process.env.NODE_ENV === 'development' && <MemoryMonitor />}
+
                     <div ref={heroRef} id="hero" className="section-container">
                         <Hero
                             scrollToSection={scrollToSection}
