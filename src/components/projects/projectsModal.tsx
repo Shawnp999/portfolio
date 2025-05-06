@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Card, Button, Badge, Row, Col, Container } from 'react-bootstrap';
 import '../../css/projects/projectsModal.css';
-import {getTechBadgeVariant, projectStatus} from "../utils/techBadges.ts";
+import {getTechBadgeVariant, projectStatus} from "../utils/badges/techBadges.ts";
 import {ProjectModalProps} from "../../types/types.ts";
 import {useTranslation} from "react-i18next";
 
@@ -71,7 +71,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                                     <div className="d-flex flex-wrap gap-2 p-2">
 
-                                    {project.technologies.map((tech) => (
+                                        {project.technologies.map((tech) => (
                                             <Badge
                                                 key={tech}
                                                 bg={getTechBadgeVariant(tech)}

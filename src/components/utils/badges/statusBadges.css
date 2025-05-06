@@ -1,0 +1,54 @@
+/* Status Badge Styles - Based on slugs */
+
+/* Base badge styles */
+.status-badge {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    height: fit-content;
+}
+
+/* Status-specific colors - using data attributes to target slugs */
+.badge[data-status="planning"] {
+    background-color: #6c757d !important; /* secondary */
+}
+
+.badge[data-status="in_development"] {
+    background-color: #ffc107 !important; /* warning */
+    color: #000 !important;
+}
+
+.badge[data-status="alpha"] {
+    background-color: #ffc107 !important; /* warning */
+    color: #000 !important;
+}
+
+.badge[data-status="beta_testing"] {
+    background-color: #17a2b8 !important; /* info */
+}
+
+.badge[data-status="release_candidate"] {
+    background-color: #9f7aea !important; /* purple */
+}
+
+.badge[data-status="production"] {
+    background-color: #28a745 !important; /* success */
+}
+
+.badge[data-status="maintained"] {
+    background-color: #17a2b8 !important; /* info */
+}
+
+.badge[data-status="legacy"] {
+    background-color: #6c757d !important; /* secondary */
+}
+
+.badge[data-status="deprecated"] {
+    background-color: #dc3545 !important; /* danger */
+}
+
+.badge[data-status="archived"] {
+    background-color: #343a40 !important; /* dark */
+}

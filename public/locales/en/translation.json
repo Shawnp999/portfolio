@@ -3,7 +3,6 @@
     "test": "testenglish",
     "title1": "Hi, I'm Shawn Pantzlaff",
     "title2": "I'm a front-end developer",
-    "title3": "Son of a b",
     "title4": "I like making cool things",
     "description1": "I'm a Frontend Developer passionate about building user-focused React/React Native applications. Thrown into a fast-paced environment early on, I quickly adapted alongside mentors and joined startup projects that taught me to embrace challenges and deliver solutions despite evolving requirements.",
     "description2": "Growing up between Minnesota and Latvia before attending Ontario Hockey Academy gave me diverse perspectives and fluency in English, German, and Russian—skills that enhance my collaborative approach to problem-solving.",
@@ -71,9 +70,16 @@
       "projectStatus": ["In Development"]
     },
     "statusLabels": {
+      "planning": "Planning",
+      "development": "In Development",
+      "alpha": "Alpha",
+      "beta": "Beta Testing",
+      "rc": "Release Candidate",
       "production": "Production",
-      "inDevelopment": "In Development",
-      "betaTesting": "Beta Testing"
+      "maintained": "Maintained",
+      "legacy": "Legacy",
+      "deprecated": "Deprecated",
+      "archived": "Archived"
     }
   },
   "education": {

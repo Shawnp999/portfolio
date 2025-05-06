@@ -79,7 +79,7 @@ export const MyProjects = () => {
             imageHeight: projectImages.consultingSite.height,
             githubUrl: 'N/A',
             liveUrl: 'https://websmartcons.com/',
-            projectStatus: [t('projects.statusLabels.inDevelopment'), t('projects.statusLabels.betaTesting')]
+            projectStatus: [t('projects.statusLabels.development'), t('projects.statusLabels.beta')]
         },
         {
             id: 6,
@@ -94,7 +94,7 @@ export const MyProjects = () => {
             imageHeight: projectImages.scannsplit.height,
             githubUrl: 'N/A',
             liveUrl: 'https://play.google.com/store/apps/details?id=com.scannsplit.mobapp&hl=en',
-            projectStatus: [t('projects.statusLabels.betaTesting'), t('projects.statusLabels.inDevelopment')]
+            projectStatus: [t('projects.statusLabels.beta'), t('projects.statusLabels.development')]
         },
         {
             id: 7,
@@ -106,7 +106,7 @@ export const MyProjects = () => {
             imageUrl: '/project6.jpg',
             githubUrl: 'https://github.com/Shawnp999/portfolio',
             liveUrl: '',
-            projectStatus: [t('projects.statusLabels.inDevelopment')]
+            projectStatus: [t('projects.statusLabels.development')]
         }
     ];
 

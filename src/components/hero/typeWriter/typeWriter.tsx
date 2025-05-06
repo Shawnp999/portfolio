@@ -49,7 +49,6 @@ const TypeWriter = () => {
         const phrases = [
             t('hero.title1'),
             t('hero.title2'),
-            t('hero.title3'),
             t('hero.title4')
         ];
 
@@ -80,7 +79,7 @@ const TypeWriter = () => {
                     clearInterval(animationRef.current!);
                     animationRef.current = window.setTimeout(() => {
                         animationRef.current = window.setInterval(typeWriter, 100);
-                    }, 200) as unknown as number;
+                    }, 100) as unknown as number;
                     return;
                 }
             } else {
@@ -103,7 +102,7 @@ const TypeWriter = () => {
 
                     animationRef.current = window.setTimeout(() => {
                         animationRef.current = window.setInterval(typeWriter, 50);
-                    }, 500) as unknown as number;
+                    }, 200) as unknown as number;
                     return;
                 }
             }

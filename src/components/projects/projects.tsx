@@ -3,7 +3,7 @@ import {Card, Badge, Row, Col} from 'react-bootstrap';
 import '../../css/projects/projects.css';
 import ProjectModal from "./projectsModal.tsx";
 import {MyProjects} from "./myProjects.ts";
-import {getTechBadgeVariant, projectStatus} from "../utils/techBadges.ts";
+import {getTechBadgeVariant, projectStatus} from "../utils/badges/techBadges.ts";
 import {Project} from "../../types/types.ts";
 import '../../css/globalCSS.css';
 import {useTranslation} from "react-i18next";
