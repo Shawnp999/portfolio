@@ -32,7 +32,7 @@ const Projects = () => {
                 {t('projects.sectionDescription')}
             </div>
 
-            <Row className="g-4 projects-grid">
+            <Row className="g-4 my-2 mx-0">
                 {myProjects.map(project => (
                     <Col key={project.id} md={6} lg={6}>
                         <Card

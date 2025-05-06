@@ -1,41 +1,41 @@
-/* Animated gradient border for project cards */
 
-/* Define CSS custom property for animating gradient border */
 @property --angle {
     syntax: '<angle>';
     initial-value: 0deg;
     inherits: false;
 }
 
- /*High-contrast color scheme */
+@property --shadow-color {
+    syntax: '<color>';
+    initial-value: rgba(126, 255, 217, 0.4);
+    inherits: false;
+}
+
 :root {
     --border-width: 2px;
     --border-radius: 8px;
     --glow-blur: 5px;
     --glow-spread: 3px;
 
-    /* More distinct color palette */
-    --color1: #7effd9; /* Bright teal */
-    --color2: #00a8e8; /* Vibrant blue */
-    --color3: #0059ff; /* Deep purple */
-    --color4: #00c170; /* Emerald green */
-    --color5: #00ffbf; /* Bright mint */
+    --color1: #7effd9;
+    --color2: #00a8e8;
+    --color3: #0059ff;
+    --color4: #00c170;
+    --color5: #00ffbf;
+
+    --shadow-color1: rgba(126, 255, 217, 0.4);
+    --shadow-color2: rgba(0, 168, 232, 0.4);
+    --shadow-color3: rgba(0, 89, 255, 0.4);
+    --shadow-color4: rgba(0, 193, 112, 0.4);
+    --shadow-color5: rgba(0, 255, 191, 0.4);
 }
 
-
-/* Project card base styles */
 .project-card {
-    /* Basic card styling */
-    background-color: #1e1e1e !important;
+    box-shadow: 0 0 5px 4px var(--shadow-color);
+    animation: shadow-color-cycle 3s linear infinite;
     position: relative;
-    cursor: pointer;
-    height: 100%;
-    transition: transform 0.3s ease;
-    box-sizing: border-box;
-    z-index: 1;
 }
 
-/* Before element for the gradient border */
 .project-card::before {
     content: "";
     position: absolute;
@@ -57,28 +57,21 @@
     mask-composite: exclude;
     pointer-events: none;
 
-    /* Add glow effect */
     filter: drop-shadow(0 0 var(--glow-blur) var(--color1));
-}
 
-/* Apply animation to all cards */
-.project-card::before {
     animation: rotate-border 6s linear infinite;
 }
 
-/* Speed up animation on hover */
 .project-card:hover::before {
     animation: rotate-border 3s linear infinite;
     filter: drop-shadow(0 0 calc(var(--glow-blur) + 2px) var(--glow-spread) var(--color1));
 }
 
-/* Additional hover effects */
 .project-card:hover {
-    transform: translateY(-5px);
-    background-color: #121212 !important;
+    box-shadow: 0 0 10px 5px var(--shadow-color);
+    animation: shadow-color-cycle-hover 1s linear infinite;
 }
 
-/* Add a visual indicator that card is clickable */
 .project-card::after {
     content: "Click to view details";
     position: absolute;
@@ -97,24 +90,48 @@
     opacity: 1;
 }
 
-/* Make the border wider for more visibility */
+@keyframes rotate-border {
+    from { --angle: 0deg; }
+    to { --angle: 360deg; }
+}
+
+@keyframes shadow-color-cycle {
+    0% { --shadow-color: var(--shadow-color1); }
+    25% { --shadow-color: var(--shadow-color2); }
+    50% { --shadow-color: var(--shadow-color3); }
+    75% { --shadow-color: var(--shadow-color4); }
+    100% { --shadow-color: var(--shadow-color1); }
+}
+
+@keyframes shadow-color-cycle-hover {
+    0% { --shadow-color: rgba(126, 255, 217, 0.3); }
+    25% { --shadow-color: rgba(0, 168, 232, 0.3); }
+    50% { --shadow-color: rgba(0, 89, 255, 0.3); }
+    75% { --shadow-color: rgba(0, 193, 112, 0.3); }
+    100% { --shadow-color: rgba(126, 255, 217, 0.3); }
+}
+
 @media (min-width: 768px) {
     :root {
         --border-width: 3px;
     }
 }
 
-/* Keyframes for the rotating border animation */
-@keyframes rotate-border {
-    from {
-        --angle: 0deg;
+@media (max-width: 768px) {
+    :root {
+        --border-width: 2px;
+        --glow-blur: 6px;
+        --glow-spread: 3px;
     }
-    to {
-        --angle: 360deg;
+
+    .project-card::after {
+        opacity: 0;
+        bottom: 5px;
+        right: 5px;
     }
 }
 
-/* Fallback for browsers that don't support @property */
+/* fallbacks */
 @supports not (background: paint(something)) {
     .project-card::before {
         background: conic-gradient(
@@ -126,19 +143,12 @@
         );
         animation: none;
     }
-}
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    :root {
-        --border-width: 2px;
-        --glow-blur: 6px;
-        --glow-spread: 3px;
+    .project-card {
+        box-shadow: 0 0 5px 2px rgba(126, 255, 217, 0.4);
     }
 
-    .project-card::after {
-        opacity: 0.7;
-        bottom: 5px;
-        right: 5px;
+    .project-card:hover {
+        box-shadow: 0 0 10px 4px rgba(126, 255, 217, 0.3);
     }
 }
