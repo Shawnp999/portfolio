@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Card, Badge, Row, Col} from 'react-bootstrap';
 import '../../css/projects/projects.css';
-import '../../css/projects/borderAnimation.css'; // Import the new border animation CSS
+import '../../css/projects/borderAnimation.css';
 import ProjectModal from "./projectsModal.tsx";
 import {MyProjects} from "./myProjects.ts";
 import {getTechBadgeVariant, projectStatus} from "../utils/badges/techBadges.ts";
@@ -10,6 +10,7 @@ import '../../css/globalCSS.css';
 import {useTranslation} from "react-i18next";
 
 const Projects = () => {
+
     const {t} = useTranslation();
     const myProjects = MyProjects();
 
@@ -38,7 +39,7 @@ const Projects = () => {
                         <Card
                             className="project-card h-100"
                             onClick={() => openModal(project)}
-                            style={{ borderRadius: 'var(--border-radius)' }}
+                            style={{borderRadius: 'var(--border-radius)'}}
                         >
                             <Card.Body className="d-flex flex-column">
                                 <div className="project-header d-flex w-100 align-items-start mb-3">
@@ -60,6 +61,7 @@ const Projects = () => {
                                                 </Badge>
                                             )}
                                         </div>
+
                                         <span className="project-year">{project.year}</span>
 
                                     </Card.Title>
@@ -83,6 +85,7 @@ const Projects = () => {
                                 </div>
                             </Card.Body>
                         </Card>
+
                     </Col>
                 ))}
             </Row>

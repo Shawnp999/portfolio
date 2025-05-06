@@ -1,10 +1,8 @@
-/* TypeWriter styles */
 .typewriter {
     position: relative;
     transition: opacity 0.2s ease-out;
 }
 
-/* Fade out when restarting */
 .typewriter.restarting {
     opacity: 0;
 }
@@ -19,7 +17,6 @@
     margin-left: 3px;
 }
 
-/* Animation for cursor blinking */
 @keyframes cursor-blink {
     0%, 70% {
         opacity: 1;
@@ -29,18 +26,17 @@
     }
 }
 
-/* Clean transition when language changes */
 .language-transition .typewriter {
     opacity: 0;
     transition: opacity 0.15s ease-out;
 }
 
 .typewriter {
-    font-size: 28px; /* Default for mobile */
+    font-size: 28px;
 }
 
 @media (min-width: 768px) {
     .typewriter {
-        font-size: 52px; /* Larger screens */
+        font-size: 52px;
     }
 }

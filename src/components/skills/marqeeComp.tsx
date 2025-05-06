@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import '../../css/skills/marqueeComp.css'
 import {MarqueeProps} from "../../types/types.ts";
 
@@ -12,7 +12,6 @@ const Marquee: React.FC<MarqueeProps> = ({
     const marqueeRef = useRef<HTMLDivElement>(null);
     const [isPaused, setIsPaused] = useState(false);
 
-    // Ensure we have enough items to create a smooth scrolling effect
     const displayItems = items.length >= 10
         ? items
         : [...items, ...items, ...items];
@@ -25,16 +24,13 @@ const Marquee: React.FC<MarqueeProps> = ({
 
         if (!firstChild) return;
 
-        // Get the width of all items (first set of items)
         const itemsWidth = firstChild.offsetWidth;
 
-        // Clone the first child and append it
         const clone = firstChild.cloneNode(true) as HTMLElement;
         marqueeElement.appendChild(clone);
 
-        // Set the animation properties
         const directionMultiplier = direction === 'left' ? -1 : 1;
-        //const duration = (itemsWidth / speed) * 10; // Adjusted for speed factor
+        //const duration = (itemsWidth / speed) * 10; // adjusted for speed factor
 
         let animationFrameId: number;
         let startTime: number;
@@ -45,13 +41,13 @@ const Marquee: React.FC<MarqueeProps> = ({
 
             // Don't animate if paused
             if (!isPaused) {
-                // Calculate elapsed time
+
                 const elapsed = timestamp - startTime;
 
-                // Calculate how far we've moved
+                // calc how far we've moved
                 currentPosition = (elapsed / 1000) * speed * directionMultiplier;
 
-                // If we've gone beyond the width of one set of items, reset
+                // reset
                 if (Math.abs(currentPosition) >= itemsWidth) {
                     startTime = timestamp;
                     currentPosition = 0;

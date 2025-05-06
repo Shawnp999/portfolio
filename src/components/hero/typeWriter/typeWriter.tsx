@@ -1,9 +1,9 @@
-import { useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import {useRef, useEffect} from 'react';
+import {useTranslation} from 'react-i18next';
 import './typeWriter.css';
 
 const TypeWriter = () => {
-    const { t, i18n } = useTranslation();
+    const {t, i18n} = useTranslation();
     const titleRef = useRef<HTMLHeadingElement>(null);
     const animationRef = useRef<number | null>(null);
     const languageRef = useRef<string>(i18n.language);

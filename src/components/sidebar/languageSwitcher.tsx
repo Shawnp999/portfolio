@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, {useState, useEffect} from 'react';
+import {useTranslation} from 'react-i18next';
 import Dropdown from 'react-bootstrap/Dropdown';
 import '../../css/sideBar/languageSwitcher.css';
 
@@ -11,13 +11,13 @@ interface Language {
 }
 
 const LanguageSwitcher: React.FC = () => {
-    const { i18n } = useTranslation();
+    const {i18n} = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const languages: Language[] = [
-        { code: 'en', name: 'EN', displayName: 'English', flag: '/flags/en.png' },
-        { code: 'ru', name: 'RU', displayName: 'Русский', flag: '/flags/ru.png' }
+        {code: 'en', name: 'EN', displayName: 'English', flag: '/flags/en.png'},
+        {code: 'ru', name: 'RU', displayName: 'Русский', flag: '/flags/ru.png'}
     ];
 
     const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
@@ -40,29 +40,31 @@ const LanguageSwitcher: React.FC = () => {
             return;
         }
 
-        // Smooth language transition
         document.body.classList.add('language-transition');
 
-        // Change the language after a short delay
+        // allow react to update, short delay
         setTimeout(() => {
             i18n.changeLanguage(langCode);
 
-            // Remove transition class after language has changed
             setTimeout(() => {
                 document.body.classList.remove('language-transition');
-            }, 300);
+            }, 200);
         }, 50);
 
         setIsOpen(false);
     };
 
     const toggleDropdown = () => {
+
         if (isOpen && isMobile) {
             setIsOpen(false);
+
             document.querySelector('.language-dropdown')?.classList.add('force-hide');
+
             setTimeout(() => {
                 document.querySelector('.language-dropdown')?.classList.remove('force-hide');
-            }, 300);
+            }, 200);
+
         } else {
             setIsOpen(!isOpen);
         }
@@ -72,7 +74,7 @@ const LanguageSwitcher: React.FC = () => {
         setIsOpen(nextIsOpen);
     };
 
-    const CustomToggle = React.forwardRef<HTMLDivElement, any>(({ onClick }, ref) => (
+    const CustomToggle = React.forwardRef<HTMLDivElement, any>(({onClick}, ref) => (
         <div
             className="selected-language"
             onClick={(e) => {
@@ -86,7 +88,7 @@ const LanguageSwitcher: React.FC = () => {
                 src={currentLanguage.flag}
                 alt={`${currentLanguage.name} flag`}
                 className="flag-icon"
-                style={{ width: 32, height: 32 }}
+                style={{width: 32, height: 32}}
             />
         </div>
     ));
@@ -98,7 +100,7 @@ const LanguageSwitcher: React.FC = () => {
                 show={isOpen}
                 onToggle={handleToggle}
             >
-                <Dropdown.Toggle as={CustomToggle} id="language-dropdown" />
+                <Dropdown.Toggle as={CustomToggle} id="language-dropdown"/>
 
                 <Dropdown.Menu className="language-dropdown">
                     {languages.map((lang) => (

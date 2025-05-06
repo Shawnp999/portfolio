@@ -86,6 +86,7 @@
 .project-link i {
     font-size: 1rem;
 }
+
 .project-tech {
     display: flex;
     flex-wrap: wrap;
@@ -117,7 +118,6 @@
     margin-bottom: 0;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .project-card .card-body {
         padding: 1.25rem;

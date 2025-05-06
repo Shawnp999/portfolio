@@ -1,6 +1,6 @@
 import '../../css/contact/contact.css';
 // import React from 'react';
-import { github, linkedin, envelope, paperPlane } from '../../assets/images/icons/icons';
+import {github, linkedin, envelope, paperPlane} from '../../assets/images/icons/icons';
 import {useInDevelopmentLink} from "../utils/inDev/developmentContext.tsx";
 
 
@@ -26,7 +26,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <img src={github} height="30px" width='30px' alt="Github logo" />
+                        <img src={github} height="30px" width='30px' alt="Github logo"/>
                     </a>
 
                     <a

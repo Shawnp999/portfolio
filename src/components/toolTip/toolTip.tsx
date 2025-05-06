@@ -1,7 +1,6 @@
 import React from 'react';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {OverlayTrigger, Tooltip} from 'react-bootstrap';
 import {TooltipLinkProps} from "../../types/types.ts";
-
 
 
 const TooltipLink: React.FC<TooltipLinkProps> = ({

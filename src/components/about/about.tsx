@@ -58,14 +58,14 @@ const About = () => {
             {/*<div className="about-bg-decoration">*/}
             {/*    <div className="code-block">*/}
             {/*        <div className="code-line"><span className="code-keyword">const</span> developer = {'{'}</div>*/}
-                {/*        <div className="code-line">  name: <span className="code-string">'Shawn'</span>,</div>*/}
-                {/*        <div className="code-line">  role: <span className="code-string">'Frontend Developer'</span>,</div>*/}
-                {/*        <div className="code-line">  loves: [<span className="code-string">'React'</span>, <span className="code-string">'TypeScript'</span>, <span className="code-string">'Design'</span>]</div>*/}
-                {/*        <div className="code-line">{'}'}</div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+            {/*        <div className="code-line">  name: <span className="code-string">'Shawn'</span>,</div>*/}
+            {/*        <div className="code-line">  role: <span className="code-string">'Frontend Developer'</span>,</div>*/}
+            {/*        <div className="code-line">  loves: [<span className="code-string">'React'</span>, <span className="code-string">'TypeScript'</span>, <span className="code-string">'Design'</span>]</div>*/}
+            {/*        <div className="code-line">{'}'}</div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </section>
-);
+    );
 };
 
 export default About;

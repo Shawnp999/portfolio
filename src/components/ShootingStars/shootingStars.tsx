@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useSpring, animated } from '@react-spring/web';
+import React, {useEffect, useState, useRef} from 'react';
+import {useSpring, animated} from '@react-spring/web';
 import '../../css/shootingStars/shootingStars.css';
 import type {ShootingStar} from '../../types/types.ts'
 
 
 const ShootingStars: React.FC = () => {
+
     const [stars, setStars] = useState<ShootingStar[]>([]);
     const isMobile = window.innerWidth <= 768;
 
@@ -54,7 +55,7 @@ const ShootingStars: React.FC = () => {
     };
 
     useEffect(() => {
-        const initialStars: ShootingStar[] = Array.from({ length: 5 }, (_, i) =>
+        const initialStars: ShootingStar[] = Array.from({length: 5}, (_, i) =>
             generateStar(Date.now() + i)
         );
         setStars(initialStars);
@@ -77,13 +78,13 @@ const ShootingStars: React.FC = () => {
     return (
         <div className="shooting-stars-container">
             {stars.map((star) => (
-                <ShootingStar key={star.id} star={star} />
+                <ShootingStar key={star.id} star={star}/>
             ))}
         </div>
     );
 };
 
-const ShootingStar: React.FC<{ star: ShootingStar }> = ({ star }) => {
+const ShootingStar: React.FC<{ star: ShootingStar }> = ({star}) => {
     // Define the animated values
     const styles = useSpring({
         from: {
@@ -101,7 +102,7 @@ const ShootingStar: React.FC<{ star: ShootingStar }> = ({ star }) => {
     });
 
     return (
-        <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+        <div style={{position: 'absolute', width: '100%', height: '100%'}}>
             <animated.div
                 style={{
                     ...styles,

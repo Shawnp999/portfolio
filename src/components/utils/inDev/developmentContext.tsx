@@ -41,7 +41,7 @@ export const DevelopmentProvider: React.FC<DevelopmentProviderProps> = ({ childr
     );
 };
 
-// Create a hook for handling "in development" links
+// create a hook
 export const useInDevelopmentLink = () => {
     const { showDevelopmentModal } = useDevelopment();
 

@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 import '../../css/stars/starBackground.css';
 
 function StarBackground() {
 
     const allStars = useMemo(() => {
 
-        const smallStars = Array.from({ length: 100 }, () => ({
+        const smallStars = Array.from({length: 100}, () => ({
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             size: 1 + Math.random(),
@@ -15,7 +15,7 @@ function StarBackground() {
             color: 'rgba(255, 255, 255, 1)'
         }));
 
-        const mediumStars = Array.from({ length: 50 }, () => ({
+        const mediumStars = Array.from({length: 50}, () => ({
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             size: 2 + Math.random() * 1.5,
@@ -25,7 +25,7 @@ function StarBackground() {
             color: 'rgba(210, 230, 255, 1)'
         }));
 
-        const largeStars = Array.from({ length: 15 }, () => ({
+        const largeStars = Array.from({length: 15}, () => ({
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             size: 3.5 + Math.random() * 1.5,

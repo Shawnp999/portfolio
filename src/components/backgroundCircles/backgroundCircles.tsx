@@ -1,10 +1,9 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 import '../../css/backgroundCircles/backgroundCircles.css';
 import {BackgroundCirclesProps} from "../../types/types.ts";
 
 
-
-const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({ count, sectionId }) => {
+const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({count, sectionId}) => {
 
     const circles = useMemo(() => {
 
