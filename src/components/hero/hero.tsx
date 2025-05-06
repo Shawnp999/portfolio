@@ -1,4 +1,3 @@
-// import React from 'react';
 import '../../css/hero/hero.css';
 import { HeroProps } from "../../types/types.ts";
 import { useTranslation } from "react-i18next";
@@ -10,7 +9,7 @@ const Hero = ({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
     return (
         <section id="hero-section">
             <div className="hero-content">
-                <div style={{ height: '200px', minHeight: '200px' }}>
+                <div className="typewriter-container">
                     <TypeWriter/>
                 </div>
                 <div>{t('hero.test')}</div>

@@ -116,4 +116,19 @@
         /* width: 100%; */
         text-align: center;
     }
+
+    .typewriter-container {
+        height: 100px !important;
+        min-height: 100px !important;
+    }
 }
+
+.typewriter-container {
+    height: 200px;
+    min-height: 200px;
+}
+
+/*@media (min-width: 768px) {*/
+/*    */
+/*}*/
+

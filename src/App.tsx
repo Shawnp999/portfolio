@@ -32,9 +32,9 @@ function App() {
     // sidebar nav
     const navItems = [
         {id: 'hero', label: 'Home', ref: heroRef},
-        {id: 'about', label: 'About', ref: aboutRef},
+        // {id: 'about', label: 'About', ref: aboutRef},
         {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
-        // {id: 'projects', label: 'Projects', ref: projectsRef},
+        {id: 'projects', label: 'Projects', ref: projectsRef},
         {id: 'contact', label: 'Contact', ref: contactRef},
         // {id: 'skillsRef', label: 'Skills', ref: skillsRef},
 
@@ -72,10 +72,6 @@ function App() {
                     <div ref={projectsRef} id="projects" className="section-container">
                         <Projects/>
                     </div>
-
-                    {/*<div ref={skillsRef} id="skillsRef" className="section-container">*/}
-                    {/*    <Skills/>*/}
-                    {/*</div>*/}
 
                     <div ref={contactRef} id="contact" className="section-container">
                         <Contact/>
