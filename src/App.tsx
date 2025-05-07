@@ -13,6 +13,7 @@ import { DevelopmentProvider } from "./components/utils/inDev/developmentContext
 import Contact from "./components/contact/contact.tsx";
 import MemoryMonitor from "./components/utils/MemoryMonitor.tsx";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const Projects = lazy(() => import("./components/projects/projects.tsx"));
@@ -53,7 +54,11 @@ function App() {
     return (
         <DevelopmentProvider>
             <div className="app">
+                {/* analytics provided by vercel */}
                 <Analytics/>
+                <SpeedInsights/>
+
+
                 <StarsBackground/>
                 <BackgroundCircles count={10} sectionId="hero"/>
                 <ShootingStars/>
