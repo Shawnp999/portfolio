@@ -13,7 +13,7 @@ import { DevelopmentProvider } from "./components/utils/inDev/developmentContext
 import Contact from "./components/contact/contact.tsx";
 import MemoryMonitor from "./components/utils/MemoryMonitor.tsx";
 import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 
 const Projects = lazy(() => import("./components/projects/projects.tsx"));
