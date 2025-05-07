@@ -32,7 +32,7 @@
 
 .project-card {
     box-shadow: 0 0 5px 4px var(--shadow-color);
-    animation: shadow-color-cycle 3s linear infinite;
+    animation: shadow-color-cycle 2s linear infinite;
     position: relative;
 }
 
@@ -59,7 +59,7 @@
 
     filter: drop-shadow(0 0 var(--glow-blur) var(--color1));
 
-    animation: rotate-border 6s linear infinite;
+    animation: rotate-border 3s linear infinite;
 }
 
 .project-card:hover::before {
@@ -68,7 +68,7 @@
 }
 
 .project-card:hover {
-    box-shadow: 0 0 10px 5px var(--shadow-color);
+    box-shadow: 0 0 8px 5px var(--shadow-color);
     animation: shadow-color-cycle-hover 1s linear infinite;
 }
 
@@ -149,6 +149,6 @@
     }
 
     .project-card:hover {
-        box-shadow: 0 0 10px 4px rgba(126, 255, 217, 0.3);
+        box-shadow: 0 0 8px 4px rgba(126, 255, 217, 0.3);
     }
 }

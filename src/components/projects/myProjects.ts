@@ -106,7 +106,10 @@ export const useMyProjects = () => {
                 shortDescription: t('projects.project7.shortDescription'),
                 detailedDescription: t('projects.project7.detailedDescription'),
                 technologies: ['React', 'Git', 'i18n', 'Vite', 'TypeScript', 'Bootstrap 5', 'HTML/CSS'],
-                imageUrl: '/project6.jpg',
+                imageUrl: projectImages.myPortfolio.src,
+                imageAlt: projectImages.myPortfolio.alt,
+                imageWidth: projectImages.myPortfolio.width,
+                imageHeight: projectImages.myPortfolio.height,
                 githubUrl: 'https://github.com/Shawnp999/portfolio',
                 liveUrl: '',
                 projectStatus: [t('projects.statusLabels.development')]

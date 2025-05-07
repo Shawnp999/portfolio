@@ -1,15 +1,15 @@
-// src/components/ShootingStars/shootingStars.tsx
 import React, {useEffect, useState, useRef} from 'react';
 import {useSpring, animated} from '@react-spring/web';
 import '../../css/shootingStars/shootingStars.css';
 import type {ShootingStar} from '../../types/types.ts'
 
 const ShootingStars: React.FC = () => {
+
     const [stars, setStars] = useState<ShootingStar[]>([]);
     const isMobile = window.innerWidth <= 768;
     const maxPossibleDuration = useRef(4000);
-
     const intervalRef = useRef<number | null>(null);
+    const cleanupIntervalRef = useRef<number | null>(null);
 
     const generateStar = (id: number): ShootingStar => {
         const fromLeft = Math.random() > 0.5;
@@ -54,6 +54,20 @@ const ShootingStars: React.FC = () => {
         };
     };
 
+    // dedicated function for star cleanup
+    const cleanupStars = () => {
+        setStars((prevStars) => {
+            const bufferTime = maxPossibleDuration.current + 2000;
+            const now = Date.now();
+
+            const activeStars = prevStars.filter((star) => {
+                return now - star.id < star.duration + star.delay + bufferTime;
+            });
+
+            return activeStars;
+        });
+    };
+
     useEffect(() => {
         const initialStarsCount = isMobile ? 3 : 5;
 
@@ -65,27 +79,39 @@ const ShootingStars: React.FC = () => {
 
         intervalRef.current = window.setInterval(() => {
             setStars((prevStars) => {
+                // clean up old stars first
                 const bufferTime = maxPossibleDuration.current + 2000;
                 const now = Date.now();
 
-                const activeStars = prevStars.filter(
-                    (star) => now - star.id < star.duration + star.delay + bufferTime
-                );
+                const activeStars = prevStars.filter((star) => {
+                    return now - star.id < star.duration + star.delay + bufferTime;
+                });
 
                 const maxStars = isMobile ? 3 : 4;
 
                 if (activeStars.length < maxStars) {
-                    return [...activeStars, generateStar(now)];
+                    const newStar = generateStar(now);
+                    return [...activeStars, newStar];
                 }
 
                 return activeStars;
             });
         }, isMobile ? 4000 : 3000);
 
+        // dedicated cleanup
+        cleanupIntervalRef.current = window.setInterval(() => {
+            cleanupStars();
+        }, 2000);
+
         return () => {
             if (intervalRef.current !== null) {
                 window.clearInterval(intervalRef.current);
                 intervalRef.current = null;
+            }
+
+            if (cleanupIntervalRef.current !== null) {
+                window.clearInterval(cleanupIntervalRef.current);
+                cleanupIntervalRef.current = null;
             }
         };
     }, [isMobile]);
@@ -101,6 +127,14 @@ const ShootingStars: React.FC = () => {
 
 const ShootingStar: React.FC<{ star: ShootingStar }> = ({star}) => {
 
+    const isMounted = useRef(true);
+
+    useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
     const styles = useSpring({
         from: {
             transform: `translate(${star.startX}vw, ${star.startY}vh)`,
@@ -113,7 +147,7 @@ const ShootingStar: React.FC<{ star: ShootingStar }> = ({star}) => {
         config: {
             duration: star.duration,
         },
-        delay: star.delay,
+        delay: star.delay
     });
 
     return (

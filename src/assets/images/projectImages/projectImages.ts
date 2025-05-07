@@ -1,9 +1,10 @@
-import blurredBirthdayComponentImage from './CorrectResBirthdaysSPFCrossed.jpg'
-import blurredSeatingChartImage from './SeatingChatSPF.jpeg'
-import profileComponentImage from './ProfilePageSPF.jpeg'
-import userDirectoryScreenBlurImage from './UserDirectorySPFCrossed.jpg'
-import wbInsightsImage from './websmartconsdjang.jpeg'
-import Scannsplit from './ScannsplitReactNativ.jpeg'
+import blurredBirthdayComponentImage from './CorrectResBirthdaysSPFCrossed (1).webp'
+import blurredSeatingChartImage from './SeatingChatSPF.webp'
+import profileComponentImage from './ProfilePageSPF.webp'
+import userDirectoryScreenBlurImage from './UserDirectorySPFCrossed.webp'
+import wbInsightsImage from './websmartconsdjang.webp'
+import Scannsplit from './ScannsplitReactNativ.webp'
+import MyPortfolio from './PortfolioScreenshot.webp'
 import {ProjectImageCollection} from "../../../types/types.ts";
 
 
@@ -37,6 +38,11 @@ const projectImages: ProjectImageCollection = {
     scannsplit: {
         src: Scannsplit,
         alt: 'Blurred Birthday Component',
+
+    },
+    myPortfolio: {
+        src: MyPortfolio,
+        alt: 'My Portfolio IMG',
 
     }
 };
