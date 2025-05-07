@@ -5,7 +5,6 @@ import {getTechBadgeVariant, projectStatus} from "../utils/badges/techBadges.ts"
 import {ProjectModalProps} from "../../types/types.ts";
 import {useTranslation} from "react-i18next";
 
-// Memoized Badge component for technologies
 const TechBadge = memo(({tech}: { tech: string }) => (
     <Badge
         bg={getTechBadgeVariant(tech)}
@@ -17,7 +16,6 @@ const TechBadge = memo(({tech}: { tech: string }) => (
 
 TechBadge.displayName = 'TechBadge';
 
-// Memoized component for status badges
 const StatusBadge = memo(({status}: { status: string }) => (
     <Badge
         bg={projectStatus(status)}
