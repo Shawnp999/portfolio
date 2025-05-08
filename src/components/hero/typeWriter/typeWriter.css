@@ -33,10 +33,14 @@
 
 .typewriter {
     font-size: 28px;
+    text-align: center !important;
+
 }
 
 @media (min-width: 768px) {
     .typewriter {
         font-size: 52px;
+        text-align: start !important;
     }
+
 }

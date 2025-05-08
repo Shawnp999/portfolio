@@ -2,7 +2,7 @@ import { useRef, lazy, Suspense } from 'react';
 import './App.css';
 import SideBar from "./components/sidebar/sideBar.tsx";
 import Hero from "./components/hero/hero.tsx";
-import About from './components/about/about';
+// import About from './components/about/about';
 import Footer from "./components/footer/footer.tsx";
 import Education from "./components/education/education.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
@@ -75,9 +75,9 @@ function App() {
                         />
                     </div>
 
-                    <div ref={aboutRef} id="about" className="section-container">
-                        <About/>
-                    </div>
+                    {/*<div ref={aboutRef} id="about" className="section-container">*/}
+                    {/*    <About/>*/}
+                    {/*</div>*/}
 
                     <div ref={educationAndExperienceRef} id="educationAndExperienceRef" className="section-container">
                         <Education/>

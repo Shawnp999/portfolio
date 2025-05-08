@@ -44,7 +44,7 @@
 .description {
     font-size: var(--font-md);
     color: var(--text-primary);
-    margin: var(--spacing-md) 0 var(--spacing-xl);
+    /*margin: var(--spacing-md) 0 var(--spacing-xl);*/
     line-height: 1.6;
 }
 

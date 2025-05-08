@@ -15,14 +15,14 @@ const Hero = ({scrollToSection, projectsRef, contactRef}: HeroProps) => {
                     <TypeWriter/>
                 </div>
 
-                <div>{t('hero.test')}</div>
+                {/*<div>{t('hero.test')}</div>*/}
 
                 <p className="description">
                     {t('hero.description1')}
                     <br/><br/>
                     {t('hero.description2')}
-                    <br/><br/>
-                    {t('hero.description3')}
+                    {/*<br/><br/>*/}
+                    {/*{t('hero.description3')}*/}
                     <br/><br/>
                     {t('hero.description4')}
                 </p>
