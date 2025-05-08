@@ -35,7 +35,7 @@ export const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => 
 function App() {
 
     const heroRef = useRef<HTMLDivElement>(null);
-    const aboutRef = useRef<HTMLDivElement>(null);
+    // const aboutRef = useRef<HTMLDivElement>(null);
     const projectsRef = useRef<HTMLDivElement>(null);
     const educationAndExperienceRef = useRef<HTMLDivElement>(null);
     const contactRef = useRef<HTMLDivElement>(null);
@@ -44,7 +44,7 @@ function App() {
     // sidebar nav
     const navItems = [
         {id: 'hero', label: 'Home', ref: heroRef},
-        {id: 'about', label: 'About', ref: aboutRef},
+        // {id: 'about', label: 'About', ref: aboutRef},
         {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
         {id: 'projects', label: 'Projects', ref: projectsRef},
         {id: 'contact', label: 'Contact', ref: contactRef},

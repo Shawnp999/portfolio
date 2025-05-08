@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef, useCallback, memo} from 'react';
+import {useState, useEffect, useRef, useCallback, memo, useMemo} from 'react';
 import '../../css/sideBar/sideBar.css';
 import {SidebarProps, NavItem} from "../../types/types.ts";
 import LanguageSwitcher from "./languageSwitcher.tsx";
@@ -22,7 +22,7 @@ const NavItemComponent = memo(({
             onClick={handleClick}
         >
             {item.id === 'hero' && <span className="icon">#</span>}
-            {item.id === 'about' && <span className="icon">👤</span>}
+            {/*{item.id === 'about' && <span className="icon">👤</span>}*/}
             {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
             {item.id === 'projects' && <span className="icon">💼</span>}
             {item.id === 'contact' && <span className="icon">✉️</span>}
@@ -34,58 +34,74 @@ const NavItemComponent = memo(({
 
 NavItemComponent.displayName = 'NavItemComponent';
 
-const SideBar = ({navItems, scrollToSection}: SidebarProps) => {
+const SideBar = memo(({navItems, scrollToSection}: SidebarProps) => {
+
     const [activeSection, setActiveSection] = useState<string>('hero');
-    const observersRef = useRef<IntersectionObserver[]>([]);
+    const observerRef = useRef<IntersectionObserver | null>(null);
+    const visibleSectionsRef = useRef(new Set<string>());
 
-    // Cleanup observers on unmount
+    const observerOptions = useMemo(() => ({
+        threshold: 0.1,
+        rootMargin: '-30% 0px -30% 0px'
+    }), []);
+
     useEffect(() => {
-        return () => {
-            observersRef.current.forEach(observer => {
-                observer.disconnect();
-            });
-            observersRef.current = [];
+
+        const cleanup = () => {
+            if (observerRef.current) {
+                observerRef.current.disconnect();
+                observerRef.current = null;
+            }
         };
-    }, []);
 
-    useEffect(() => {
+        cleanup();
 
-        const setupObservers = () => {
+        const callback = (entries: IntersectionObserverEntry[]) => {
+            let needsUpdate = false;
 
-            observersRef.current.forEach(observer => {
-                observer.disconnect();
-            });
-            observersRef.current = [];
+            entries.forEach(entry => {
+                const id = entry.target.id;
 
-            navItems.forEach(item => {
-                if (item.ref.current) {
-                    const observer = new IntersectionObserver(
-                        entries => {
-                            entries.forEach(entry => {
-                                // If section is intersecting with at least 20% visibility
-                                if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
-                                    setActiveSection(item.id);
-                                }
-                            });
-                        },
-                        {
-                            rootMargin: '-10% 0px -80% 0px',
-                            threshold: [0.2, 0.5, 0.8]
-                        }
-                    );
-
-                    observer.observe(item.ref.current);
-                    observersRef.current.push(observer);
+                if (entry.isIntersecting) {
+                    visibleSectionsRef.current.add(id);
+                    needsUpdate = true;
+                } else if (visibleSectionsRef.current.has(id)) {
+                    visibleSectionsRef.current.delete(id);
+                    needsUpdate = true;
                 }
             });
+
+            // Only proceed if we need to update
+            if (!needsUpdate) return;
+
+            let newActiveSection = '';
+
+            // Iterate through navItems
+            for (const item of navItems) {
+                if (visibleSectionsRef.current.has(item.id)) {
+                    newActiveSection = item.id;
+                }
+            }
+
+            if (newActiveSection && newActiveSection !== activeSection) {
+                setActiveSection(newActiveSection);
+            }
         };
 
-        const timer = setTimeout(() => {
-            setupObservers();
-        }, 100);
+        // intersectionObserver
+        observerRef.current = new IntersectionObserver(callback, observerOptions);
 
-        return () => clearTimeout(timer);
-    }, [navItems]);
+        // Observe all section elements
+        navItems.forEach(item => {
+            const element = document.getElementById(item.id);
+            if (element) {
+                observerRef.current?.observe(element);
+            }
+        });
+
+        return cleanup;
+
+    }, [navItems, observerOptions, activeSection]);
 
     const handleSidebarItemClick = useCallback((ref: React.RefObject<HTMLDivElement | null>, id: string) => {
         setActiveSection(id);
@@ -112,6 +128,8 @@ const SideBar = ({navItems, scrollToSection}: SidebarProps) => {
             </nav>
         </aside>
     );
-};
+});
 
-export default memo(SideBar);
+SideBar.displayName = 'SideBar';
+
+export default SideBar;
