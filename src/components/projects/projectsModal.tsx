@@ -66,16 +66,16 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
             className="project-modal"
         >
             <Modal.Header closeButton>
-                <Modal.Title className="gap-2">
+                <Modal.Title>
                     <span className="lh-1">
                       {project.title} <small className="text-muted">{project.year}</small>
                     </span>
 
-                        <div className="d-flex gap-2 mt-2">
-                            {project.projectStatus.map((status) => (
-                                <StatusBadge key={status} status={status}/>
-                            ))}
-                        </div>
+                    <div className="d-flex gap-2 mt-2">
+                        {project.projectStatus.map((status) => (
+                            <StatusBadge key={status} status={status}/>
+                        ))}
+                    </div>
                 </Modal.Title>
             </Modal.Header>
 
@@ -97,9 +97,7 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
                                 </div>
 
                                 <div className="d-block d-lg-none">
-
                                     <h5 className="mt-2 mb-2">{t('projects.technologies')}</h5>
-
                                     <div className="d-flex flex-wrap gap-1 p-2">
                                         {project.technologies.map((tech) => (
                                             <TechBadge key={tech} tech={tech}/>
@@ -111,13 +109,11 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
 
                         <Col lg={6}>
                             <Card.Body className="p-0 h-100 d-flex flex-column">
-                                <Card.Text style={{whiteSpace: 'pre-line'}}>{project.detailedDescription}</Card.Text>
+                                <Card.Text style={{whiteSpace: 'pre-line', color : 'white'}}>{project.detailedDescription}</Card.Text>
 
                                 <div className="d-none d-lg-block">
-
-                                    <h5 className="mt-2 mb-3">{t('projects.technologies')}</h5>
-
-                                    <div className="d-flex flex-wrap gap-1 mb-2">
+                                    <div className="mt-2 mb-3">{t('projects.technologies')}:</div>
+                                    <div className="d-flex flex-wrap gap-2 mb-2">
                                         {project.technologies.map((tech) => (
                                             <TechBadge key={tech} tech={tech}/>
                                         ))}
@@ -130,7 +126,7 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
                                             <Button
                                                 variant="secondary"
                                                 disabled
-                                                className="medium-btn fs-14"
+                                                className="medium-btn"
                                             >
                                                 <i className="bi bi-x-circle me-2"></i>
                                                 {t('projects.buttons.privateRepository')}
@@ -141,7 +137,7 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
                                                 href={project.githubUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="medium-btn fs-14"
+                                                className="medium-btn"
                                             >
                                                 <i className="bi bi-github me-2"></i>
                                                 {t('projects.buttons.viewRepository')}
@@ -154,7 +150,7 @@ const ProjectModal = memo(({project, isOpen, onClose}: ProjectModalProps) => {
                                                 href={project.liveUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="medium-btn fs-14"
+                                                className="medium-btn"
                                             >
                                                 <i className="bi bi-box-arrow-up-right me-2"></i>
                                                 {t('projects.buttons.viewLiveDemo')}

@@ -9,11 +9,9 @@ import ProjectModal from "./projectsModal.tsx";
 import { MyProjects } from "./myProjects.ts";
 import { getTechBadgeVariant, projectStatus } from "../utils/badges/techBadges.ts";
 import { Project } from "../../types/types.ts";
-import '../../css/globalCSS.css';
 import { useTranslation } from "react-i18next";
 
 const ProjectCard = memo(({ project, onClick }: { project: Project, onClick: (project: Project) => void }) => {
-
     const handleClick = useCallback(() => {
         onClick(project);
     }, [onClick, project]);
@@ -25,10 +23,9 @@ const ProjectCard = memo(({ project, onClick }: { project: Project, onClick: (pr
             style={{ borderRadius: 'var(--border-radius)' }}
         >
             <Card.Body className="d-flex flex-column">
-                <div className="project-header d-flex w-100 align-items-start mb-3">
+                <div className="d-flex w-100 align-items-start mb-3">
                     <Card.Title className="mb-0 text-white w-100">
                         <div className="w-100 d-flex justify-content-between">
-
                             <span>{project.title}</span>
 
                             {project.projectStatus.length > 0 && (
@@ -42,13 +39,12 @@ const ProjectCard = memo(({ project, onClick }: { project: Project, onClick: (pr
                         </div>
 
                         <span className="project-year">{project.year}</span>
-
                     </Card.Title>
                 </div>
 
                 <Card.Text className="project-description mb-4">{project.shortDescription}</Card.Text>
 
-                <div className="project-tech mt-auto">
+                <div className="d-flex flex-wrap mt-auto">
                     {project.technologies.map(tech => (
                         <Badge
                             key={tech}
@@ -58,7 +54,6 @@ const ProjectCard = memo(({ project, onClick }: { project: Project, onClick: (pr
                             {tech}
                         </Badge>
                     ))}
-
                 </div>
             </Card.Body>
         </Card>
@@ -68,7 +63,6 @@ const ProjectCard = memo(({ project, onClick }: { project: Project, onClick: (pr
 ProjectCard.displayName = 'ProjectCard';
 
 const Projects = () => {
-
     const { t } = useTranslation();
     const myProjects = MyProjects();
 
@@ -85,15 +79,11 @@ const Projects = () => {
     }, []);
 
     return (
-        <section id="projects-section">
-
+        <section id="projects-section" className="mx-auto">
             <div className="common-header">{t('projects.sectionTitle')}</div>
+            <div className="common-description">{t('projects.sectionDescription')}</div>
 
-            <div className="common-description">
-                {t('projects.sectionDescription')}
-            </div>
-
-            <Row className="g-4 projects-grid p-2">
+            <Row className="g-4 p-2">
                 {myProjects.map(project => (
                     <Col key={project.id} md={6} lg={6}>
                         <ProjectCard project={project} onClick={openModal} />

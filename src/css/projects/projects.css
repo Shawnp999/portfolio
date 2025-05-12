@@ -2,26 +2,9 @@
     margin: 0 auto;
 }
 
-#projects-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
-    text-align: center;
-}
-
-.section-desc {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-    color: #a0aec0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
 .project-card {
     background-color: #1e1e1e !important;
     cursor: pointer;
-    height: 100%;
     transition: transform 0.3s ease, background-color 0.3s ease;
     overflow: hidden;
     border: none !important;
@@ -37,16 +20,6 @@
     z-index: 2;
 }
 
-.project-header {
-    margin-bottom: 1rem;
-}
-
-.project-card .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #ffffff !important;
-}
-
 .project-year {
     font-size: 0.9rem;
     color: #a0aec0;
@@ -57,40 +30,6 @@
     color: #d0d0d0 !important;
     font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.project-links {
-    display: flex;
-    gap: 10px;
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #d0d0d0;
-    text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.project-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-}
-
-.project-link i {
-    font-size: 1rem;
-}
-
-.project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: auto;
 }
 
 .status-badge {
@@ -102,20 +41,12 @@
     height: fit-content;
 }
 
-.card {
-    color: #d0d0d0;
-}
-
-.card-body {
-    flex: 1 1 auto;
-}
-
-.card-title {
-    margin-bottom: 0.5rem;
-}
-
-.card-text:last-child {
-    margin-bottom: 0;
+.tech-badge {
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    transition: transform 0.2s ease;
 }
 
 @media (max-width: 768px) {

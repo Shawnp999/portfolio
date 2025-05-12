@@ -91,27 +91,6 @@
     opacity: 1;
 }
 
-.status-badge {
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 500;
-    color: white;
-    height: fit-content;
-}
-
-.tech-badge {
-    padding: 6px 10px;
-    border-radius: 16px;
-    font-size: 14px;
-    font-weight: 500;
-    color: white;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    transition: transform 0.2s ease;
-}
-
-
 .medium-btn {
     padding: 10px 20px !important;
     border-radius: 4px;
