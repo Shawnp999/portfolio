@@ -55,8 +55,12 @@ function App() {
         <DevelopmentProvider>
             <div className="app">
                 {/* analytics provided by vercel */}
-                <Analytics/>
-                <SpeedInsights/>
+                {process.env.NODE_ENV === 'production' && (
+                    <Suspense fallback={null}>
+                        <Analytics />
+                        <SpeedInsights />
+                    </Suspense>
+                )}
 
 
                 <StarsBackground/>

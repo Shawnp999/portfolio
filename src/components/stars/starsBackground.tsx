@@ -1,49 +1,61 @@
-import React, { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import '../../css/stars/starBackground.css';
 
-function StarBackground() {
+const createStars = (
+    count: number,
+    sizeRange: [number, number],
+    opacityRange: [number, number],
+    durationRange: [number, number],
+    color: string
+) => {
+    return Array.from({ length: count }, () => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        size: sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]),
+        opacity: opacityRange[0] + Math.random() * (opacityRange[1] - opacityRange[0]),
+        animationDelay: `${Math.random() * 5}s`,
+        animationDuration: `${Math.random() * (durationRange[1] - durationRange[0]) + durationRange[0]}s`,
+        color
+    }));
+};
+
+const StarBackground = () => {
+
+    const isMobile = window.innerWidth <= 768;
+    const smallStarsCount = isMobile ? 8 : 15;
+    const mediumStarsCount = isMobile ? 5 : 10;
+    const largeStarsCount = isMobile ? 3 : 6;
 
     const allStars = useMemo(() => {
+        const smallStars = createStars(
+            smallStarsCount,
+            [1, 2],
+            [0.5, 0.8],
+            [8, 13],
+            'rgba(255, 255, 255, 1)'
+        );
 
-        const isMobile = window.innerWidth <= 768;
-        const smallStarsCount = isMobile ? 30 : 60;
-        const mediumStarsCount = isMobile ? 15 : 30;
-        const largeStarsCount = isMobile ? 5 : 10;
+        const mediumStars = createStars(
+            mediumStarsCount,
+            [2, 3.5],
+            [0.7, 1],
+            [7, 11],
+            'rgba(210, 230, 255, 1)'
+        );
 
-        const smallStars = Array.from({length: smallStarsCount}, () => ({
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            size: 1 + Math.random(),
-            opacity: 0.5 + Math.random() * 0.3,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${Math.random() * 5 + 8}s`,
-            color: 'rgba(255, 255, 255, 1)'
-        }));
-
-        const mediumStars = Array.from({length: mediumStarsCount}, () => ({
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            size: 2 + Math.random() * 1.5,
-            opacity: 0.7 + Math.random() * 0.3,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${Math.random() * 4 + 7}s`,
-            color: 'rgba(210, 230, 255, 1)'
-        }));
-
-        const largeStars = Array.from({length: largeStarsCount}, () => ({
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            size: 3.5 + Math.random() * 1.5,
-            opacity: 0.8 + Math.random() * 0.2,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${Math.random() * 6 + 10}s`,
-            color: 'rgba(255, 240, 210, 1)'
-        }));
+        const largeStars = createStars(
+            largeStarsCount,
+            [3.5, 5],
+            [0.8, 1],
+            [10, 16],
+            'rgba(255, 240, 210, 1)'
+        );
 
         return [...smallStars, ...mediumStars, ...largeStars];
-    }, []);
+    }, [smallStarsCount, mediumStarsCount, largeStarsCount]); // Add the dependencies
 
     const starElements = useMemo(() => {
+
         return allStars.map((star, index) => (
             <div
                 key={`star-${index}`}
@@ -66,20 +78,22 @@ function StarBackground() {
         ));
     }, [allStars]);
 
+    const containerStyle = {
+        position: 'fixed' as const,
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden' as const,
+        zIndex: -1,
+        pointerEvents: 'none' as const
+    };
+
     return (
-        <div className="star-field-container" style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            overflow: 'hidden',
-            zIndex: -1,
-            pointerEvents: 'none'
-        }}>
+        <div className="star-field-container" style={containerStyle}>
             {starElements}
         </div>
     );
-}
+};
 
-export default React.memo(StarBackground);
+export default memo(StarBackground);
