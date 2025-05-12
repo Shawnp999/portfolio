@@ -22,8 +22,8 @@ const ShootingStars: React.FC = () => {
         const verticalShift = (Math.random() * 50) * (Math.random() > 0.5 ? 1 : -1);
         const endY = startY + verticalShift;
 
-        const minDuration = 2600;
-        const maxDuration = 5200;
+        const minDuration = 3000;
+        const maxDuration = 6000;
 
         const baseDuration = minDuration + Math.random() * (maxDuration - minDuration);
         const duration = isMobile ? baseDuration / 1.2 : baseDuration;
@@ -69,7 +69,7 @@ const ShootingStars: React.FC = () => {
     };
 
     useEffect(() => {
-        const initialStarsCount = isMobile ? 3 : 5;
+        const initialStarsCount = isMobile ? 2 : 3;
 
         const initialStars: ShootingStar[] = Array.from(
             {length: initialStarsCount},

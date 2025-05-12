@@ -1,5 +1,8 @@
 import { useState, useCallback, memo } from 'react';
-import { Card, Badge, Row, Col } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import '../../css/projects/projects.css';
 import '../../css/projects/borderAnimation.css';
 import ProjectModal from "./projectsModal.tsx";

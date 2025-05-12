@@ -9,7 +9,12 @@ i18n
     .use(initReactI18next)
     .init({
         fallbackLng: 'en',
-        debug: true,
+        debug: false,
+        load: 'languageOnly',
+        detection: {
+            order: ['localStorage', 'navigator'],
+            caches: ['localStorage']
+        },
         interpolation: {
             escapeValue: false,
         },

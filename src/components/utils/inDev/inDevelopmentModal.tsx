@@ -1,5 +1,6 @@
 import React, {memo} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 interface InDevelopmentModalProps {
     show: boolean;

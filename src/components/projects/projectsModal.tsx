@@ -1,5 +1,11 @@
 import {useEffect, memo} from 'react';
-import {Modal, Card, Button, Badge, Row, Col, Container} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import '../../css/projects/projectsModal.css';
 import {getTechBadgeVariant, projectStatus} from "../utils/badges/techBadges.ts";
 import {ProjectModalProps} from "../../types/types.ts";
