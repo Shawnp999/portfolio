@@ -10,11 +10,11 @@
     gap: 60px;
 }
 
-.about-header {
-    font-size: var(--font-2xl);
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-}
+/*.about-header {*/
+/*    font-size: var(--font-2xl);*/
+/*    color: var(--text-primary);*/
+/*    font-weight: var(--font-weight-bold);*/
+/*}*/
 
 .about-text {
     color: var(--text-secondary);
