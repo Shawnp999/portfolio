@@ -8,7 +8,7 @@ import Education from "./components/education/education.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 import StarsBackground from "./components/stars/starsBackground.tsx";
 import './css/globalCSS.css';
-import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
+// import ShootingStars from "./components/ShootingStars/shootingStars.tsx";
 import { DevelopmentProvider } from "./components/utils/inDev/developmentContext.tsx";
 import Contact from "./components/contact/contact.tsx";
 import MemoryMonitor from "./components/utils/MemoryMonitor.tsx";
@@ -65,7 +65,7 @@ function App() {
 
                 <StarsBackground/>
                 <BackgroundCircles count={10} sectionId="hero"/>
-                <ShootingStars/>
+                {/*<ShootingStars/>*/}
 
                 <main className="content">
 
