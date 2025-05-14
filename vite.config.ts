@@ -17,7 +17,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-          'bootstrap': ['react-bootstrap', 'bootstrap'],
           'i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector', 'i18next-http-backend'],
           'animations': ['react-spring', '@react-spring/web'],
           'timeline': ['react-vertical-timeline-component']
