@@ -1,21 +1,23 @@
-// src/components/utils/MemoryMonitor.tsx
 import React, { useState, useEffect, useRef } from 'react';
+import './memoryMonitor.css';
 
 const MemoryMonitor: React.FC = () => {
+
     const [memoryUsage, setMemoryUsage] = useState<number | null>(null);
     const [peakMemory, setPeakMemory] = useState<number>(0);
     const [initialMemory, setInitialMemory] = useState<number | null>(null);
     const intervalRef = useRef<number | null>(null);
 
     useEffect(() => {
+
         const checkMemory = () => {
+
             if ('performance' in window && 'memory' in (performance as any)) {
                 const memory = (performance as any).memory;
                 const usedHeapSize = Math.round(memory.usedJSHeapSize / (1024 * 1024));
 
                 setMemoryUsage(usedHeapSize);
 
-                // Set initial memory on first measurement
                 if (initialMemory === null) {
                     setInitialMemory(usedHeapSize);
                 }
@@ -33,7 +35,6 @@ const MemoryMonitor: React.FC = () => {
         // Then set up interval, storing reference for cleanup
         intervalRef.current = window.setInterval(checkMemory, 2000);
 
-        // Clean up interval on unmount
         return () => {
             if (intervalRef.current !== null) {
                 clearInterval(intervalRef.current);
@@ -49,30 +50,22 @@ const MemoryMonitor: React.FC = () => {
         ? Math.round(((memoryUsage - initialMemory) / initialMemory) * 100)
         : 0;
 
+    const memoryStatusClass =
+        memoryUsage > 300 ? 'memory-high' :
+            memoryUsage > 150 ? 'memory-medium' :
+                'memory-normal';
+
+    const growthStatusClass =
+        growthPercentage > 50 ? 'memory-high' :
+            growthPercentage > 20 ? 'memory-medium' :
+                'memory-normal';
+
     return (
-        <div
-            style={{
-                position: 'fixed',
-                bottom: 10,
-                left: 10,
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                color: memoryUsage > 300 ? '#ff6b6b' : memoryUsage > 150 ? '#ffa502' : '#2ed573',
-                padding: '4px 8px',
-                borderRadius: 4,
-                fontSize: 12,
-                zIndex: 9999,
-                fontFamily: 'monospace',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '2px',
-            }}
-        >
-            <div>Current: {memoryUsage} MB</div>
-            <div>Peak: {peakMemory} MB</div>
+        <div className="memory-monitor-container">
+            <div className={`memory-item ${memoryStatusClass}`}>Current: {memoryUsage} MB</div>
+            <div className="memory-item">Peak: {peakMemory} MB</div>
             {initialMemory !== null && (
-                <div style={{
-                    color: growthPercentage > 50 ? '#ff6b6b' : growthPercentage > 20 ? '#ffa502' : '#2ed573'
-                }}>
+                <div className={`memory-item ${growthStatusClass}`}>
                     Growth: {growthPercentage}%
                 </div>
             )}

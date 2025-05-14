@@ -1,0 +1,36 @@
+.memory-monitor-container {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 9999;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.memory-item {
+    color: #2ed573;
+}
+
+.memory-normal {
+    color: #2ed573;
+}
+
+.memory-medium {
+    color: #ffa502;
+}
+
+.memory-high {
+    color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+    .memory-monitor-container {
+        bottom: 80px;
+    }
+}
