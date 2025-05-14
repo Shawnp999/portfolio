@@ -3,7 +3,7 @@ import './App.css';
 import SideBar from "./components/sidebar/sideBar.tsx";
 import Hero from "./components/hero/hero.tsx";
 // import About from './components/about/about';
-import Footer from "./components/footer/footer.tsx";
+// import Footer from "./components/footer/footer.tsx";
 import Education from "./components/education/education.tsx";
 import BackgroundCircles from "./components/backgroundCircles/backgroundCircles.tsx";
 import StarsBackground from "./components/stars/starsBackground.tsx";
@@ -45,8 +45,8 @@ function App() {
     const navItems = [
         {id: 'hero', label: 'Home', ref: heroRef},
         // {id: 'about', label: 'About', ref: aboutRef},
-        {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
         {id: 'projects', label: 'Projects', ref: projectsRef},
+        {id: 'educationAndExperienceRef', label: 'Education', ref: educationAndExperienceRef},
         {id: 'contact', label: 'Contact', ref: contactRef},
         // {id: 'skillsRef', label: 'Skills', ref: skillsRef},
     ];
@@ -69,7 +69,7 @@ function App() {
 
                 <main className="content">
 
-                    {process.env.NODE_ENV === 'development' && <MemoryMonitor />}
+                    {process.env.NODE_ENV === 'development' && <MemoryMonitor/>}
 
                     <div ref={heroRef} id="hero" className="section-container">
                         <Hero
@@ -83,15 +83,16 @@ function App() {
                     {/*    <About/>*/}
                     {/*</div>*/}
 
+                    <div ref={projectsRef} id="projects" className="section-container">
+                        <Suspense fallback={<LoadingPlaceholder/>}>
+                            <Projects/>
+                        </Suspense>
+                    </div>
+
                     <div ref={educationAndExperienceRef} id="educationAndExperienceRef" className="section-container">
                         <Education/>
                     </div>
 
-                    <div ref={projectsRef} id="projects" className="section-container">
-                        <Suspense fallback={<LoadingPlaceholder />}>
-                            <Projects />
-                        </Suspense>
-                    </div>
 
                     {/*<div ref={skillsRef} id="skillsRef" className="section-container">*/}
                     {/*    <Suspense fallback={<LoadingPlaceholder />}>*/}
@@ -103,7 +104,7 @@ function App() {
                         <Contact/>
                     </div>
 
-                    <Footer/>
+                    {/*<Footer/>*/}
                 </main>
 
                 <SideBar navItems={navItems} scrollToSection={scrollToSection}/>

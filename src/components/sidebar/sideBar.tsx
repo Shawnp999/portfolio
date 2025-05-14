@@ -23,8 +23,8 @@ const NavItemComponent = memo(({
         >
             {item.id === 'hero' && <span className="icon">#</span>}
             {/*{item.id === 'about' && <span className="icon">👤</span>}*/}
-            {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
             {item.id === 'projects' && <span className="icon">💼</span>}
+            {item.id === 'educationAndExperienceRef' && <span className="icon">🎓</span>}
             {item.id === 'contact' && <span className="icon">✉️</span>}
 
             <span className="tooltip">{item.label}</span>
