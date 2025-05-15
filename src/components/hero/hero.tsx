@@ -2,9 +2,18 @@ import '../../css/hero/hero.css';
 import {HeroProps} from "../../types/types.ts";
 import {useTranslation} from "react-i18next";
 import TypeWriter from "./typeWriter/typeWriter.tsx";
+import {useCallback} from "react";
 
 const Hero = ({scrollToSection, projectsRef, contactRef}: HeroProps) => {
     const {t} = useTranslation();
+
+    const handleViewWorkClick = useCallback(() => {
+        scrollToSection(projectsRef);
+    }, [scrollToSection, projectsRef]);
+
+    const handleContactClick = useCallback(() => {
+        scrollToSection(contactRef);
+    }, [scrollToSection, contactRef]);
 
     return (
         <section id="hero-section" className="d-flex align-items-center position-relative overflow-hidden">
@@ -25,14 +34,14 @@ const Hero = ({scrollToSection, projectsRef, contactRef}: HeroProps) => {
 
                     <button
                         className="btn-hero btn-primary"
-                        onClick={() => scrollToSection(projectsRef)}
+                        onClick={handleViewWorkClick}
                     >
                         {t('hero.viewWork')}
                     </button>
 
                     <button
                         className="btn-hero btn-secondary"
-                        onClick={() => scrollToSection(contactRef)}
+                        onClick={handleContactClick}
                     >
                         {t('hero.getInTouch')}
                     </button>
