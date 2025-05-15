@@ -1,10 +1,10 @@
-import {useRef, useEffect} from 'react';
-import {useTranslation} from 'react-i18next';
+import { useRef, useEffect, useCallback, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import './typeWriter.css';
 
-const TypeWriter = () => {
+const TypeWriter = memo(() => {
 
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
     const titleRef = useRef<HTMLHeadingElement>(null);
 
     const animationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -12,7 +12,8 @@ const TypeWriter = () => {
 
     const languageRef = useRef<string>(i18n.language);
 
-    const clearAnimations = () => {
+    const clearAnimations = useCallback(() => {
+
         if (animationIntervalRef.current) {
             clearInterval(animationIntervalRef.current);
             animationIntervalRef.current = null;
@@ -21,77 +22,77 @@ const TypeWriter = () => {
             clearTimeout(animationTimeoutRef.current);
             animationTimeoutRef.current = null;
         }
-    };
+    }, []);
 
-    useEffect(() => {
-        function startTypingAnimation() {
+    const startTypingAnimation = useCallback(() => {
+        if (!titleRef.current) return;
+
+        const phrases = [
+            t('hero.title1'),
+            t('hero.title2'),
+            t('hero.title4')
+        ];
+
+        let currentPhraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        const typeWriter = () => {
             if (!titleRef.current) return;
 
-            const phrases = [
-                t('hero.title1'),
-                t('hero.title2'),
-                t('hero.title4')
-            ];
+            const currentPhrase = phrases[currentPhraseIndex];
 
-            let currentPhraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+            if (isDeleting) {
+                // deleting text
+                titleRef.current.textContent = currentPhrase.substring(0, charIndex);
+                charIndex--;
 
-            const typeWriter = () => {
-                if (!titleRef.current) return;
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    charIndex = 0;
 
-                const currentPhrase = phrases[currentPhraseIndex];
-
-                if (isDeleting) {
-                    // deleting text
-                    titleRef.current.textContent = currentPhrase.substring(0, charIndex);
-                    charIndex--;
-
-                    if (charIndex < 0) {
-                        isDeleting = false;
-                        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-                        charIndex = 0;
-
-                        if (currentPhraseIndex === 0) {
-                            return;
-                        }
-
-                        clearAnimations();
-
-                        animationTimeoutRef.current = setTimeout(() => {
-                            animationIntervalRef.current = setInterval(typeWriter, 100);
-                        }, 100);
-
+                    if (currentPhraseIndex === 0) {
                         return;
                     }
-                } else {
-                    titleRef.current.textContent = currentPhrase.substring(0, charIndex + 1);
-                    charIndex++;
 
-                    if (charIndex === currentPhrase.length) {
-                        // if it's last phrase, keep it displayed
-                        if (currentPhraseIndex === phrases.length - 1) {
-                            clearAnimations();
-                            return;
-                        }
+                    clearAnimations();
 
-                        isDeleting = true;
+                    animationTimeoutRef.current = setTimeout(() => {
+                        animationIntervalRef.current = setInterval(typeWriter, 100);
+                    }, 100);
 
-                        // pause before deleting
-                        clearAnimations();
-
-                        animationTimeoutRef.current = setTimeout(() => {
-                            animationIntervalRef.current = setInterval(typeWriter, 50);
-                        }, 200);
-
-                        return;
-                    }
+                    return;
                 }
-            };
+            } else {
+                titleRef.current.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
 
-            animationIntervalRef.current = setInterval(typeWriter, 100);
-        }
+                if (charIndex === currentPhrase.length) {
+                    // if it's last phrase, keep it displayed
+                    if (currentPhraseIndex === phrases.length - 1) {
+                        clearAnimations();
+                        return;
+                    }
 
+                    isDeleting = true;
+
+                    // pause before deleting
+                    clearAnimations();
+
+                    animationTimeoutRef.current = setTimeout(() => {
+                        animationIntervalRef.current = setInterval(typeWriter, 50);
+                    }, 200);
+
+                    return;
+                }
+            }
+        };
+
+        animationIntervalRef.current = setInterval(typeWriter, 100);
+    }, [t, clearAnimations]);
+
+    useEffect(() => {
         // check if language changed
         if (languageRef.current !== i18n.language) {
             languageRef.current = i18n.language;
@@ -115,10 +116,8 @@ const TypeWriter = () => {
         }
 
         // clean up to prevent memory leaks
-        return () => {
-            clearAnimations();
-        };
-    }, [i18n.language, t]);
+        return clearAnimations;
+    }, [i18n.language, startTypingAnimation, clearAnimations]);
 
     return (
         <div
@@ -132,6 +131,7 @@ const TypeWriter = () => {
             data-language={i18n.language}
         ></div>
     );
-};
+});
+
 
 export default TypeWriter;

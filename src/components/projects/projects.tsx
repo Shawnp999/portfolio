@@ -62,7 +62,8 @@ const ProjectCard = memo(({ project, onClick }: { project: Project, onClick: (pr
 
 ProjectCard.displayName = 'ProjectCard';
 
-const Projects = () => {
+const Projects = memo(() => {
+
     const { t } = useTranslation();
     const myProjects = MyProjects();
 
@@ -98,6 +99,6 @@ const Projects = () => {
             />
         </section>
     );
-};
+});
 
 export default Projects;

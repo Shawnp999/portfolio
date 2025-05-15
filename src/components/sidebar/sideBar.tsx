@@ -88,10 +88,8 @@ const SideBar = memo(({navItems, scrollToSection}: SidebarProps) => {
             }
         };
 
-        // intersectionObserver
         observerRef.current = new IntersectionObserver(callback, observerOptions);
 
-        // Observe all section elements
         navItems.forEach(item => {
             const element = document.getElementById(item.id);
             if (element) {

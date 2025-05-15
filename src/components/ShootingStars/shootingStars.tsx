@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useRef, memo } from 'react';
+import { useEffect, useState, useRef, memo, useCallback } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import '../../css/shootingStars/shootingStars.css';
 import type { ShootingStar } from '../../types/types.ts'
 
 const ShootingStarItem = memo(({ star }: { star: ShootingStar }) => {
+
     const styles = useSpring({
         from: {
             transform: `translate(${star.startX}vw, ${star.startY}vh)`,
@@ -37,9 +38,9 @@ const ShootingStarItem = memo(({ star }: { star: ShootingStar }) => {
     );
 });
 
-ShootingStarItem.displayName = 'ShootingStarItem';
 
-const ShootingStars: React.FC = () => {
+const ShootingStars = memo(() => {
+
     const [stars, setStars] = useState<ShootingStar[]>([]);
 
     const isMobileRef = useRef(window.innerWidth <= 768);
@@ -47,7 +48,7 @@ const ShootingStars: React.FC = () => {
     const intervalRef = useRef<number | null>(null);
     const cleanupIntervalRef = useRef<number | null>(null);
 
-    const generateStar = (id: number): ShootingStar => {
+    const generateStar = useCallback((id: number): ShootingStar => {
         const fromLeft = Math.random() > 0.5;
         const isMobile = isMobileRef.current;
 
@@ -87,12 +88,10 @@ const ShootingStars: React.FC = () => {
             direction,
             active: true
         };
-    };
+    }, []);
 
-    const cleanupStars = () => {
-
+    const cleanupStars = useCallback(() => {
         setStars(prevStars => {
-
             const bufferTime = maxPossibleDuration.current + 2000;
             const now = Date.now();
 
@@ -100,18 +99,17 @@ const ShootingStars: React.FC = () => {
                 now - star.id < star.duration + star.delay + bufferTime
             );
         });
-    };
+    }, []);
+
+    const handleResize = useCallback(() => {
+        isMobileRef.current = window.innerWidth <= 768;
+    }, []);
 
     useEffect(() => {
-
-        const handleResize = () => {
-            isMobileRef.current = window.innerWidth <= 768;
-        };
 
         window.addEventListener('resize', handleResize);
 
         const initialDelay = setTimeout(() => {
-
             const initialStarsCount = isMobileRef.current ? 1 : 2;
 
             const initialStars: ShootingStar[] = Array.from(
@@ -121,9 +119,8 @@ const ShootingStars: React.FC = () => {
 
             setStars(initialStars);
 
-            intervalRef.current = window.setInterval(() => {
+            const createNewStar = () => {
                 setStars(prevStars => {
-
                     const bufferTime = maxPossibleDuration.current + 2000;
                     const now = Date.now();
 
@@ -139,13 +136,17 @@ const ShootingStars: React.FC = () => {
 
                     return activeStars;
                 });
-            }, isMobileRef.current ? 5000 : 4000);
+            };
+
+            intervalRef.current = window.setInterval(
+                createNewStar,
+                isMobileRef.current ? 5000 : 4000
+            );
 
             cleanupIntervalRef.current = window.setInterval(cleanupStars, 5000);
         }, 1000);
 
         return () => {
-
             window.removeEventListener('resize', handleResize);
             clearTimeout(initialDelay);
 
@@ -159,13 +160,7 @@ const ShootingStars: React.FC = () => {
                 cleanupIntervalRef.current = null;
             }
         };
-    }, []);
-
-    // useEffect(() => {
-    //     console.log("stars length:", stars.length, "stars");
-    // }, [stars]);
-
-
+    }, [generateStar, cleanupStars, handleResize]);
 
     return (
         <div className="shooting-stars-container">
@@ -174,6 +169,7 @@ const ShootingStars: React.FC = () => {
             ))}
         </div>
     );
-};
+});
 
-export default memo(ShootingStars);
+
+export default ShootingStars;

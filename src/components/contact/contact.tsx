@@ -3,9 +3,10 @@ import '../../css/contact/contact.css';
 import {github, linkedin, envelope, paperPlane} from '../../assets/images/icons/icons';
 import {useInDevelopmentLink} from "../utils/inDev/developmentContext.tsx";
 import {useTranslation} from "react-i18next";
+import {memo} from "react";
 
 
-const Contact = () => {
+const Contact = memo(() => {
 
     // const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     //     e.preventDefault();
@@ -65,6 +66,6 @@ const Contact = () => {
             </div>
         </section>
     );
-};
+});
 
 export default Contact;

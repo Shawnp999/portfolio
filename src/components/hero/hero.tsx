@@ -2,9 +2,10 @@ import '../../css/hero/hero.css';
 import {HeroProps} from "../../types/types.ts";
 import {useTranslation} from "react-i18next";
 import TypeWriter from "./typeWriter/typeWriter.tsx";
-import {useCallback} from "react";
+import {memo, useCallback} from "react";
 
-const Hero = ({scrollToSection, projectsRef, contactRef}: HeroProps) => {
+const Hero = memo(({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
+
     const {t} = useTranslation();
 
     const handleViewWorkClick = useCallback(() => {
@@ -30,7 +31,7 @@ const Hero = ({scrollToSection, projectsRef, contactRef}: HeroProps) => {
                     {t('hero.description4')}
                 </p>
 
-                <div className="d-flex gap-3 mt-4 ps-1 pb-1" style={{width: '99%'}}>
+                <div className="d-flex gap-3 mt-4 pb-1" style={{width: '99%'}}>
 
                     <button
                         className="btn-hero btn-primary"
@@ -49,6 +50,6 @@ const Hero = ({scrollToSection, projectsRef, contactRef}: HeroProps) => {
             </div>
         </section>
     );
-};
+});
 
 export default Hero;

@@ -1,9 +1,11 @@
-import React, { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import '../../css/backgroundCircles/backgroundCircles.css';
 import { BackgroundCirclesProps } from "../../types/types.ts";
 
-const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({ count, sectionId }) => {
+const BackgroundCircles = memo(({ count, sectionId }: BackgroundCirclesProps) => {
+
     const circles = useMemo(() => {
+
         const isMobile = window.innerWidth < 768;
         const actualCount = isMobile ? Math.min(count, 5) : count;
         const maxSize = isMobile ? 120 : 200;
@@ -51,6 +53,8 @@ const BackgroundCircles: React.FC<BackgroundCirclesProps> = ({ count, sectionId 
             ))}
         </div>
     );
-};
+});
 
-export default React.memo(BackgroundCircles);
+
+export default BackgroundCircles;
+
