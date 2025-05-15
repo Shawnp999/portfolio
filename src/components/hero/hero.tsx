@@ -31,26 +31,29 @@ const Hero = memo(({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
                     {t('hero.description4')}
                 </p>
 
-                <div className="d-flex gap-3 mt-4 pb-1" style={{width: '99%'}}>
+                <div className="button-container d-flex flex-wrap mt-4 pb-3">
+                    <div className="btn-row d-flex flex-wrap w-100">
+                        <button
+                            className="btn-hero btn-primary"
+                            onClick={handleViewWorkClick}
+                        >
+                            {t('hero.viewWork')}
+                        </button>
 
-                    <button
-                        className="btn-hero btn-primary"
-                        onClick={handleViewWorkClick}
-                    >
-                        {t('hero.viewWork')}
-                    </button>
+                        <button
+                            className="btn-hero btn-secondary mx-md-3"
+                            onClick={handleContactClick}
+                        >
+                            {t('hero.getInTouch')}
+                        </button>
 
-                    <button
-                        className="btn-hero btn-secondary"
-                        onClick={handleContactClick}
-                    >
-                        {t('hero.getInTouch')}
-                    </button>
-
-                    <a  href="../../assets/files/Shawn%20Pantzlaff's%20Resume%20Updated.docx.pdf" download="shawn-pantzlaff-resume.pdf">
-                        <button className="btn-hero btn-secondary">Download Resume</button>
-                    </a>
-
+                        <a href="../../assets/files/Shawn%20Pantzlaff's%20Resume%20Updated.docx.pdf"
+                           download="shawn-pantzlaff-resume.pdf"
+                           className="resume-link"
+                        >
+                            <button className="btn-hero btn-secondary">Download Resume</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

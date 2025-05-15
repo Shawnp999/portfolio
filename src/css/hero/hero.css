@@ -1,10 +1,12 @@
 /* Only keeping what's needed that Bootstrap doesn't already provide */
 #hero-section {
     z-index: 1;
+    padding: 0 15px;
 }
 
 .hero-content {
     z-index: 2;
+    width: 100%;
 }
 
 .description {
@@ -15,6 +17,17 @@
 .typewriter-container {
     height: 170px;
     min-height: 170px;
+}
+
+.button-container {
+    width: 99%;
+    /*padding-right: 15px;*/
+    /*padding-left: 15px;*/
+}
+
+.btn-row {
+    display: flex;
+    gap: 1rem;
 }
 
 .btn-hero {
@@ -66,12 +79,47 @@
         min-height: 100px !important;
     }
 
-    /* For mobile, switch to column layout for buttons */
-    .cta-buttons {
-        flex-direction: column !important;
+    .btn-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
     }
 
-    .btn-hero {
-        width: 99%;
+    .btn-row button:nth-child(1),
+    .btn-row button:nth-child(2) {
+        width: 48%;
+    }
+
+    .btn-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .resume-link {
+        width: 100%;
+        margin-top: 0.75rem;
+    }
+
+    .resume-link button {
+        width: 100% !important;
+    }
+
+    .btn-hero.btn-secondary.mx-md-3 {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .btn-row {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .resume-link {
+        display: inline-block;
+        width: auto;
     }
 }
