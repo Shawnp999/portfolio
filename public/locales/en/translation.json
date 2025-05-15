@@ -9,7 +9,8 @@
     "description3": "I'm driven by technology's constant evolution, progressing from HTML/CSS through JavaScript to React, SharePoint, SPFx, Django, and React Native. I believe in code's limitless potential—if you can imagine it, it can be built, refined, and perfected.",
     "description4": "Off-screen, I'm on the ice, boxing, traveling, or unwinding with friends. This balance refreshes my creativity and brings new perspectives to my development work.",
     "viewWork": "View My Work",
-    "getInTouch": "Get In Touch"
+    "getInTouch": "Get In Touch",
+    "downloadResume" : "Download Resume"
   },
   "projects": {
     "sectionTitle": "Projects",
