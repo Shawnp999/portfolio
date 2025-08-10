@@ -3,7 +3,8 @@ import {HeroProps} from "../../types/types.ts";
 import {useTranslation} from "react-i18next";
 import TypeWriter from "./typeWriter/typeWriter.tsx";
 import {memo, useCallback} from "react";
-import ResumeFile from '../../../public/files/ResumeFile.pdf'
+// import ResumeFile from '../../../public/files/ResumeFile.pdf'
+
 
 const Hero = memo(({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
 
@@ -48,12 +49,14 @@ const Hero = memo(({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
                             {t('hero.getInTouch')}
                         </button>
 
-                        <a href={ResumeFile}
-                           download="shawn-pantzlaff-resume.pdf"
-                           className="resume-link"
+                        <a
+                            href="/files/ShawnPantzlaffResume.pdf"
+                            download="shawn-pantzlaff-resume.pdf"
+                            className="resume-link"
                         >
                             <button className="btn-hero btn-secondary">{t('hero.downloadResume')}</button>
                         </a>
+
                     </div>
                 </div>
             </div>
