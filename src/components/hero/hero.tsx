@@ -47,7 +47,7 @@ const Hero = memo(({ scrollToSection, projectsRef, contactRef }: HeroProps) => {
                         {t('hero.getInTouch')}
                     </button>
 
-                    <a  href="../../assets/files/Shawn%20Pantzlaff's%20Resume%20Updated.docx.pdf" download="shawn-pantzlaff-resume.pdf">
+                    <a  href="../../assets/files/Shawn%20Pantzlaff%20Resume.docx.pdf" download="shawn-pantzlaff-resume.pdf">
                         <button className="btn-hero btn-secondary">Download Resume</button>
                     </a>
 
