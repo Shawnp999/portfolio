@@ -1,15 +1,17 @@
 {
   "hero": {
     "test": "testenglish",
-    "title1": "Hi, I'm Elya Fayizulina",
-    "description1": "I have been married for 24 years and have two wonderful sons. From the early days of Christianity, my calling has been to serve people through prayer, comfort, and biblical counsel.",
-    "description2": "Over time, people came to me with very difficult situations, and I realized that new tools were needed. In prayer, the Lord responded to my desire to see people free - this is how the pastoral care program was born in Latvia.",
-    "description3": "Today, I teach people to serve others, continue my studies in seminary, and help those who are looking for support, hope, and healing in Christ.",
+    "title1": "Hi, I'm Shawn Pantzlaff",
+    "title2": "Adapting to evolving technologies",
+    "title4": "Constant pursuit of self improvement",
+    "description1": "I'm a Frontend Developer passionate about building user-focused React/React Native applications. Thrown into a fast-paced environment early on, I quickly adapted alongside mentors and joined startup projects that taught me to embrace challenges and deliver solutions despite evolving requirements.",
+    "description2": "Growing up between Minnesota and Latvia before attending Ontario Hockey Academy gave me diverse perspectives and fluency in English, German, and Russian—skills that enhance my collaborative approach to problem-solving.",
+    "description3": "I'm driven by technology's constant evolution, progressing from HTML/CSS through JavaScript to React, SharePoint, SPFx, Django, and React Native. I believe in code's limitless potential—if you can imagine it, it can be built, refined, and perfected.",
+    "description4": "Off-screen, I'm on the ice, boxing, traveling, or unwinding with friends. This balance refreshes my creativity and brings new perspectives to my development work.",
     "viewWork": "View My Work",
     "getInTouch": "Get In Touch",
     "downloadResume" : "Download Resume"
   },
-
   "projects": {
     "sectionTitle": "Projects",
     "sectionDescription": "Outside of the full-time job, these are some of the projects that I've built as a hobby, school, or freelance works.",
