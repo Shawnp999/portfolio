@@ -1,10 +1,10 @@
 import '../../css/about/about.css';
 import '../../css/globalCSS.css'
-import {useInDevelopmentLink} from "../utils/inDev/developmentContext.tsx";
+// import {useInDevelopmentLink} from "../utils/inDev/developmentContext.tsx";
 
 const About = () => {
 
-    const handleInDevelopmentClick = useInDevelopmentLink();
+    // const handleInDevelopmentClick = useInDevelopmentLink();
 
 
     return (
@@ -40,15 +40,15 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="second-cont d-flex justify-content-center justify-content-sm-start">
-                    <button
-                        className="btn btn-secondary w-100 w-sm-99"
-                        style={{opacity: 0.5}}
-                        onClick={handleInDevelopmentClick}
-                    >
-                        Embed/animation
-                    </button>
-                </div>
+                {/*<div className="second-cont d-flex justify-content-center justify-content-sm-start">*/}
+                {/*    <button*/}
+                {/*        className="btn btn-secondary w-100 w-sm-99"*/}
+                {/*        style={{opacity: 0.5}}*/}
+                {/*        onClick={handleInDevelopmentClick}*/}
+                {/*    >*/}
+                {/*        Embed/animation*/}
+                {/*    </button>*/}
+                {/*</div>*/}
 
 
             </div>
